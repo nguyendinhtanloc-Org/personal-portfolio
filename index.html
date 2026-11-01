@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tân Lộc — Data Engineering · Analytics · Computer Vision</title>
+  <meta name="description" content="Nguyễn Đình Tân Lộc — final-year Data Engineering student building streaming pipelines, analytics, and computer-vision work. Selected projects, capabilities, and contact.">
+  <meta property="og:title" content="Tân Lộc — Data Engineering · Analytics · Computer Vision">
+  <meta property="og:description" content="Final-year Data Engineering portfolio: streaming pipelines, analytics, computer vision.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#F4F4F0">
+  <!-- canonical + real OG URL: add once deployed at the final domain -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Inter:wght@400;500&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#home">Skip to content</a>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="top">
+    <div class="nav-inner">
+      <a class="monogram" href="#home">T.L.</a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Menu">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <nav id="nav-menu" aria-label="Primary">
+        <a href="#home" class="nav-link is-active" data-spy>Home</a>
+        <a href="#about" class="nav-link" data-spy>About</a>
+        <a href="#projects" class="nav-link" data-spy>Projects</a>
+        <a href="#skills" class="nav-link" data-spy>Skills</a>
+        <a href="#experience" class="nav-link" data-spy>Experience</a>
+        <a href="#contact" class="nav-link" data-spy>Contact</a>
+      </nav>
+      <!-- TODO: replace with the real CV file (e.g. assets/cv.pdf) -->
+      <a class="btn-resume" href="cv.pdf">Résumé</a>
+    </div>
+  </header>
+
+  <main id="home">
+    <!-- ============ HERO ============ -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <p class="hero-issue">Portfolio — Vol. 01 · 2026</p>
+          <h1 id="hero-title">
+            Turning data into
+            <span class="squiggle">meaningful impact
+              <svg viewBox="0 0 220 8" preserveAspectRatio="none" aria-hidden="true">
+                <path vector-effect="non-scaling-stroke" d="M0 5 Q 8 1, 16 5 T 32 5 T 48 5 T 64 5 T 80 5 T 96 5 T 112 5 T 128 5 T 144 5 T 160 5 T 176 5 T 192 5 T 208 5 T 220 5"/>
+              </svg>
+            </span>.
+          </h1>
+          <p class="hero-lede">
+            I'm Tân Lộc, a final-year Data Engineering student. I build pipelines that move
+            data end to end, pull out insights that people actually act on, and explore
+            computer vision where pixels meet decisions.
+          </p>
+          <div class="hero-cta">
+            <a class="btn-primary" href="#projects">Explore Projects</a>
+            <a class="link-arrow" href="#about">About me <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+
+        <!-- Editorial visual: restrained data-lab motif (pure CSS/SVG, no fake photos) -->
+        <figure class="hero-visual" aria-label="Abstract pipeline motif: source, stream, and warehouse">
+          <svg class="hero-motif" viewBox="0 0 320 320" aria-hidden="true">
+            <defs>
+              <marker id="hero-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M0,0 L10,5 L0,10 z" fill="#8A8880"/>
+              </marker>
+            </defs>
+            <!-- dot grid -->
+            <g>
+              <pattern id="dotgrid" width="16" height="16" patternUnits="userSpaceOnUse">
+                <circle cx="1.2" cy="1.2" r="1.2" class="dot"/>
+              </pattern>
+              <rect x="0" y="0" width="320" height="320" fill="url(#dotgrid)"/>
+            </g>
+            <!-- pipeline -->
+            <g>
+              <rect class="pipe-node" x="24"  y="70"  width="72" height="48"/>
+              <text class="pipe-label" x="40" y="98">source</text>
+
+              <rect class="pipe-node pipe-node-acc" x="124" y="70" width="72" height="48"/>
+              <text class="pipe-label" x="140" y="98">stream</text>
+
+              <rect class="pipe-node" x="224" y="70"  width="72" height="48"/>
+              <text class="pipe-label" x="240" y="98">store</text>
+
+              <path class="pipe-line" d="M96 94 H124"/>
+              <path class="pipe-line" d="M196 94 H224"/>
+
+              <rect class="pipe-node" x="124" y="190" width="72" height="48"/>
+              <text class="pipe-label" x="140" y="218">model</text>
+              <path class="pipe-line" d="M160 118 V190"/>
+            </g>
+          </svg>
+
+          <!-- floating note -->
+          <div class="hero-note" role="note" aria-label="Design principle">
+            <p class="hero-note-label">Design rule</p>
+            <p class="hero-note-text">One source of truth per layer — if a number disagrees, the disagreement is findable.</p>
+          </div>
+          <figcaption class="figcap">
+            <span class="fig-label">fig. 01</span> — representative pipeline I design and test: source → stream → store, with the model branch fed from the stream.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="section about" id="about" aria-labelledby="about-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-index">01</p>
+          <h2 id="about-title" class="section-title">Who I am, in a few honest lines</h2>
+        </div>
+        <div class="about-grid">
+          <div class="about-copy">
+            <p>
+              I'm a final-year Data Engineering student (class of 2026) working across
+              pipelines, analytics, and computer vision. The overlap is the point: a
+              pipeline that can't be verified is a liability, and a model nobody can
+              reproduce is a demo.
+            </p>
+            <p>
+              <strong>How I work.</strong> I keep design and evidence separate. If I say
+              a system is at-least-once or doesn't lose data, that comes with the test
+              that shows it — reconciliation queries, kill/restart runs, measured
+              latencies. Anything unproven is labeled an estimate, never a result.
+            </p>
+            <p>
+              <strong>Where I point my curiosity next:</strong> distributed systems
+              internals (delivery semantics, backpressure, replay), warehouse design at
+              scale, and vision models that ship, not just benchmark.
+            </p>
+            <div class="margin-note" role="note">
+              <p>
+                <span class="note-label">marginalia.</span> The rule above is the
+                difference between a portfolio and a design doc: claims I can't
+                demonstrate are marked <em>estimate</em>, never presented as results.
+              </p>
+            </div>
+          </div>
+          <aside class="about-meta" aria-label="Quick facts">
+            <h3 class="meta-title">Quick facts</h3>
+            <dl class="facts">
+              <div><dt>Education</dt><dd>B.Eng. Data Engineering, class of 2026</dd></div>
+              <div><dt>Based in</dt><dd>Hanoi, Vietnam</dd></div>
+              <div><dt>Open to</dt><dd>DE / analytics / CV internships &amp; roles</dd></div>
+              <div><dt>Languages</dt><dd>English, Vietnamese</dd></div>
+            </dl>
+            <div class="meta-links">
+              <!-- TODO: verified links only — remove any that aren't real -->
+              <a class="link-arrow" href="https://github.com/your-handle" target="_blank" rel="noopener">GitHub <span aria-hidden="true">→</span></a>
+              <a class="link-arrow" href="https://www.linkedin.com/in/your-handle" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">→</span></a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section class="section projects" id="projects" aria-labelledby="projects-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-index">02</p>
+          <h2 id="projects-title" class="section-title">Selected work, by discipline</h2>
+          <p class="section-note">
+            Results carrying a dashed <span class="stamp" role="note">verify</span>
+            stamp are placeholders — replace with your measured numbers before
+            publishing.
+          </p>
+        </div>
+
+        <div class="project-grid">
+          <!-- 01 — Data Engineering -->
+          <article class="project project-de" aria-labelledby="p1-title">
+            <header class="project-top">
+              <span class="project-idx" aria-hidden="true">01</span>
+              <span class="project-cat">Data Engineering</span>
+            </header>
+            <h3 id="p1-title" class="project-name">Streaming telemetry pipeline</h3>
+            <p class="project-problem">
+              Sensor telemetry from multiple sources had to reach dashboards in seconds,
+              survive restarts, and be rebuildable when upstream schema changes.
+            </p>
+            <p class="project-impl">
+              Telegraf into Redpanda; Airflow-orchestrated extraction; idempotent dbt
+              models in bronze/silver/gold; loss proven by per-event
+              <code>event_id</code> reconciliation plus kill/restart tests.
+            </p>
+            <p class="project-tech" aria-label="Technologies">
+              <span class="tech-label">stack</span>
+              Telegraf · Redpanda · Airflow · PostgreSQL · dbt · Metabase
+            </p>
+            <p class="project-result">
+              <span class="result-label">Verified result</span>
+              0% event loss over the reconciliation window; &lt;30s recovery after broker
+              restart<span class="stamp" role="note">verify your numbers</span>
+            </p>
+            <footer class="project-links">
+              <a class="link-arrow" href="https://github.com/your-handle" target="_blank" rel="noopener">Repository <span aria-hidden="true">→</span></a>
+              <!-- TODO: keep this only if a live demo actually exists -->
+              <a class="link-arrow" href="#projects">Live demo <span aria-hidden="true">→</span></a>
+            </footer>
+          </article>
+
+          <!-- 02 — Data Analytics -->
+          <article class="project project-da" aria-labelledby="p2-title">
+            <header class="project-top">
+              <span class="project-idx" aria-hidden="true">02</span>
+              <span class="project-cat">Data Analytics</span>
+            </header>
+            <h3 id="p2-title" class="project-name">Decision-support dashboard</h3>
+            <p class="project-problem">
+              A reporting stack that answered the questions leadership actually asked —
+              not the ones that were easy to chart — on top of a Medallion warehouse.
+            </p>
+            <p class="project-impl">
+              dbt gold models feeding Metabase; Pandas prototypes (with dtype/memory
+              discipline) before pushing the heavy lifting to SQL and Spark.
+            </p>
+            <p class="project-tech" aria-label="Technologies">
+              <span class="tech-label">stack</span>
+              pandas · SQL · dbt · Spark · Metabase
+            </p>
+            <p class="project-result">
+              <span class="result-label">Verified result</span>
+              One query replaces N ad-hoc spreadsheets; gold-layer refresh is idempotent
+              <span class="stamp" role="note">add your numbers</span>
+            </p>
+            <footer class="project-links">
+              <a class="link-arrow" href="https://github.com/your-handle" target="_blank" rel="noopener">Repository <span aria-hidden="true">→</span></a>
+            </footer>
+          </article>
+
+          <!-- 03 — Computer Vision -->
+          <article class="project project-cv" aria-labelledby="p3-title">
+            <header class="project-top">
+              <span class="project-idx" aria-hidden="true">03</span>
+              <span class="project-cat">Computer Vision</span>
+            </header>
+            <h3 id="p3-title" class="project-name">Vision model, training-to-serving</h3>
+            <p class="project-problem">
+              A vision model had to move from notebook to a reproducible setup: tracked
+              runs, resumable checkpoints, and a clean path to a serving artifact.
+            </p>
+            <p class="project-impl">
+              PyTorch loop with DataLoader + AMP where it paid off; MLflow for run
+              comparison; MinIO for datasets and checkpoints; Docker for the artifact.
+            </p>
+            <p class="project-tech" aria-label="Technologies">
+              <span class="tech-label">stack</span>
+              PyTorch · MLflow · MinIO · Docker
+            </p>
+            <p class="project-result">
+              <span class="result-label">Verified result</span>
+              Tracked runs beat the untracked baseline<span class="stamp" role="note">insert your metric</span>
+            </p>
+            <footer class="project-links">
+              <a class="link-arrow" href="https://github.com/your-handle" target="_blank" rel="noopener">Repository <span aria-hidden="true">→</span></a>
+            </footer>
+          </article>
+        </div>
+
+        <p class="projects-more">
+          More work lives on
+          <a class="link-arrow" href="https://github.com/your-handle" target="_blank" rel="noopener">GitHub <span aria-hidden="true">→</span></a>
+          — including coursework and tooling projects.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ SKILLS ============ -->
+    <section class="section skills" id="skills" aria-labelledby="skills-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-index">03</p>
+          <h2 id="skills-title" class="section-title">What I actually reach for</h2>
+          <p class="section-note skills-note">Only tools I've used in shipped or tested work. Edit freely.</p>
+        </div>
+
+        <div class="skill-groups">
+          <div class="skill-group skill-de">
+            <h3 class="skill-cat">Data Engineering</h3>
+            <p class="skill-list">Python · SQL · Airflow · dbt · Spark · Medallion architecture</p>
+          </div>
+          <div class="skill-group skill-da">
+            <h3 class="skill-cat">Data Analytics</h3>
+            <p class="skill-list">pandas · SQL · Metabase · explain/analyze-first tuning</p>
+          </div>
+          <div class="skill-group skill-cv">
+            <h3 class="skill-cat">Computer Vision</h3>
+            <p class="skill-list">PyTorch · OpenCV · object detection</p>
+          </div>
+          <div class="skill-group">
+            <h3 class="skill-cat">Infrastructure</h3>
+            <p class="skill-list">Docker · Git · MinIO · MLflow</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EXPERIENCE ============ -->
+    <section class="section experience" id="experience" aria-labelledby="experience-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-index">04</p>
+          <h2 id="experience-title" class="section-title">Where the work has happened</h2>
+        </div>
+
+        <ol class="timeline">
+          <!-- TODO: keep only entries that are true; add missing ones -->
+          <li class="timeline-item is-now tl-de">
+            <div class="timeline-date">2025 — Present<span class="now-label" aria-label="current">now</span></div>
+            <div class="timeline-body">
+              <h3 class="timeline-title">Final-year thesis: streaming data pipeline</h3>
+              <p class="timeline-org">Data Engineering capstone</p>
+              <p class="timeline-desc">
+                End-to-end telemetry pipeline: Telegraf → Redpanda → Airflow → PostgreSQL
+                (Medallion via dbt) → Metabase, with loss reconciliation and replay testing.
+              </p>
+            </div>
+          </li>
+          <li class="timeline-item tl-cv">
+            <div class="timeline-date">2025</div>
+            <div class="timeline-body">
+              <h3 class="timeline-title">Applied ML coursework</h3>
+              <p class="timeline-org">Computer vision &amp; training infrastructure</p>
+              <p class="timeline-desc">
+                PyTorch vision model with MLflow-tracked runs, MinIO-stored checkpoints,
+                and a Dockerized serving artifact.
+              </p>
+            </div>
+          </li>
+          <li class="timeline-item">
+            <div class="timeline-date">2022 — Present</div>
+            <div class="timeline-body">
+              <h3 class="timeline-title">B.Eng., Data Engineering</h3>
+              <p class="timeline-org">Class of 2026</p>
+              <p class="timeline-desc">
+                Core study: distributed systems, streaming, warehousing, and ML/CV
+                integration.
+              </p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section contact" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-index">05</p>
+          <h2 id="contact-title" class="section-title">Let's talk pipelines, data, or vision</h2>
+          <p class="section-note">The fastest route is email. For credentials and full history, the résumé.</p>
+        </div>
+
+        <div class="contact-lines">
+          <!-- TODO: replace with verified destinations only -->
+          <a class="contact-line" href="mailto:you@example.com">
+            <span class="contact-key">Email</span>
+            <span class="dots" aria-hidden="true"></span>
+            <span class="contact-val">you@example.com</span>
+          </a>
+          <a class="contact-line" href="https://github.com/your-handle" target="_blank" rel="noopener">
+            <span class="contact-key">GitHub</span>
+            <span class="dots" aria-hidden="true"></span>
+            <span class="contact-val">github.com/your-handle</span>
+          </a>
+          <a class="contact-line" href="https://www.linkedin.com/in/your-handle" target="_blank" rel="noopener">
+            <span class="contact-key">LinkedIn</span>
+            <span class="dots" aria-hidden="true"></span>
+            <span class="contact-val">linkedin.com/in/your-handle</span>
+          </a>
+          <a class="contact-line" href="cv.pdf">
+            <span class="contact-key">Résumé</span>
+            <span class="dots" aria-hidden="true"></span>
+            <span class="contact-val">Download PDF ↓</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>© <span class="js-year">2026</span> Nguyễn Đình Tân Lộc</p>
+      <p class="footer-meta">Set in Fraunces, Inter &amp; IBM Plex Mono — no framework, no build step.</p>
+      <a class="footer-top" href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script src="main.js" defer></script>
+</body>
+</html>
