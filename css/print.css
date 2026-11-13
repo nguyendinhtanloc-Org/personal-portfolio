@@ -1,0 +1,90 @@
+/* ============================================================
+   personal-portfolio — print.css
+   Clean executive summary print stylesheet for paper & PDF export.
+   ============================================================ */
+
+@media print {
+  @page {
+    margin: 1.5cm;
+    size: A4;
+  }
+
+  :root,
+  [data-theme="dark"] {
+    --paper: #ffffff;
+    --surface: #ffffff;
+    --ink: #111111;
+    --muted: #444444;
+    --hairline: #cccccc;
+    --hairline-soft: #eeeeee;
+    --term-bg: #222222;
+    --term-ink: #f0f0f0;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #111111 !important;
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+
+  /* Hide interactive and screen-only controls */
+  .nav,
+  .progress-bar,
+  .theme-toggle,
+  .lang-toggle,
+  .btn-cmd-palette,
+  .cmd-palette,
+  .project-filters,
+  .btn-run-term,
+  .btn-resume,
+  .footer-top,
+  .btn-copy,
+  .skip,
+  .hero-cta,
+  .nav-toggle,
+  .cert-modal,
+  .quick-contact-card {
+    display: none !important;
+  }
+
+  /* Expand container and remove fixed constraints */
+  .container {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .hero {
+    padding-block: 1rem 2rem;
+  }
+
+  .section {
+    padding-block: 1.8rem;
+    page-break-inside: auto;
+  }
+
+  .project,
+  .timeline-item,
+  .skill-group,
+  .bento-card {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .evidence {
+    background: #222222 !important;
+    color: #f0f0f0 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .contact-line {
+    border-top-color: #cccccc;
+  }
+
+  .footer {
+    border-top-color: #cccccc;
+    padding-block: 1rem;
+  }
+}
+

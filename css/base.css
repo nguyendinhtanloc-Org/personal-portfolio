@@ -1,0 +1,353 @@
+/* ============================================================
+   personal-portfolio — base.css
+   CSS Reset, typography, smooth scroll, layout containers,
+   section headers, technical evidence blocks, and 404 page.
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11", "tnum";
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+#top:focus {
+  outline: none;
+}
+
+::selection {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+/* ---------- Smooth i18n Crossfade Transition ---------- */
+main,
+#nav-menu,
+.footer-inner {
+  transition: opacity 0.12s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.is-lang-transitioning main,
+body.is-lang-transitioning #nav-menu,
+body.is-lang-transitioning .footer-inner {
+  opacity: 0.28;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  main,
+  #nav-menu,
+  .footer-inner {
+    transition: none !important;
+  }
+}
+
+/* Anchors clear the sticky nav */
+section[id],
+main {
+  scroll-margin-top: 4.5rem;
+}
+
+.container {
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--pad-x);
+}
+
+.skip {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.5rem 1rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  transition: top 0.2s ease;
+}
+
+.skip:focus {
+  top: 1rem;
+}
+
+/* ---------- Shared Section Layout ---------- */
+.section {
+  border-top: 1px solid var(--hairline);
+  padding-block: clamp(3.5rem, 7vw, 5.5rem);
+}
+
+.section-head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 2.5rem;
+  max-width: 48rem;
+}
+
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  border: 1px solid rgba(180, 131, 62, 0.2);
+  width: fit-content;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.75rem, 3.5vw, 2.35rem);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  text-wrap: balance;
+  color: var(--ink);
+}
+
+.section-note {
+  color: var(--muted);
+  font-size: 0.94rem;
+  line-height: 1.6;
+  text-wrap: pretty;
+  max-width: 52ch;
+}
+
+code {
+  font-family: var(--font-mono);
+  font-size: 0.84em;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+}
+
+/* Links & Action buttons */
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 500;
+  color: var(--ink);
+  transition: color 0.15s ease;
+}
+
+.link-arrow span {
+  transition: transform 0.18s ease, color 0.18s ease;
+}
+
+.link-arrow:hover {
+  color: var(--accent);
+}
+
+.link-arrow:hover span {
+  transform: translateX(4px);
+  color: var(--accent);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: 0.65rem 1.35rem;
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 4px;
+  border: 1px solid var(--ink);
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+
+.btn-primary:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* Reveal on scroll */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Figure captions */
+.figcap {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--muted);
+  border-top: 1px solid var(--hairline);
+  margin-top: 0;
+  padding: 0.85rem 0 1.25rem;
+  line-height: 1.7;
+}
+
+.figcap .fig-label {
+  color: var(--accent);
+}
+
+/* Engineering Callout Box (Clean & Structured) */
+.engineering-callout {
+  margin-top: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-left: 3px solid var(--accent);
+  border-radius: 4px;
+  padding: 0.85rem 1.1rem;
+  max-width: 26rem;
+}
+
+.engineering-callout p {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.engineering-callout .note-label {
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.now-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid rgba(180, 131, 62, 0.25);
+  border-radius: 3px;
+  padding: 0.1rem 0.45rem;
+  margin-left: 0.5rem;
+  vertical-align: 1px;
+}
+
+/* ---------- Evidence Blocks (Terminal-style Output) ---------- */
+.evidence {
+  margin-top: 1.1rem;
+  background: var(--term-bg);
+  color: var(--term-ink);
+  font-family: var(--font-mono);
+  padding: 0.85rem 1rem;
+  border-radius: 4px;
+  border: 1px solid var(--hairline);
+  overflow-x: auto;
+}
+
+.ev-label {
+  display: block;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--term-mute);
+  margin-bottom: 0.5rem;
+}
+
+.ev-line {
+  font-size: 0.74rem;
+  line-height: 1.7;
+  white-space: nowrap;
+}
+
+.ev-prompt {
+  color: var(--accent);
+  margin-right: 0.4rem;
+}
+
+.evidence .ev-mute {
+  color: var(--term-mute);
+  display: block;
+  white-space: nowrap;
+}
+
+/* ---------- 404 Not Found Page ---------- */
+.notfound {
+  padding-block: clamp(4rem, 10vw, 7rem) clamp(3rem, 6vw, 4.5rem);
+}
+
+.notfound-index {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: clamp(3.5rem, 10vw, 5.5rem);
+  font-weight: 600;
+  line-height: 1;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.notfound-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  max-width: 24ch;
+}
+
+.notfound-title em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.notfound .evidence {
+  margin-top: 1.75rem;
+  max-width: 34rem;
+}
+
+.notfound-cta {
+  margin-top: 2.25rem;
+}
