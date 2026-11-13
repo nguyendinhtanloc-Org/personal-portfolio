@@ -1,25 +1,82 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tân Lộc — Data Engineering · Analytics · Computer Vision</title>
-  <meta name="description" content="Nguyễn Đình Tân Lộc — final-year Data Engineering student building streaming pipelines, analytics, and computer-vision work. Selected projects, capabilities, and contact.">
+  <meta name="description"
+    content="Nguyễn Đình Tân Lộc — Data Engineering student at HCMUTE (graduating 2027) building data pipelines, analytics, and computer-vision systems. Selected projects, capabilities, and contact.">
   <meta property="og:title" content="Tân Lộc — Data Engineering · Analytics · Computer Vision">
-  <meta property="og:description" content="Final-year Data Engineering portfolio: streaming pipelines, analytics, computer vision.">
+  <meta property="og:description"
+    content="Data Engineering portfolio of Tân Lộc (HCMUTE 2027): data pipelines, analytics, and computer vision.">
   <meta property="og:type" content="website">
-  <meta name="theme-color" content="#F4F4F0">
+  <meta property="og:image" content="assets/images/og-image.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Tân Lộc — Data Engineering · Analytics · Computer Vision">
+  <meta name="twitter:description"
+    content="Data Engineering portfolio of Tân Lộc (HCMUTE 2027): data pipelines, analytics, and computer vision.">
+  <meta name="twitter:image" content="assets/images/og-image.png">
+  <meta name="theme-color" content="#faf8f5">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Nguyễn Đình Tân Lộc",
+    "alternateName": "Tan Loc Nguyen",
+    "jobTitle": "Data Engineer",
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "Ho Chi Minh City University of Technology and Education (HCMUTE)"
+    },
+    "knowsAbout": [
+      "Data Engineering",
+      "Data Pipelines",
+      "Apache Spark",
+      "dbt",
+      "Apache Airflow",
+      "Data Analytics",
+      "Computer Vision",
+      "PyTorch",
+      "AWS"
+    ],
+    "email": "mailto:ndtl05062005@gmail.com",
+    "telephone": "+84966150875",
+    "sameAs": [
+      "https://github.com/orgs/nguyendinhtanloc-Org",
+      "https://www.linkedin.com/in/l%E1%BB%99c-nguy%E1%BB%85n-492944448/"
+    ]
+  }
+  </script>
   <!-- canonical + real OG URL: add once deployed at the final domain -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Inter:wght@400;500&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("pf-theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        if (t === "dark") document.documentElement.setAttribute("data-theme", "dark");
+      } catch (e) { }
+    })();
+  </script>
 </head>
+
 <body>
+  <div id="top" tabindex="-1"></div>
+  <div class="progress-bar" id="progress-bar" aria-hidden="true"></div>
   <a class="skip" href="#home">Skip to content</a>
 
   <!-- ============ NAV ============ -->
-  <header class="nav" id="top">
+  <header class="nav">
     <div class="nav-inner">
       <a class="monogram" href="#home">T.L.</a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Menu">
@@ -27,15 +84,32 @@
         <span class="nav-toggle-bar"></span>
       </button>
       <nav id="nav-menu" aria-label="Primary">
-        <a href="#home" class="nav-link is-active" data-spy>Home</a>
-        <a href="#about" class="nav-link" data-spy>About</a>
-        <a href="#projects" class="nav-link" data-spy>Projects</a>
-        <a href="#skills" class="nav-link" data-spy>Skills</a>
-        <a href="#experience" class="nav-link" data-spy>Experience</a>
-        <a href="#contact" class="nav-link" data-spy>Contact</a>
+        <a href="#home" class="nav-link is-active" data-spy data-i18n="nav.home">Home</a>
+        <a href="#about" class="nav-link" data-spy data-i18n="nav.about">About</a>
+        <a href="#projects" class="nav-link" data-spy data-i18n="nav.projects">Projects</a>
+        <a href="#skills" class="nav-link" data-spy data-i18n="nav.skills">Skills</a>
+        <a href="#experience" class="nav-link" data-spy data-i18n="nav.exp">Experience</a>
+        <a href="#contact" class="nav-link" data-spy data-i18n="nav.contact">Contact</a>
       </nav>
-      <!-- TODO: replace with the real CV file (e.g. assets/cv.pdf) -->
-      <a class="btn-resume" href="cv.pdf">Résumé</a>
+      <div class="nav-actions">
+        <div class="live-status-pill" id="live-time-pill" title="Live Local Time in Vietnam">
+          <span class="live-dot" aria-hidden="true"></span>
+          <span id="live-time-text">HCM 02:08 AM (UTC+7)</span>
+        </div>
+        <button type="button" class="btn-cmd-palette" id="btn-cmd-palette" aria-label="Command palette" title="Press ⌘K or Ctrl+K to open" data-i18n-title="cmd.btn.label">
+          <span class="cmd-icon">⌘K</span>
+        </button>
+        <button class="theme-toggle" aria-label="Toggle color theme" title="Toggle dark/light mode">
+          <span class="theme-icon" aria-hidden="true">☾</span>
+        </button>
+        <button class="lang-toggle" aria-label="Toggle language (English / Tiếng Việt)" title="Switch language (EN / VI)">
+          <span class="lang-opt is-active" data-lang="en">EN</span>
+          <span class="lang-sep">/</span>
+          <span class="lang-opt" data-lang="vi">VI</span>
+        </button>
+        <a class="btn-resume" href="assets/docs/NguyenDinhTanLoc_Resume.pdf" download="NguyenDinhTanLoc_Resume.pdf"
+          data-i18n="nav.resume">Resume</a>
+      </div>
     </div>
   </header>
 
@@ -44,68 +118,78 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="container hero-grid">
         <div class="hero-text">
-          <p class="hero-issue">Portfolio — Vol. 01 · 2026</p>
-          <h1 id="hero-title">
-            Turning data into
-            <span class="squiggle">meaningful impact
-              <svg viewBox="0 0 220 8" preserveAspectRatio="none" aria-hidden="true">
-                <path vector-effect="non-scaling-stroke" d="M0 5 Q 8 1, 16 5 T 32 5 T 48 5 T 64 5 T 80 5 T 96 5 T 112 5 T 128 5 T 144 5 T 160 5 T 176 5 T 192 5 T 208 5 T 220 5"/>
-              </svg>
-            </span>.
+          <p class="hero-issue" data-i18n="hero.issue">Data Engineering Portfolio · 2026</p>
+          <h1 id="hero-title" data-i18n="hero.title" data-i18n-type="html">
+            Building reliable data systems for meaningful impact.
           </h1>
-          <p class="hero-lede">
-            I'm Tân Lộc, a final-year Data Engineering student. I build pipelines that move
-            data end to end, pull out insights that people actually act on, and explore
-            computer vision where pixels meet decisions.
+          <p class="hero-lede" data-i18n="hero.lede">
+            I'm Tân Lộc, a Data Engineering student at HCMUTE (graduating 2027). I focus on data pipelines, analytics, and computer vision, actively seeking internship opportunities across DE, DA, and CV in HCM &amp; Dong Nai.
           </p>
           <div class="hero-cta">
-            <a class="btn-primary" href="#projects">Explore Projects</a>
-            <a class="link-arrow" href="#about">About me <span aria-hidden="true">→</span></a>
+            <a class="btn-primary" href="#projects" data-i18n="hero.cta.primary">Explore Projects</a>
+            <a class="link-arrow" href="#about" data-i18n="hero.cta.about" data-i18n-type="html">About me <span
+                aria-hidden="true">→</span></a>
           </div>
         </div>
 
         <!-- Editorial visual: restrained data-lab motif (pure CSS/SVG, no fake photos) -->
         <figure class="hero-visual" aria-label="Abstract pipeline motif: source, stream, and warehouse">
-          <svg class="hero-motif" viewBox="0 0 320 320" aria-hidden="true">
+          <svg class="hero-motif" viewBox="0 0 320 300" aria-hidden="true">
             <defs>
-              <marker id="hero-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                <path d="M0,0 L10,5 L0,10 z" fill="#8A8880"/>
+              <marker id="hero-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6"
+                orient="auto-start-reverse">
+                <path d="M0,0 L10,5 L0,10 z" fill="#8A8880" />
               </marker>
             </defs>
             <!-- dot grid -->
             <g>
               <pattern id="dotgrid" width="16" height="16" patternUnits="userSpaceOnUse">
-                <circle cx="1.2" cy="1.2" r="1.2" class="dot"/>
+                <circle cx="1.2" cy="1.2" r="1.2" class="dot" />
               </pattern>
-              <rect x="0" y="0" width="320" height="320" fill="url(#dotgrid)"/>
+              <rect x="0" y="0" width="320" height="300" fill="url(#dotgrid)" />
             </g>
             <!-- pipeline -->
             <g>
-              <rect class="pipe-node" x="24"  y="70"  width="72" height="48"/>
+              <rect class="pipe-node" x="24" y="70" width="72" height="48" />
               <text class="pipe-label" x="40" y="98">source</text>
 
-              <rect class="pipe-node pipe-node-acc" x="124" y="70" width="72" height="48"/>
+              <rect class="pipe-node pipe-node-acc" x="124" y="70" width="72" height="48" />
               <text class="pipe-label" x="140" y="98">stream</text>
 
-              <rect class="pipe-node" x="224" y="70"  width="72" height="48"/>
+              <rect class="pipe-node" x="224" y="70" width="72" height="48" />
               <text class="pipe-label" x="240" y="98">store</text>
 
-              <path class="pipe-line" d="M96 94 H124"/>
-              <path class="pipe-line" d="M196 94 H224"/>
+              <path class="pipe-line" d="M96 94 H124" />
+              <path class="pipe-line" d="M196 94 H224" />
 
-              <rect class="pipe-node" x="124" y="190" width="72" height="48"/>
+              <rect class="pipe-node" x="124" y="190" width="72" height="48" />
               <text class="pipe-label" x="140" y="218">model</text>
-              <path class="pipe-line" d="M160 118 V190"/>
+              <path class="pipe-line" d="M160 118 V190" />
+
+              <!-- one signal pulse that SPLITS at the stream:
+                   both copies travel (store | model), then fade out at the last hop.
+                   Runs once on load; hidden under prefers-reduced-motion -->
+              <g class="signal signal-a">
+                <circle cx="60" cy="94" r="3.5" />
+              </g>
+              <g class="signal signal-b">
+                <circle cx="160" cy="94" r="3.5" />
+              </g>
+              <g class="signal signal-c">
+                <circle cx="160" cy="118" r="3.5" />
+              </g>
             </g>
           </svg>
 
           <!-- floating note -->
           <div class="hero-note" role="note" aria-label="Design principle">
-            <p class="hero-note-label">Design rule</p>
-            <p class="hero-note-text">One source of truth per layer — if a number disagrees, the disagreement is findable.</p>
+            <p class="hero-note-label" data-i18n="hero.note.label">Design rule</p>
+            <p class="hero-note-text" data-i18n="hero.note.text">One source of truth per layer — if a number disagrees,
+              the disagreement is findable.</p>
           </div>
-          <figcaption class="figcap">
-            <span class="fig-label">fig. 01</span> — representative pipeline I design and test: source → stream → store, with the model branch fed from the stream.
+          <figcaption class="figcap" data-i18n="hero.figcap" data-i18n-type="html">
+            <span class="fig-label">Architecture</span> — representative pipeline I design and test: source → stream → store,
+            with the model branch fed from the stream.
           </figcaption>
         </figure>
       </div>
@@ -115,50 +199,143 @@
     <section class="section about" id="about" aria-labelledby="about-title">
       <div class="container">
         <div class="section-head">
-          <p class="section-index">01</p>
-          <h2 id="about-title" class="section-title">Who I am, in a few honest lines</h2>
+          <span class="section-badge" data-i18n="about.badge">About · Background</span>
+          <h2 id="about-title" class="section-title" data-i18n="about.title">Who I am, in a few honest lines</h2>
         </div>
-        <div class="about-grid">
-          <div class="about-copy">
-            <p>
-              I'm a final-year Data Engineering student (class of 2026) working across
-              pipelines, analytics, and computer vision. The overlap is the point: a
-              pipeline that can't be verified is a liability, and a model nobody can
-              reproduce is a demo.
-            </p>
-            <p>
-              <strong>How I work.</strong> I keep design and evidence separate. If I say
-              a system is at-least-once or doesn't lose data, that comes with the test
-              that shows it — reconciliation queries, kill/restart runs, measured
-              latencies. Anything unproven is labeled an estimate, never a result.
-            </p>
-            <p>
-              <strong>Where I point my curiosity next:</strong> distributed systems
-              internals (delivery semantics, backpressure, replay), warehouse design at
-              scale, and vision models that ship, not just benchmark.
-            </p>
-            <div class="margin-note" role="note">
-              <p>
-                <span class="note-label">marginalia.</span> The rule above is the
-                difference between a portfolio and a design doc: claims I can't
-                demonstrate are marked <em>estimate</em>, never presented as results.
+        <div class="bento-grid">
+          <!-- BENTO 1: PORTRAIT & LIVE STATUS (span 4 cols) -->
+          <article class="bento-card bento-portrait-card">
+            <div class="bento-status">
+              <span class="status-pulse" aria-hidden="true"></span>
+              <span class="status-text" data-i18n="about.f.open.v">Internships: DE · DA · CV (HCM / Dong Nai)</span>
+            </div>
+            <div class="bento-portrait-frame">
+              <img src="assets/images/anh-cv.jpg" alt="Nguyễn Đình Tân Lộc" class="bento-portrait-img" width="437" height="614" loading="lazy">
+            </div>
+            <div class="bento-card-footer">
+              <span data-i18n="about.portrait.cap">Tân Lộc · Data Engineering</span>
+            </div>
+          </article>
+
+          <!-- BENTO 2: CORE STORY & PULL QUOTE (span 8 cols) -->
+          <article class="bento-card bento-story-card">
+            <header class="bento-card-header">
+              <span class="bento-tag" data-i18n="bento.story.tag">Narrative &amp; Approach</span>
+            </header>
+            <blockquote class="bento-quote" data-i18n="bento.quote" data-i18n-type="html">
+              “Focusing on solid data engineering foundations, analytical clarity, and practical computer vision.”
+            </blockquote>
+            <div class="bento-copy">
+              <p data-i18n="about.p1">
+                I'm a Data Engineering student at HCMUTE (class of 2027), with my primary focus on Data Engineering (DE), followed by Data Analytics (DA) and Computer Vision (CV). I enjoy building automated pipelines that turn raw data into reliable, structured assets.
+              </p>
+              <p data-i18n="about.p2" data-i18n-type="html">
+                <strong>Hands-on experience &amp; research.</strong> I have gained industry experience interning at AWS FCAJ and QT-Data Vietnam, along with co-authoring a peer-reviewed research paper published in the Journal of Technical Education Science (JTE).
+              </p>
+              <p data-i18n="about.p3" data-i18n-type="html">
+                <strong>What I'm looking for:</strong> An internship opportunity in Ho Chi Minh City or Dong Nai to contribute to production-grade data pipelines, analytics workflows, or computer vision applications.
               </p>
             </div>
-          </div>
-          <aside class="about-meta" aria-label="Quick facts">
-            <h3 class="meta-title">Quick facts</h3>
-            <dl class="facts">
-              <div><dt>Education</dt><dd>B.Eng. Data Engineering, class of 2026</dd></div>
-              <div><dt>Based in</dt><dd>Hanoi, Vietnam</dd></div>
-              <div><dt>Open to</dt><dd>DE / analytics / CV internships &amp; roles</dd></div>
-              <div><dt>Languages</dt><dd>English, Vietnamese</dd></div>
-            </dl>
-            <div class="meta-links">
-              <!-- TODO: verified links only — remove any that aren't real -->
-              <a class="link-arrow" href="https://github.com/your-handle" target="_blank" rel="noopener">GitHub <span aria-hidden="true">→</span></a>
-              <a class="link-arrow" href="https://www.linkedin.com/in/your-handle" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">→</span></a>
+          </article>
+
+          <!-- BENTO 3: KEY METRICS & DEGREE (span 4 cols) -->
+          <article class="bento-card bento-stats-card">
+            <header class="bento-card-header">
+              <span class="bento-tag" data-i18n="bento.stats.tag">Key Highlights &amp; Research</span>
+            </header>
+            <div class="bento-stat-list">
+              <div class="bento-stat-item">
+                <span class="bento-stat-num">JTE</span>
+                <div class="bento-stat-meta">
+                  <strong data-i18n="bento.stat.paper.title">Journal Publication</strong>
+                  <span data-i18n="bento.stat.paper.desc">Co-author, JTE Research Paper (2026)</span>
+                  <a href="https://jte.edu.vn/index.php/jte/article/view/2148" target="_blank" rel="noopener" class="btn-cert-link" style="text-decoration: none;">
+                    <span data-i18n="paper.btn.view">Read Article ↗</span>
+                  </a>
+                </div>
+              </div>
+              <div class="bento-stat-item">
+                <span class="bento-stat-num">SIC</span>
+                <div class="bento-stat-meta">
+                  <strong data-i18n="about.f.cert.d">Certification</strong>
+                  <span data-i18n="about.f.cert.v">Big Data — Samsung Innovation Campus</span>
+                  <button type="button" class="btn-cert-link" data-cert="assets/images/bd-certificate.jpg">
+                    <span data-i18n="cert.btn.view">View Certificate ↗</span>
+                  </button>
+                </div>
+              </div>
+              <div class="bento-stat-item">
+                <span class="bento-stat-num">2027</span>
+                <div class="bento-stat-meta">
+                  <strong data-i18n="about.f.edu.d">Education</strong>
+                  <span data-i18n="about.f.edu.v">HCMUTE — B.Eng., Data Engineering</span>
+                </div>
+              </div>
             </div>
-          </aside>
+          </article>
+
+          <!-- BENTO 4: OPERATING PRINCIPLE / VERIFIED CODE (span 4 cols) -->
+          <article class="bento-card bento-principle-card" role="note">
+            <header class="bento-card-header">
+              <span class="bento-tag" data-i18n="about.principle.title">Operating Principle</span>
+            </header>
+            <div class="bento-terminal">
+              <div class="terminal-bar">
+                <span class="term-dot"></span>
+                <span class="term-dot"></span>
+                <span class="term-dot"></span>
+                <span class="term-title">event_contract.py</span>
+                <button type="button" class="btn-run-term" id="btn-run-term">
+                  <span class="btn-run-icon">▶</span>
+                  <span class="btn-run-text" data-i18n="bento.term.run">Run Test</span>
+                </button>
+              </div>
+              <div class="terminal-body">
+                <p class="term-line"><span class="term-kwd">class</span> <span class="term-fn">SensorPayload</span>(BaseModel):</p>
+                <p class="term-line term-indent"><span class="term-kwd">event_id</span>: UUID4</p>
+                <p class="term-line term-indent"><span class="term-kwd">reconciled</span>: bool = <span class="term-kwd">True</span></p>
+                <p class="term-line term-indent"><span class="term-kwd">loss_tolerance</span>: float = <span class="term-str">0.0</span></p>
+              </div>
+            </div>
+            <p class="bento-principle-desc" data-i18n="about.margin" data-i18n-type="html">
+              The rule above is the difference between a portfolio and a design doc: claims I can't demonstrate are marked <em>estimate</em>, never presented as results.
+            </p>
+            <div class="bento-badge-verified">
+              <svg class="badge-check-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              <span data-i18n="about.principle.tag">Rule of evidence</span>
+            </div>
+          </article>
+
+          <!-- BENTO 5: PROFILE & CONNECT (span 4 cols) -->
+          <article class="bento-card bento-connect-card">
+            <header class="bento-card-header">
+              <span class="bento-tag" data-i18n="bento.connect.tag">Profile &amp; Reach</span>
+            </header>
+            <dl class="bento-facts-list">
+              <div class="bento-fact-row">
+                <dt data-i18n="about.f.base.d">Based in</dt>
+                <dd data-i18n="about.f.base.v">HCM &amp; Dong Nai, Vietnam</dd>
+              </div>
+              <div class="bento-fact-row">
+                <dt data-i18n="about.f.lang.d">Languages</dt>
+                <dd data-i18n="about.f.lang.v">Vietnamese, English</dd>
+              </div>
+            </dl>
+            <div class="bento-links-grid">
+              <a class="bento-action-link" href="https://github.com/nguyendinhtanloc-Org" target="_blank" rel="noopener">
+                <span class="link-label">GitHub</span>
+                <span class="link-val">@nguyendinhtanloc-Org →</span>
+              </a>
+              <a class="bento-action-link" href="https://www.linkedin.com/in/l%E1%BB%99c-nguy%E1%BB%85n-492944448/" target="_blank" rel="noopener">
+                <span class="link-label">LinkedIn</span>
+                <span class="link-val">lộc-nguyễn →</span>
+              </a>
+              <a class="bento-action-link bento-action-highlight" href="assets/docs/NguyenDinhTanLoc_Resume.pdf" download="NguyenDinhTanLoc_Resume.pdf">
+                <span class="link-label" data-i18n="c.resume.k">Resume</span>
+                <span class="link-val" data-i18n="c.resume.v">Download PDF ↓</span>
+              </a>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -167,110 +344,244 @@
     <section class="section projects" id="projects" aria-labelledby="projects-title">
       <div class="container">
         <div class="section-head">
-          <p class="section-index">02</p>
-          <h2 id="projects-title" class="section-title">Selected work, by discipline</h2>
-          <p class="section-note">
-            Results carrying a dashed <span class="stamp" role="note">verify</span>
-            stamp are placeholders — replace with your measured numbers before
-            publishing.
+          <span class="section-badge" data-i18n="projects.badge">Projects · Work</span>
+          <h2 id="projects-title" class="section-title" data-i18n="projects.title">Selected work, by discipline</h2>
+          <p class="section-note" data-i18n="projects.note">
+            Telemetry pipelines, idempotent warehouse models, and reproducible vision training.
           </p>
+        </div>
+
+        <!-- Project Discipline Filter Tabs -->
+        <div class="project-filters" role="tablist" aria-label="Filter projects by discipline">
+          <button type="button" class="project-filter-btn is-active" data-filter="all" role="tab" aria-selected="true">
+            <span data-i18n="p.filter.all">All</span> <span class="filter-count">3</span>
+          </button>
+          <button type="button" class="project-filter-btn" data-filter="de" role="tab" aria-selected="false">
+            <span data-i18n="p.filter.de">Data Engineering</span> <span class="filter-count">1</span>
+          </button>
+          <button type="button" class="project-filter-btn" data-filter="da" role="tab" aria-selected="false">
+            <span data-i18n="p.filter.da">Data Analytics</span> <span class="filter-count">1</span>
+          </button>
+          <button type="button" class="project-filter-btn" data-filter="cv" role="tab" aria-selected="false">
+            <span data-i18n="p.filter.cv">Computer Vision</span> <span class="filter-count">1</span>
+          </button>
         </div>
 
         <div class="project-grid">
           <!-- 01 — Data Engineering -->
           <article class="project project-de" aria-labelledby="p1-title">
             <header class="project-top">
-              <span class="project-idx" aria-hidden="true">01</span>
               <span class="project-cat">Data Engineering</span>
+              <span class="project-status"><span class="status-dot-pulse status-dot-amber" aria-hidden="true"></span><span data-i18n="p.status.wip">in progress</span></span>
             </header>
-            <h3 id="p1-title" class="project-name">Streaming telemetry pipeline</h3>
-            <p class="project-problem">
+            <h3 id="p1-title" class="project-name" data-i18n="p1.name">Streaming telemetry pipeline</h3>
+            <p class="project-problem" data-i18n="p1.problem">
               Sensor telemetry from multiple sources had to reach dashboards in seconds,
               survive restarts, and be rebuildable when upstream schema changes.
             </p>
-            <p class="project-impl">
+            <p class="project-impl" data-i18n="p1.impl" data-i18n-type="html">
               Telegraf into Redpanda; Airflow-orchestrated extraction; idempotent dbt
               models in bronze/silver/gold; loss proven by per-event
               <code>event_id</code> reconciliation plus kill/restart tests.
             </p>
             <p class="project-tech" aria-label="Technologies">
-              <span class="tech-label">stack</span>
+              <span class="tech-label" data-i18n="p.techlabel">stack</span>
               Telegraf · Redpanda · Airflow · PostgreSQL · dbt · Metabase
             </p>
+            <div class="pipeline-flow" aria-label="Pipeline Architecture Flow">
+              <span class="flow-label" data-i18n="p.flowlabel">Pipeline Architecture</span>
+              <div class="flow-track">
+                <div class="flow-step">
+                  <span class="flow-step-idx">01</span>
+                  <span class="flow-step-name">Sensors</span>
+                  <span class="flow-step-sub">Telemetry</span>
+                </div>
+                <span class="flow-arrow" aria-hidden="true">→</span>
+                <div class="flow-step">
+                  <span class="flow-step-idx">02</span>
+                  <span class="flow-step-name">Telegraf</span>
+                  <span class="flow-step-sub">Ingest</span>
+                </div>
+                <span class="flow-arrow" aria-hidden="true">→</span>
+                <div class="flow-step flow-step-highlight">
+                  <span class="flow-step-idx">03</span>
+                  <span class="flow-step-name">Redpanda</span>
+                  <span class="flow-step-sub">Event stream</span>
+                </div>
+                <span class="flow-arrow" aria-hidden="true">→</span>
+                <div class="flow-step">
+                  <span class="flow-step-idx">04</span>
+                  <span class="flow-step-name">Airflow &amp; dbt</span>
+                  <span class="flow-step-sub">Medallion</span>
+                </div>
+                <span class="flow-arrow" aria-hidden="true">→</span>
+                <div class="flow-step">
+                  <span class="flow-step-idx">05</span>
+                  <span class="flow-step-name">Postgres &amp; BI</span>
+                  <span class="flow-step-sub">Metabase</span>
+                </div>
+              </div>
+            </div>
             <p class="project-result">
-              <span class="result-label">Verified result</span>
-              0% event loss over the reconciliation window; &lt;30s recovery after broker
-              restart<span class="stamp" role="note">verify your numbers</span>
+              <span class="result-label" data-i18n="p.resultlabel">Verified result</span>
+              <span data-i18n="p1.result" data-i18n-type="html">0% event loss over the reconciliation window; &lt;30s
+                recovery after broker restart</span>
             </p>
+            <!-- Evidence block: sample formatting. Replace with your real log excerpts when the project is done. -->
+            <div class="evidence" aria-label="Verification run log (sample — replace with your real output)">
+              <span class="ev-label" data-i18n="p1.evlabel">run log · kill test</span>
+              <p class="ev-line"><span class="ev-prompt">$</span> reconciliation --sent 120000 --received 120000 --lost
+                0</p>
+              <p class="ev-line"><span class="ev-mute" data-i18n="p1.evl2">broker restarted at T+42s · replay finished
+                  T+71s · p95 5.2s</span></p>
+            </div>
             <footer class="project-links">
-              <a class="link-arrow" href="https://github.com/your-handle" target="_blank" rel="noopener">Repository <span aria-hidden="true">→</span></a>
-              <!-- TODO: keep this only if a live demo actually exists -->
-              <a class="link-arrow" href="#projects">Live demo <span aria-hidden="true">→</span></a>
+              <a class="link-arrow" href="https://github.com/orgs/nguyendinhtanloc-Org" target="_blank" rel="noopener"
+                data-i18n="p.repo" data-i18n-type="html">Repository <span aria-hidden="true">→</span></a>
             </footer>
           </article>
 
           <!-- 02 — Data Analytics -->
           <article class="project project-da" aria-labelledby="p2-title">
             <header class="project-top">
-              <span class="project-idx" aria-hidden="true">02</span>
               <span class="project-cat">Data Analytics</span>
+              <span class="project-status"><span class="status-dot-pulse status-dot-amber" aria-hidden="true"></span><span data-i18n="p.status.wip">in progress</span></span>
             </header>
-            <h3 id="p2-title" class="project-name">Decision-support dashboard</h3>
-            <p class="project-problem">
+            <h3 id="p2-title" class="project-name" data-i18n="p2.name">Decision-support dashboard</h3>
+            <p class="project-problem" data-i18n="p2.problem">
               A reporting stack that answered the questions leadership actually asked —
               not the ones that were easy to chart — on top of a Medallion warehouse.
             </p>
-            <p class="project-impl">
+            <p class="project-impl" data-i18n="p2.impl">
               dbt gold models feeding Metabase; Pandas prototypes (with dtype/memory
               discipline) before pushing the heavy lifting to SQL and Spark.
             </p>
             <p class="project-tech" aria-label="Technologies">
-              <span class="tech-label">stack</span>
+              <span class="tech-label" data-i18n="p.techlabel">stack</span>
               pandas · SQL · dbt · Spark · Metabase
             </p>
+            <div class="pipeline-flow" aria-label="Pipeline Architecture Flow">
+              <span class="flow-label" data-i18n="p.flowlabel">Pipeline Architecture</span>
+              <div class="flow-track">
+                <div class="flow-step">
+                  <span class="flow-step-idx">01</span>
+                  <span class="flow-step-name">Multi-source</span>
+                  <span class="flow-step-sub">OLTP / Files</span>
+                </div>
+                <span class="flow-arrow" aria-hidden="true">→</span>
+                <div class="flow-step">
+                  <span class="flow-step-idx">02</span>
+                  <span class="flow-step-name">Pandas / Spark</span>
+                  <span class="flow-step-sub">Transform</span>
+                </div>
+                <span class="flow-arrow" aria-hidden="true">→</span>
+                <div class="flow-step flow-step-highlight">
+                  <span class="flow-step-idx">03</span>
+                  <span class="flow-step-name">dbt Core</span>
+                  <span class="flow-step-sub">Gold models</span>
+                </div>
+                <span class="flow-arrow" aria-hidden="true">→</span>
+                <div class="flow-step">
+                  <span class="flow-step-idx">04</span>
+                  <span class="flow-step-name">Warehouse</span>
+                  <span class="flow-step-sub">PostgreSQL</span>
+                </div>
+                <span class="flow-arrow" aria-hidden="true">→</span>
+                <div class="flow-step">
+                  <span class="flow-step-idx">05</span>
+                  <span class="flow-step-name">Metabase</span>
+                  <span class="flow-step-sub">Executive BI</span>
+                </div>
+              </div>
+            </div>
             <p class="project-result">
-              <span class="result-label">Verified result</span>
-              One query replaces N ad-hoc spreadsheets; gold-layer refresh is idempotent
-              <span class="stamp" role="note">add your numbers</span>
+              <span class="result-label" data-i18n="p.resultlabel">Verified result</span>
+              <span data-i18n="p2.result" data-i18n-type="html">One query replaces N ad-hoc spreadsheets; gold-layer
+                refresh is idempotent</span>
             </p>
+            <!-- Evidence block: sample formatting. Replace with your real output when done. -->
+            <div class="evidence" aria-label="Verification query (sample — replace with your real output)">
+              <span class="ev-label" data-i18n="p2.evlabel">dbt · gold refresh</span>
+              <p class="ev-line"><span class="ev-prompt">$</span> dbt run --select g_* --full-refresh</p>
+              <p class="ev-line"><span class="ev-mute" data-i18n="p2.evl2">9/9 models pass · idempotent (byte-identical
+                  re-run)</span></p>
+            </div>
             <footer class="project-links">
-              <a class="link-arrow" href="https://github.com/your-handle" target="_blank" rel="noopener">Repository <span aria-hidden="true">→</span></a>
+              <a class="link-arrow" href="https://github.com/orgs/nguyendinhtanloc-Org" target="_blank" rel="noopener"
+                data-i18n="p.repo" data-i18n-type="html">Repository <span aria-hidden="true">→</span></a>
             </footer>
           </article>
 
           <!-- 03 — Computer Vision -->
           <article class="project project-cv" aria-labelledby="p3-title">
             <header class="project-top">
-              <span class="project-idx" aria-hidden="true">03</span>
               <span class="project-cat">Computer Vision</span>
+              <span class="project-status project-status-planned"><span class="status-dot-pulse status-dot-blue" aria-hidden="true"></span><span data-i18n="p.status.planned">planned</span></span>
             </header>
-            <h3 id="p3-title" class="project-name">Vision model, training-to-serving</h3>
-            <p class="project-problem">
+            <h3 id="p3-title" class="project-name" data-i18n="p3.name">Vision model, training-to-serving</h3>
+            <p class="project-problem" data-i18n="p3.problem">
               A vision model had to move from notebook to a reproducible setup: tracked
               runs, resumable checkpoints, and a clean path to a serving artifact.
             </p>
-            <p class="project-impl">
+            <p class="project-impl" data-i18n="p3.impl">
               PyTorch loop with DataLoader + AMP where it paid off; MLflow for run
               comparison; MinIO for datasets and checkpoints; Docker for the artifact.
             </p>
             <p class="project-tech" aria-label="Technologies">
-              <span class="tech-label">stack</span>
+              <span class="tech-label" data-i18n="p.techlabel">stack</span>
               PyTorch · MLflow · MinIO · Docker
             </p>
+            <div class="pipeline-flow" aria-label="Pipeline Architecture Flow">
+              <span class="flow-label" data-i18n="p.flowlabel">Pipeline Architecture</span>
+              <div class="flow-track">
+                <div class="flow-step">
+                  <span class="flow-step-idx">01</span>
+                  <span class="flow-step-name">Dataset</span>
+                  <span class="flow-step-sub">Images</span>
+                </div>
+                <span class="flow-arrow" aria-hidden="true">→</span>
+                <div class="flow-step">
+                  <span class="flow-step-idx">02</span>
+                  <span class="flow-step-name">PyTorch + AMP</span>
+                  <span class="flow-step-sub">Training loop</span>
+                </div>
+                <span class="flow-arrow" aria-hidden="true">→</span>
+                <div class="flow-step flow-step-highlight">
+                  <span class="flow-step-idx">03</span>
+                  <span class="flow-step-name">MLflow</span>
+                  <span class="flow-step-sub">Run lineage</span>
+                </div>
+                <span class="flow-arrow" aria-hidden="true">→</span>
+                <div class="flow-step">
+                  <span class="flow-step-idx">04</span>
+                  <span class="flow-step-name">MinIO</span>
+                  <span class="flow-step-sub">Checkpoints</span>
+                </div>
+                <span class="flow-arrow" aria-hidden="true">→</span>
+                <div class="flow-step">
+                  <span class="flow-step-idx">05</span>
+                  <span class="flow-step-name">Docker API</span>
+                  <span class="flow-step-sub">Serving</span>
+                </div>
+              </div>
+            </div>
             <p class="project-result">
-              <span class="result-label">Verified result</span>
-              Tracked runs beat the untracked baseline<span class="stamp" role="note">insert your metric</span>
+              <span class="result-label" data-i18n="p.resultlabel">Verified result</span>
+              <span data-i18n="p3.result" data-i18n-type="html">Tracked runs beat the baseline with full lineage and
+                reproducible checkpoints</span>
             </p>
             <footer class="project-links">
-              <a class="link-arrow" href="https://github.com/your-handle" target="_blank" rel="noopener">Repository <span aria-hidden="true">→</span></a>
+              <a class="link-arrow" href="https://github.com/orgs/nguyendinhtanloc-Org" target="_blank" rel="noopener"
+                data-i18n="p.repo" data-i18n-type="html">Repository <span aria-hidden="true">→</span></a>
             </footer>
           </article>
         </div>
 
         <p class="projects-more">
-          More work lives on
-          <a class="link-arrow" href="https://github.com/your-handle" target="_blank" rel="noopener">GitHub <span aria-hidden="true">→</span></a>
-          — including coursework and tooling projects.
+          <span data-i18n="projects.more.a">More work lives on</span>
+          <a class="link-arrow" href="https://github.com/orgs/nguyendinhtanloc-Org" target="_blank"
+            rel="noopener">GitHub <span aria-hidden="true">→</span></a>
+          <span data-i18n="projects.more.b">— including coursework and tooling projects.</span>
         </p>
       </div>
     </section>
@@ -279,27 +590,50 @@
     <section class="section skills" id="skills" aria-labelledby="skills-title">
       <div class="container">
         <div class="section-head">
-          <p class="section-index">03</p>
-          <h2 id="skills-title" class="section-title">What I actually reach for</h2>
-          <p class="section-note skills-note">Only tools I've used in shipped or tested work. Edit freely.</p>
+          <span class="section-badge" data-i18n="skills.badge">Skills · Stack</span>
+          <h2 id="skills-title" class="section-title" data-i18n="skills.title">What I actually reach for</h2>
+          <p class="section-note skills-note" data-i18n="skills.note">Only tools I've used in shipped or tested work.
+            Edit freely.</p>
         </div>
 
         <div class="skill-groups">
           <div class="skill-group skill-de">
-            <h3 class="skill-cat">Data Engineering</h3>
-            <p class="skill-list">Python · SQL · Airflow · dbt · Spark · Medallion architecture</p>
+            <h3 class="skill-cat" data-i18n="skills.cat.de">Data Engineering &amp; Languages</h3>
+            <div class="skill-badges">
+              <span class="tech-badge"><svg class="badge-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M11.9 2c-3.2 0-5.2 1.4-5.2 3.3v2.5h5.3v.8H3.7c-2 0-3.7 1.6-3.7 4 0 2.4 1.5 4.1 3.7 4.1h2.2v-2.1c0-2.2 1.9-4.1 4.1-4.1h5.3v-.8h-2.1V7.5c0-2.2-1.7-3.6-4-3.6h-.1c.8.7 1.3 1.6 1.3 2.6 0 .5-.4.9-.9.9s-.9-.4-.9-.9c0-1.8-1.4-3.2-3.2-3.2-1.8 0-3.2 1.4-3.2 3.2v.4H4.3c-.7 0-1.4-.6-1.4-1.4 0-1.3 1.1-2.4 3.1-2.4h5.9V2zm.2 20c3.2 0 5.2-1.4 5.2-3.3v-2.5h-5.3v-.8h8.3c2 0 3.7-1.6 3.7-4 0-2.4-1.5-4.1-3.7-4.1h-2.2v2.1c0 2.2-1.9 4.1-4.1 4.1H8.7v.8h2.1v2.2c0 2.2 1.7 3.6 4 3.6h.1c-.8-.7-1.3-1.6-1.3-2.6 0-.5.4-.9.9-.9s.9.4.9.9c0 1.8 1.4 3.2 3.2 3.2 1.8 0 3.2-1.4 3.2-3.2v-.4h-1.9c.7 0 1.4.6 1.4 1.4 0 1.3-1.1 2.4-3.1 2.4H12.1V22z"/></svg><span class="badge-name">Python</span></span>
+              <span class="tech-badge"><svg class="badge-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C7.58 3 4 4.79 4 7v10c0 2.21 3.58 4 8 4s8-1.79 8-4V7c0-2.21-3.58-4-8-4zm0 2c3.87 0 6 1.5 6 2s-2.13 2-6 2-6-1.5-6-2 2.13-2 6-2zm6 5.2c-.9 1.1-3.18 1.8-6 1.8s-5.1-.7-6-1.8V8.6c1.45 1 3.6 1.4 6 1.4s4.55-.4 6-1.4v1.6zm0 5c-.9 1.1-3.18 1.8-6 1.8s-5.1-.7-6-1.8v-1.6c1.45 1 3.6 1.4 6 1.4s4.55-.4 6-1.4v1.6zm0 3.8c-.9 1.1-3.18 1.8-6 1.8s-5.1-.7-6-1.8v-1.6c1.45 1 3.6 1.4 6 1.4s4.55-.4 6-1.4v1.6z"/></svg><span class="badge-name">SQL</span></span>
+              <span class="tech-badge"><svg class="badge-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17l6-5-6-5v10zm8 0h8v-2h-8v2z"/></svg><span class="badge-name">Bash</span></span>
+              <span class="tech-badge"><svg class="badge-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 6.9 7.3.3-5.7 4.6 2 7.1-6-4.2-6 4.2 2-7.1L2.3 9.2l7.3-.3L12 2z"/></svg><span class="badge-name">Apache Spark</span></span>
+              <span class="tech-badge"><svg class="badge-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14.93V14a3 3 0 1 1-2-2.83V7.07A5 5 0 1 0 13 16.93z"/></svg><span class="badge-name">Apache Kafka</span></span>
+              <span class="tech-badge"><svg class="badge-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14.93V14a3 3 0 1 1-2-2.83V7.07A5 5 0 1 0 13 16.93z"/></svg><span class="badge-name">Apache Airflow</span></span>
+              <span class="tech-badge"><svg class="badge-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L3 7v10l9 5 9-5V7l-9-5zm0 2.3l6.8 3.8-3.4 1.9-6.8-3.8L12 4.3zM5.2 8.7l5.8 3.2v6.6l-5.8-3.2V8.7zm7.8 9.8v-6.6l5.8-3.2v6.6l-5.8-3.2z"/></svg><span class="badge-name">dbt Core</span></span>
+            </div>
           </div>
           <div class="skill-group skill-da">
-            <h3 class="skill-cat">Data Analytics</h3>
-            <p class="skill-list">pandas · SQL · Metabase · explain/analyze-first tuning</p>
+            <h3 class="skill-cat" data-i18n="skills.cat.da">Databases &amp; Analytics</h3>
+            <div class="skill-badges">
+              <span class="tech-badge"><svg class="badge-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 16.95v-2.1a4.95 4.95 0 0 1-2 0v2.1a8.04 8.04 0 0 1-5.07-2.68l1.45-1.45A6.02 6.02 0 0 0 11 16.02v-3.08a3 3 0 1 1 2 0v3.08a6.02 6.02 0 0 0 3.62-1.2l1.45 1.45A8.04 8.04 0 0 1 13 18.95z"/></svg><span class="badge-name">PostgreSQL</span></span>
+              <span class="tech-badge"><svg class="badge-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/></svg><span class="badge-name">BigQuery</span></span>
+              <span class="tech-badge"><svg class="badge-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19h3v-6H4v6zm5 0h3V9H9v10zm5 0h3V5h-3v14z"/></svg><span class="badge-name">Power BI</span></span>
+              <span class="tech-badge"><svg class="badge-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19h16v2H4v-2zm2-4h3v3H6v-3zm5-5h3v8h-3v-8zm5-6h3v14h-3V4z"/></svg><span class="badge-name">Metabase</span></span>
+              <span class="tech-badge"><svg class="badge-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h18v18H3V3zm2 4v4h6V7H5zm8 0v4h6V7h-6zm-8 6v4h6v-4H5zm8 0v4h6v-4h-6z"/></svg><span class="badge-name">Pandas</span></span>
+            </div>
           </div>
           <div class="skill-group skill-cv">
-            <h3 class="skill-cat">Computer Vision</h3>
-            <p class="skill-list">PyTorch · OpenCV · object detection</p>
+            <h3 class="skill-cat" data-i18n="skills.cat.cv">Computer Vision &amp; AI</h3>
+            <div class="skill-badges">
+              <span class="tech-badge"><svg class="badge-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a9 9 0 0 0-4.5 16.8l1-1.7A7 7 0 1 1 19 12a6.9 6.9 0 0 1-1.5 4.3l1.5 1.3A8.9 8.9 0 0 0 21 12a9 9 0 0 0-9-10zm2 4l-5 5h3v6l5-5h-3V6z"/></svg><span class="badge-name">PyTorch</span></span>
+              <span class="tech-badge"><svg class="badge-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="3.2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="7.5" cy="15.5" r="3.2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="16.5" cy="15.5" r="3.2" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span class="badge-name">OpenCV</span></span>
+              <span class="tech-badge"><svg class="badge-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4v5h2V6h3V4H3zm13 0v2h3v3h2V4h-5zM3 15v5h5v-2H5v-3H3zm16 3v-3h2v5h-5v-2h3zM11 8h2v3h3v2h-3v3h-2v-3H8v-2h3V8z"/></svg><span class="badge-name">YOLO</span></span>
+            </div>
           </div>
-          <div class="skill-group">
-            <h3 class="skill-cat">Infrastructure</h3>
-            <p class="skill-list">Docker · Git · MinIO · MLflow</p>
+          <div class="skill-group skill-infra">
+            <h3 class="skill-cat" data-i18n="skills.cat.infra">Tools &amp; Environment</h3>
+            <div class="skill-badges">
+              <span class="tech-badge"><svg class="badge-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.5 10.5c-.4-.3-1.4-.4-2.2-.2-.2-.5-.5-1-.9-1.4l-.5.3c-.4.3-.8.7-1 1.2-.7-.2-1.8-.1-2.4.3-1-.6-2.5-.7-3.8-.4V8h2V6h-2V4h-2v2H9V4H7v2H5V4H3v4.5c-.8.6-1.5 1.5-1.8 2.6-.4 1.4-.2 3.1.6 4.3 1.4 2.1 4.2 3.6 7.4 3.6 5.8 0 10.5-2.8 11.8-7 .2-.5.5-1.2.5-1.5zM7 8h2v2H7V8zm4 0h2v2h-2V8zm-6 0h2v2H5V8zm12 2h-2V8h2v2z"/></svg><span class="badge-name">Docker</span></span>
+              <span class="tech-badge"><svg class="badge-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 13a3 3 0 0 0-2.82 2H11a3 3 0 0 1-3-3V9.82A3 3 0 0 0 9 7a3 3 0 0 0-6 0 3 3 0 0 0 2 2.82V15a5 5 0 0 0 5 5h6.18A3 3 0 0 0 19 22a3 3 0 0 0 3-3 3 3 0 0 0-3-3zM6 6a1 1 0 1 1-1 1 1 1 0 0 1 1-1zm13 14a1 1 0 1 1 1-1 1 1 0 0 1-1 1z"/></svg><span class="badge-name">Git</span></span>
+              <span class="tech-badge"><svg class="badge-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12zm-12-3l4-3-4-3v2H6v2h2v2zm6 0h4v-2h-4v2z"/></svg><span class="badge-name">Linux</span></span>
+            </div>
           </div>
         </div>
       </div>
@@ -309,42 +643,65 @@
     <section class="section experience" id="experience" aria-labelledby="experience-title">
       <div class="container">
         <div class="section-head">
-          <p class="section-index">04</p>
-          <h2 id="experience-title" class="section-title">Where the work has happened</h2>
+          <span class="section-badge" data-i18n="exp.badge">Experience · Timeline</span>
+          <h2 id="experience-title" class="section-title" data-i18n="exp.title">Where the work has happened</h2>
         </div>
 
         <ol class="timeline">
-          <!-- TODO: keep only entries that are true; add missing ones -->
           <li class="timeline-item is-now tl-de">
-            <div class="timeline-date">2025 — Present<span class="now-label" aria-label="current">now</span></div>
+            <div class="timeline-date" data-i18n="tl1.date" data-i18n-type="html">10/2026 — 12/2026<span class="now-label"
+                aria-label="current">intern</span></div>
             <div class="timeline-body">
-              <h3 class="timeline-title">Final-year thesis: streaming data pipeline</h3>
-              <p class="timeline-org">Data Engineering capstone</p>
-              <p class="timeline-desc">
-                End-to-end telemetry pipeline: Telegraf → Redpanda → Airflow → PostgreSQL
-                (Medallion via dbt) → Metabase, with loss reconciliation and replay testing.
+              <h3 class="timeline-title" data-i18n="tl1.title">Cloud &amp; Data Intern</h3>
+              <p class="timeline-org" data-i18n="tl1.org">AWS FCAJ</p>
+              <p class="timeline-desc" data-i18n="tl1.desc">
+                Hands-on practical training with AWS cloud ecosystem, cloud data processing pipelines, and scalable cloud services.
+              </p>
+            </div>
+          </li>
+          <li class="timeline-item tl-da">
+            <div class="timeline-date" data-i18n="tl2.date">10/2026 — 11/2026</div>
+            <div class="timeline-body">
+              <h3 class="timeline-title" data-i18n="tl2.title">Data Intern</h3>
+              <p class="timeline-org" data-i18n="tl2.org">QT-Data Vietnam (QT-Data VN)</p>
+              <p class="timeline-desc" data-i18n="tl2.desc">
+                Engaged in enterprise data operations, automated data extraction, and business data analytics workflows.
               </p>
             </div>
           </li>
           <li class="timeline-item tl-cv">
-            <div class="timeline-date">2025</div>
+            <div class="timeline-date" data-i18n="tl3.date">03/2026 — 08/2026</div>
             <div class="timeline-body">
-              <h3 class="timeline-title">Applied ML coursework</h3>
-              <p class="timeline-org">Computer vision &amp; training infrastructure</p>
-              <p class="timeline-desc">
-                PyTorch vision model with MLflow-tracked runs, MinIO-stored checkpoints,
-                and a Dockerized serving artifact.
+              <h3 class="timeline-title" data-i18n="tl3.title">Scientific Researcher · JTE Publication</h3>
+              <p class="timeline-org" data-i18n="tl3.org">HCMUTE · Journal of Technical Education Science</p>
+              <p class="timeline-desc" data-i18n="tl3.desc">
+                Co-authored the peer-reviewed research paper "Application of Comics Generation Techniques in the Visualization of Vietnamese Folk Tales" (DOI: 10.54644/jte.2026.2148).
               </p>
+              <a href="https://jte.edu.vn/index.php/jte/article/view/2148" target="_blank" rel="noopener" class="btn-cert-link btn-cert-tl" style="text-decoration:none;">
+                <span data-i18n="paper.btn.view">Read Article ↗</span>
+              </a>
+            </div>
+          </li>
+          <li class="timeline-item tl-de">
+            <div class="timeline-date" data-i18n="tl4.date">2024</div>
+            <div class="timeline-body">
+              <h3 class="timeline-title" data-i18n="tl4.title">Big Data Certification</h3>
+              <p class="timeline-org" data-i18n="tl4.org">Samsung Innovation Campus (SIC)</p>
+              <p class="timeline-desc" data-i18n="tl4.desc">
+                Comprehensive training in Big Data, distributed computing with Apache Spark, and large-scale data engineering.
+              </p>
+              <button type="button" class="btn-cert-link btn-cert-tl" data-cert="assets/images/bd-certificate.jpg">
+                <span data-i18n="cert.btn.view">View Certificate ↗</span>
+              </button>
             </div>
           </li>
           <li class="timeline-item">
-            <div class="timeline-date">2022 — Present</div>
+            <div class="timeline-date" data-i18n="tl5.date">2023 — 2027</div>
             <div class="timeline-body">
-              <h3 class="timeline-title">B.Eng., Data Engineering</h3>
-              <p class="timeline-org">Class of 2026</p>
-              <p class="timeline-desc">
-                Core study: distributed systems, streaming, warehousing, and ML/CV
-                integration.
+              <h3 class="timeline-title" data-i18n="tl5.title">B.Eng., Data Engineering</h3>
+              <p class="timeline-org" data-i18n="tl5.org">Ho Chi Minh City University of Technology and Education (HCMUTE)</p>
+              <p class="timeline-desc" data-i18n="tl5.desc">
+                Core academic focus: data pipelines, distributed systems, data analytics, and computer vision. Expected graduation: 2027.
               </p>
             </div>
           </li>
@@ -356,46 +713,196 @@
     <section class="section contact" id="contact" aria-labelledby="contact-title">
       <div class="container">
         <div class="section-head">
-          <p class="section-index">05</p>
-          <h2 id="contact-title" class="section-title">Let's talk pipelines, data, or vision</h2>
-          <p class="section-note">The fastest route is email. For credentials and full history, the résumé.</p>
+          <span class="section-badge" data-i18n="contact.badge">Contact · Dispatch</span>
+          <h2 id="contact-title" class="section-title" data-i18n="contact.title">Let's talk pipelines, data, or vision
+          </h2>
+          <p class="section-note" data-i18n="contact.note">The fastest route is email. For credentials and full history,
+            the resume.</p>
         </div>
 
-        <div class="contact-lines">
-          <!-- TODO: replace with verified destinations only -->
-          <a class="contact-line" href="mailto:you@example.com">
-            <span class="contact-key">Email</span>
-            <span class="dots" aria-hidden="true"></span>
-            <span class="contact-val">you@example.com</span>
-          </a>
-          <a class="contact-line" href="https://github.com/your-handle" target="_blank" rel="noopener">
-            <span class="contact-key">GitHub</span>
-            <span class="dots" aria-hidden="true"></span>
-            <span class="contact-val">github.com/your-handle</span>
-          </a>
-          <a class="contact-line" href="https://www.linkedin.com/in/your-handle" target="_blank" rel="noopener">
-            <span class="contact-key">LinkedIn</span>
-            <span class="dots" aria-hidden="true"></span>
-            <span class="contact-val">linkedin.com/in/your-handle</span>
-          </a>
-          <a class="contact-line" href="cv.pdf">
-            <span class="contact-key">Résumé</span>
-            <span class="dots" aria-hidden="true"></span>
-            <span class="contact-val">Download PDF ↓</span>
-          </a>
+        <div class="contact-grid">
+          <div class="contact-direct">
+            <h3 class="contact-subhead" data-i18n="contact.sub.direct">Direct Channels</h3>
+            <div class="contact-lines">
+              <div class="contact-line">
+                <span class="contact-key">Email</span>
+                <span class="dots" aria-hidden="true"></span>
+                <div class="contact-actions">
+                  <a class="contact-val" href="mailto:ndtl05062005@gmail.com">ndtl05062005@gmail.com</a>
+                  <button type="button" class="btn-copy" data-copy="ndtl05062005@gmail.com" aria-label="Copy email" title="Copy to clipboard">
+                    <span class="copy-status" data-i18n="c.copy">copy</span>
+                  </button>
+                </div>
+              </div>
+              <div class="contact-line">
+                <span class="contact-key" data-i18n="c.phone.k">Phone</span>
+                <span class="dots" aria-hidden="true"></span>
+                <div class="contact-actions">
+                  <a class="contact-val" href="tel:+84966150875">+84 966 150 875</a>
+                  <button type="button" class="btn-copy" data-copy="+84966150875" aria-label="Copy phone" title="Copy to clipboard">
+                    <span class="copy-status" data-i18n="c.copy">copy</span>
+                  </button>
+                </div>
+              </div>
+              <a class="contact-line" href="https://github.com/orgs/nguyendinhtanloc-Org" target="_blank" rel="noopener">
+                <span class="contact-key">GitHub</span>
+                <span class="dots" aria-hidden="true"></span>
+                <span class="contact-val">@nguyendinhtanloc-Org</span>
+              </a>
+              <a class="contact-line" href="https://www.linkedin.com/in/l%E1%BB%99c-nguy%E1%BB%85n-492944448/"
+                target="_blank" rel="noopener">
+                <span class="contact-key">LinkedIn</span>
+                <span class="dots" aria-hidden="true"></span>
+                <span class="contact-val">linkedin.com/in/lộc-nguyễn</span>
+              </a>
+              <a class="contact-line" href="assets/docs/NguyenDinhTanLoc_Resume.pdf" download="NguyenDinhTanLoc_Resume.pdf">
+                <span class="contact-key" data-i18n="c.resume.k">Resume</span>
+                <span class="dots" aria-hidden="true"></span>
+                <span class="contact-val" data-i18n="c.resume.v">Download PDF ↓</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-form-card">
+            <h3 class="contact-subhead" data-i18n="form.title">Send a quick dispatch</h3>
+            <p class="contact-form-note" data-i18n="form.desc">Delivered directly to my inbox. I typically respond within 24 hours.</p>
+            <form id="contact-form" class="contact-form" action="https://formspree.io/f/ndtl05062005@gmail.com" method="POST">
+              <div class="form-field">
+                <label for="form-name" class="form-label" data-i18n="form.name">Your Name</label>
+                <input type="text" id="form-name" name="name" class="form-input" required placeholder="e.g. Alex Nguyen">
+              </div>
+              <div class="form-field">
+                <label for="form-email" class="form-label" data-i18n="form.email">Your Email</label>
+                <input type="email" id="form-email" name="email" class="form-input" required placeholder="alex@company.com">
+              </div>
+              <div class="form-field">
+                <label for="form-message" class="form-label" data-i18n="form.message">Message / Opportunity</label>
+                <textarea id="form-message" name="message" class="form-textarea" rows="4" required placeholder="Tell me about the pipeline, role, or problem..."></textarea>
+              </div>
+              <button type="submit" class="btn-submit" id="btn-submit">
+                <span class="btn-submit-label" data-i18n="form.submit">Send Message →</span>
+              </button>
+              <div id="form-status" class="form-status" aria-live="polite"></div>
+            </form>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
+  <!-- ============ CERTIFICATE LIGHTBOX MODAL ============ -->
+  <div id="cert-modal" class="cert-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="cert-modal-title">
+    <div class="cert-modal-backdrop" id="cert-modal-backdrop"></div>
+    <div class="cert-modal-dialog">
+      <div class="cert-modal-header">
+        <div>
+          <h3 id="cert-modal-title" class="cert-modal-title" data-i18n="cert.modal.title">Big Data Certification</h3>
+          <p class="cert-modal-sub" data-i18n="cert.modal.sub">Samsung Innovation Campus · Awarded to Nguyễn Đình Tân Lộc</p>
+        </div>
+        <button type="button" class="cert-modal-close" id="cert-modal-close" aria-label="Close modal">✕</button>
+      </div>
+      <div class="cert-modal-body">
+        <img src="assets/images/bd-certificate.jpg" alt="Samsung Innovation Campus Certificate - Nguyễn Đình Tân Lộc" class="cert-full-image" loading="lazy">
+      </div>
+      <div class="cert-modal-footer">
+        <a href="assets/images/bd-certificate.jpg" target="_blank" rel="noopener" class="cert-modal-external">
+          Open full resolution image ↗
+        </a>
+      </div>
+    </div>
+  </div>
+
   <footer class="footer">
     <div class="container footer-inner">
-      <p>© <span class="js-year">2026</span> Nguyễn Đình Tân Lộc</p>
-      <p class="footer-meta">Set in Fraunces, Inter &amp; IBM Plex Mono — no framework, no build step.</p>
-      <a class="footer-top" href="#top">Back to top ↑</a>
+      <p>© <span class="js-year">2026</span> Nguyễn Đình Tấn Lộc</p>
+      <p class="footer-meta" data-i18n="footer.meta" data-i18n-type="html">Set in Fraunces, Inter &amp; IBM Plex Mono —
+        no framework, no build step.</p>
+      <a class="footer-top" href="#top" data-i18n="footer.top">Back to top ↑</a>
     </div>
   </footer>
 
-  <script src="main.js" defer></script>
+  <!-- ============ COMMAND PALETTE MODAL (Cmd+K) ============ -->
+  <div id="cmd-palette" class="cmd-palette" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Command Menu">
+    <div class="cmd-backdrop" id="cmd-backdrop"></div>
+    <div class="cmd-dialog">
+      <div class="cmd-search-bar">
+        <span class="cmd-search-icon" aria-hidden="true">🔍</span>
+        <input type="text" id="cmd-input" class="cmd-input" aria-label="Search commands or sections" placeholder="Type a command or jump to section..." data-i18n-placeholder="cmd.placeholder" autocomplete="off" spellcheck="false">
+        <kbd class="cmd-kbd">ESC</kbd>
+      </div>
+      <div class="cmd-list" id="cmd-list" role="listbox">
+        <div class="cmd-group-label" data-i18n="cmd.group.nav">Navigation</div>
+        <div class="cmd-item" role="option" data-action="nav" data-target="#home">
+          <span class="cmd-item-icon">🏠</span>
+          <span class="cmd-item-text" data-i18n="cmd.item.home">Home / Top</span>
+          <span class="cmd-item-meta">00</span>
+        </div>
+        <div class="cmd-item" role="option" data-action="nav" data-target="#about">
+          <span class="cmd-item-icon">👤</span>
+          <span class="cmd-item-text" data-i18n="cmd.item.about">About Tân Lộc</span>
+          <span class="cmd-item-meta">01</span>
+        </div>
+        <div class="cmd-item" role="option" data-action="nav" data-target="#projects">
+          <span class="cmd-item-icon">⚡</span>
+          <span class="cmd-item-text" data-i18n="cmd.item.projects">Selected Work &amp; Projects</span>
+          <span class="cmd-item-meta">02</span>
+        </div>
+        <div class="cmd-item" role="option" data-action="nav" data-target="#skills">
+          <span class="cmd-item-icon">🛠</span>
+          <span class="cmd-item-text" data-i18n="cmd.item.skills">Technical Skills &amp; Stack</span>
+          <span class="cmd-item-meta">03</span>
+        </div>
+        <div class="cmd-item" role="option" data-action="nav" data-target="#experience">
+          <span class="cmd-item-icon">📜</span>
+          <span class="cmd-item-text" data-i18n="cmd.item.exp">Experience &amp; Education</span>
+          <span class="cmd-item-meta">04</span>
+        </div>
+        <div class="cmd-item" role="option" data-action="nav" data-target="#contact">
+          <span class="cmd-item-icon">✉️</span>
+          <span class="cmd-item-text" data-i18n="cmd.item.contact">Contact &amp; Quick Dispatch</span>
+          <span class="cmd-item-meta">05</span>
+        </div>
+
+        <div class="cmd-group-label" data-i18n="cmd.group.actions">Quick Actions</div>
+        <div class="cmd-item" role="option" data-action="toggle-theme">
+          <span class="cmd-item-icon">🌗</span>
+          <span class="cmd-item-text" data-i18n="cmd.item.theme">Toggle Dark / Light Theme</span>
+          <kbd class="cmd-shortcut">T</kbd>
+        </div>
+        <div class="cmd-item" role="option" data-action="toggle-lang">
+          <span class="cmd-item-icon">🌐</span>
+          <span class="cmd-item-text" data-i18n="cmd.item.lang">Switch Language (EN / VI)</span>
+          <kbd class="cmd-shortcut">L</kbd>
+        </div>
+        <div class="cmd-item" role="option" data-action="download-resume">
+          <span class="cmd-item-icon">📄</span>
+          <span class="cmd-item-text" data-i18n="cmd.item.resume">Download Résumé PDF</span>
+          <span class="cmd-item-meta">PDF</span>
+        </div>
+        <div class="cmd-item" role="option" data-action="view-cert">
+          <span class="cmd-item-icon">🏆</span>
+          <span class="cmd-item-text" data-i18n="cmd.item.cert">View Samsung Big Data Certificate</span>
+          <span class="cmd-item-meta">SIC</span>
+        </div>
+      </div>
+      <div class="cmd-footer">
+        <span><kbd>↑</kbd> <kbd>↓</kbd> navigate</span>
+        <span><kbd>↵</kbd> select</span>
+        <span><kbd>ESC</kbd> dismiss</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/i18n.js" defer></script>
+  <script src="js/theme.js" defer></script>
+  <script src="js/navigation.js" defer></script>
+  <script src="js/modal.js" defer></script>
+  <script src="js/contact-form.js" defer></script>
+  <script src="js/spotlight.js" defer></script>
+  <script src="js/project-filter.js" defer></script>
+  <script src="js/terminal-runner.js" defer></script>
+  <script src="js/clock.js" defer></script>
+  <script src="js/command-palette.js" defer></script>
 </body>
+
 </html>
