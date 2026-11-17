@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=Inter:wght@400;500;600&amp;display=swap');
+      .paper { fill: #f5f5f1; }
+      .surface { fill: #fdfdfb; }
+      .ink { fill: #1a1a18; }
+      .muted { fill: #6e6c66; }
+      .hairline { stroke: #d8d6ce; }
+      .accent { fill: #a64b2a; }
+      .accent-stroke { stroke: #a64b2a; }
+      .de { fill: #a64b2a; }
+      .da { fill: #5e6b44; }
+      .cv { fill: #4f6284; }
+      .font-display { font-family: 'Fraunces', Georgia, serif; }
+      .font-sans { font-family: 'Inter', -apple-system, sans-serif; }
+      .font-mono { font-family: 'IBM Plex Mono', monospace; }
+    </style>
+    <pattern id="dotgrid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="#e2e0d8" />
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" class="paper" />
+  <rect width="1200" height="630" fill="url(#dotgrid)" />
+
+  <!-- Frame -->
+  <rect x="48" y="48" width="1104" height="534" fill="#fdfdfb" stroke="#d8d6ce" stroke-width="1.5" />
+  <rect x="52" y="52" width="1096" height="526" fill="none" stroke="#d8d6ce" stroke-width="1" />
+
+  <!-- Crop marks -->
+  <path d="M 36,48 H 60 M 48,36 V 60 M 1140,48 H 1164 M 1152,36 V 60 M 36,582 H 60 M 48,570 V 594 M 1140,582 H 1164 M 1152,570 V 594" stroke="#8a8880" stroke-width="1.5" />
+
+  <!-- Top bar -->
+  <rect x="52" y="52" width="1096" height="56" fill="#f8f8f5" />
+  <line x1="52" y1="108" x2="1148" y2="108" stroke="#d8d6ce" stroke-width="1.5" />
+
+  <!-- Monogram -->
+  <rect x="80" y="66" width="44" height="28" fill="#1a1a18" />
+  <text x="102" y="85" class="font-display" font-size="14" font-weight="600" font-style="italic" fill="#f5f5f1" text-anchor="middle">T.L.</text>
+
+  <!-- Meta label -->
+  <text x="140" y="85" class="font-mono" font-size="12" font-weight="500" fill="#6e6c66" letter-spacing="1">PORTFOLIO · VOL. 01 · 2026</text>
+  <text x="1116" y="85" class="font-mono" font-size="12" font-weight="500" fill="#6e6c66" text-anchor="end" letter-spacing="1">HCMUTE · DATA ENGINEERING</text>
+
+  <!-- Main Title -->
+  <text x="80" y="200" class="font-display" font-size="54" font-weight="600" fill="#1a1a18" letter-spacing="-1">Nguyễn Đình Tân Lộc</text>
+
+  <!-- Subtitle with discipline colors -->
+  <text x="80" y="244" class="font-sans" font-size="20" font-weight="500">
+    <tspan class="de" font-weight="600">Data Engineering</tspan>
+    <tspan fill="#d8d6ce"> · </tspan>
+    <tspan class="da" font-weight="600">Analytics</tspan>
+    <tspan fill="#d8d6ce"> · </tspan>
+    <tspan class="cv" font-weight="600">Computer Vision</tspan>
+  </text>
+
+  <line x1="80" y1="275" x2="1120" y2="275" stroke="#d8d6ce" stroke-width="1" />
+
+  <!-- Pipeline Diagram Motif -->
+  <g transform="translate(80, 310)">
+    <!-- Node 1: Source -->
+    <rect x="0" y="0" width="175" height="72" fill="#f5f5f1" stroke="#d8d6ce" stroke-width="1.5" />
+    <text x="16" y="24" class="font-mono" font-size="11" fill="#6e6c66" letter-spacing="1">01 / SOURCE</text>
+    <text x="16" y="48" class="font-mono" font-size="16" font-weight="600" fill="#1a1a18">Telemetry</text>
+    <text x="16" y="63" class="font-mono" font-size="10" fill="#8a8880">Sensors &amp; Logs</text>
+
+    <!-- Arrow 1 -->
+    <line x1="175" y1="36" x2="225" y2="36" stroke="#a64b2a" stroke-width="1.5" />
+    <polygon points="225,32 233,36 225,40" fill="#a64b2a" />
+
+    <!-- Node 2: Stream (Accent) -->
+    <rect x="235" y="0" width="195" height="72" fill="rgba(166,75,42,0.08)" stroke="#a64b2a" stroke-width="1.5" />
+    <text x="251" y="24" class="font-mono" font-size="11" fill="#a64b2a" letter-spacing="1">02 / STREAM</text>
+    <text x="251" y="48" class="font-mono" font-size="16" font-weight="600" fill="#a64b2a">Redpanda</text>
+    <text x="251" y="63" class="font-mono" font-size="10" fill="#6e6c66">Kafka-compatible</text>
+
+    <!-- Arrow 2 -->
+    <line x1="430" y1="36" x2="480" y2="36" stroke="#a64b2a" stroke-width="1.5" />
+    <polygon points="480,32 488,36 480,40" fill="#a64b2a" />
+
+    <!-- Node 3: Warehouse -->
+    <rect x="490" y="0" width="220" height="72" fill="#f5f5f1" stroke="#d8d6ce" stroke-width="1.5" />
+    <text x="506" y="24" class="font-mono" font-size="11" fill="#6e6c66" letter-spacing="1">03 / WAREHOUSE</text>
+    <text x="506" y="48" class="font-mono" font-size="16" font-weight="600" fill="#1a1a18">dbt + Postgres</text>
+    <text x="506" y="63" class="font-mono" font-size="10" fill="#8a8880">Medallion architecture</text>
+
+    <!-- Arrow 3 -->
+    <line x1="710" y1="36" x2="760" y2="36" stroke="#a64b2a" stroke-width="1.5" />
+    <polygon points="760,32 768,36 760,40" fill="#a64b2a" />
+
+    <!-- Node 4: BI Serving -->
+    <rect x="770" y="0" width="190" height="72" fill="#f5f5f1" stroke="#d8d6ce" stroke-width="1.5" />
+    <text x="786" y="24" class="font-mono" font-size="11" fill="#6e6c66" letter-spacing="1">04 / SERVING</text>
+    <text x="786" y="48" class="font-mono" font-size="16" font-weight="600" fill="#1a1a18">Metabase BI</text>
+    <text x="786" y="63" class="font-mono" font-size="10" fill="#8a8880">Executive dashboards</text>
+
+    <!-- Branch down to CV -->
+    <line x1="332" y1="72" x2="332" y2="108" stroke="#4f6284" stroke-width="1.5" />
+    <polygon points="328,108 332,116 336,108" fill="#4f6284" />
+    <rect x="235" y="118" width="195" height="48" fill="#f5f5f1" stroke="#4f6284" stroke-width="1.5" />
+    <text x="251" y="138" class="font-mono" font-size="13" font-weight="600" fill="#4f6284">PyTorch · MLflow</text>
+    <text x="251" y="153" class="font-mono" font-size="10" fill="#6e6c66">Docker serving artifact</text>
+  </g>
+
+  <!-- Bottom Badges -->
+  <line x1="80" y1="510" x2="1120" y2="510" stroke="#d8d6ce" stroke-width="1" />
+
+  <g transform="translate(80, 528)" class="font-mono" font-size="12" fill="#1a1a18">
+    <text x="0" y="16" fill="#6e6c66" font-size="11" letter-spacing="1">CORE STACK:</text>
+    <text x="110" y="16">Python · SQL · Apache Spark · dbt · Airflow · AWS (S3, Glue, Athena) · PyTorch · Docker</text>
+  </g>
+</svg>
+

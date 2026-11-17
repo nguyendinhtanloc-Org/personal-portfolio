@@ -1,0 +1,66 @@
+/* ============================================================
+   personal-portfolio — variables.css
+   Color palettes, font families, composition metrics,
+   and Dark / Light mode CSS custom properties.
+   Palette: Warm Sand & Champagne Bronze (Warm, Eye-friendly, Zero Blue Light)
+   ============================================================ */
+
+:root {
+  color-scheme: light;
+
+  /* Palette — Warm Sand & Champagne Bronze (Ultra Gentle on the Eyes) */
+  --paper: #faf8f5;
+  --surface: #ffffff;
+  --ink: #1c1917;
+  --muted: #78716c;
+  --hairline: #e7e5e4;
+  --hairline-soft: #f5f5f4;
+  --accent: #b4833e; /* champagne bronze — warm, luxurious, non-glaring */
+  --accent-soft: rgba(180, 131, 62, 0.09);
+
+  /* Terminal block colors */
+  --term-bg: #161514;
+  --term-ink: #f5f5f4;
+  --term-mute: #a8a29e;
+
+  /* Per-discipline muted accents (warm, natural, eye-comfort) */
+  --de: #b4833e; /* data engineering — warm champagne bronze */
+  --da: #5b7b68; /* data analytics — muted warm olive-sage */
+  --cv: #7e688c; /* computer vision — muted plum slate */
+
+  /* Type — Modern Sans & Monospace (Clear, Clean, No serif clichés) */
+  --font-display: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Composition */
+  --container: 72rem;
+  --pad-x: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+/* ---------- Dark theme (Deep Warm Basalt & Radiant Champagne) ---------- */
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --paper: #121110;
+  --surface: #1a1816;
+  --ink: #f5f5f4;
+  --muted: #a8a29e;
+  --hairline: #292524;
+  --hairline-soft: #201d1b;
+  --accent: #d4a359;
+  --accent-soft: rgba(212, 163, 89, 0.14);
+
+  --term-bg: #0e0d0c;
+  --term-ink: #f5f5f4;
+  --term-mute: #78716c;
+
+  --de: #d4a359;
+  --da: #86aa93;
+  --cv: #b19bbd;
+}
+
+[data-theme="dark"] .dot circle { fill: #23201d; }
+[data-theme="dark"] .evidence .ev-mute { color: #8c857f; }
+[data-theme="dark"] .hero-note { border-color: var(--hairline); }
