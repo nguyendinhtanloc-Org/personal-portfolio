@@ -132,7 +132,7 @@
   /* ---------- Reveal on Scroll ---------- */
   var revealables = Array.prototype.slice.call(
     document.querySelectorAll(
-      ".section-head, .skill-group, .timeline-item, .bento-card, .contact-line"
+      ".section-head, .skill-group, .timeline-item, .bento-card, .endorsement-card, .contact-line"
     )
   );
 

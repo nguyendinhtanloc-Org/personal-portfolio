@@ -168,6 +168,11 @@ window.PF_I18N = (function () {
     "cert.modal.title": "Chứng chỉ Big Data",
     "cert.modal.sub": "Samsung Innovation Campus · Cấp cho Nguyễn Đình Tân Lộc",
 
+    /* endorsements */
+    "end.badge": "Tham chiếu · Tiến cử",
+    "end.title": "Nhận xét từ người hướng dẫn",
+    "end.note": "Đánh giá từ giảng viên hướng dẫn và mentor trong quá trình nghiên cứu và thực tập.",
+
     /* contact */
     "contact.badge": "Liên hệ · Hộp thư",
     "contact.title": "Cùng nói chuyện về pipeline, dữ liệu hay thị giác",
@@ -209,6 +214,7 @@ window.PF_I18N = (function () {
     "cmd.item.projects": "Dự án kỹ nghệ tiêu biểu",
     "cmd.item.skills": "Kỹ năng chuyên môn & Công nghệ",
     "cmd.item.exp": "Kinh nghiệm & Học vấn",
+    "cmd.item.endorsements": "Nhận xét từ người hướng dẫn",
     "cmd.item.contact": "Liên hệ & Gửi tin nhắn",
     "cmd.item.theme": "Đổi giao diện Sáng / Tối",
     "cmd.item.lang": "Đổi ngôn ngữ (EN / VI)",
@@ -287,6 +293,9 @@ window.PF_I18N = (function () {
     } catch (e) {
       /* private mode — choice simply won't persist */
     }
+    try {
+      document.dispatchEvent(new CustomEvent("pf:langchange", { detail: { lang: lang } }));
+    } catch (e) {}
   }
 
   function current() {

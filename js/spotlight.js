@@ -26,6 +26,21 @@
         card.style.setProperty("--mouse-y", "-999px");
       });
     });
+
+    // Event delegation for dynamically rendered cards (e.g. .endorsement-card)
+    var activeCard = null;
+    document.addEventListener("mousemove", function (e) {
+      var card = e.target.closest(".endorsement-card.spotlight-card");
+      if (activeCard && activeCard !== card) {
+        activeCard.style.setProperty("--mouse-x", "-999px");
+        activeCard.style.setProperty("--mouse-y", "-999px");
+      }
+      activeCard = card;
+      if (!card) return;
+      var rect = card.getBoundingClientRect();
+      card.style.setProperty("--mouse-x", e.clientX - rect.left + "px");
+      card.style.setProperty("--mouse-y", e.clientY - rect.top + "px");
+    });
   }
 
   if (document.readyState === "loading") {
