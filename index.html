@@ -90,6 +90,9 @@
         <a href="#skills" class="nav-link" data-spy data-i18n="nav.skills">Skills</a>
         <a href="#experience" class="nav-link" data-spy data-i18n="nav.exp">Experience</a>
         <a href="#contact" class="nav-link" data-spy data-i18n="nav.contact">Contact</a>
+        <div class="mobile-nav-extra">
+          <a class="btn-resume" href="assets/docs/NguyenDinhTanLoc_Resume.pdf" download="NguyenDinhTanLoc_Resume.pdf" data-i18n="nav.resume">Resume</a>
+        </div>
       </nav>
       <div class="nav-actions">
         <div class="live-status-pill" id="live-time-pill" title="Live Local Time in Vietnam">
@@ -352,20 +355,21 @@
         </div>
 
         <!-- Project Discipline Filter Tabs -->
-        <div class="project-filters" role="tablist" aria-label="Filter projects by discipline">
-          <button type="button" class="project-filter-btn is-active" data-filter="all" role="tab" aria-selected="true">
+        <div class="project-filters" aria-label="Filter projects by discipline">
+          <button type="button" class="project-filter-btn is-active" data-filter="all" aria-pressed="true">
             <span data-i18n="p.filter.all">All</span> <span class="filter-count">3</span>
           </button>
-          <button type="button" class="project-filter-btn" data-filter="de" role="tab" aria-selected="false">
+          <button type="button" class="project-filter-btn" data-filter="de" aria-pressed="false">
             <span data-i18n="p.filter.de">Data Engineering</span> <span class="filter-count">1</span>
           </button>
-          <button type="button" class="project-filter-btn" data-filter="da" role="tab" aria-selected="false">
+          <button type="button" class="project-filter-btn" data-filter="da" aria-pressed="false">
             <span data-i18n="p.filter.da">Data Analytics</span> <span class="filter-count">1</span>
           </button>
-          <button type="button" class="project-filter-btn" data-filter="cv" role="tab" aria-selected="false">
+          <button type="button" class="project-filter-btn" data-filter="cv" aria-pressed="false">
             <span data-i18n="p.filter.cv">Computer Vision</span> <span class="filter-count">1</span>
           </button>
         </div>
+        <p class="sr-live" id="filter-live" aria-live="polite"></p>
 
         <div class="project-grid">
           <!-- 01 — Data Engineering -->
@@ -423,17 +427,15 @@
               </div>
             </div>
             <p class="project-result">
-              <span class="result-label" data-i18n="p.resultlabel">Verified result</span>
+              <span class="result-label" data-i18n="p.resultlabel">Target estimate</span>
               <span data-i18n="p1.result" data-i18n-type="html">0% event loss over the reconciliation window; &lt;30s
                 recovery after broker restart</span>
             </p>
-            <!-- Evidence block: sample formatting. Replace with your real log excerpts when the project is done. -->
-            <div class="evidence" aria-label="Verification run log (sample — replace with your real output)">
-              <span class="ev-label" data-i18n="p1.evlabel">run log · kill test</span>
-              <p class="ev-line"><span class="ev-prompt">$</span> reconciliation --sent 120000 --received 120000 --lost
-                0</p>
-              <p class="ev-line"><span class="ev-mute" data-i18n="p1.evl2">broker restarted at T+42s · replay finished
-                  T+71s · p95 5.2s</span></p>
+            <!-- Pending block: no real logs yet (project in progress). Paste real run output here when the pipeline ships. -->
+            <div class="evidence" aria-label="Verification run log — pending real data">
+              <span class="ev-label" data-i18n="p1.evlabel">run log · pending</span>
+              <p class="ev-line"><span class="ev-prompt">$</span> reconciliation — awaiting first full pipeline run</p>
+              <p class="ev-line"><span class="ev-mute" data-i18n="p1.evl2">will show here: sent / received / lost, kill-restart replay, p95</span></p>
             </div>
             <footer class="project-links">
               <a class="link-arrow" href="https://github.com/nguyendinhtanloc" target="_blank" rel="noopener"
@@ -495,16 +497,15 @@
               </div>
             </div>
             <p class="project-result">
-              <span class="result-label" data-i18n="p.resultlabel">Verified result</span>
+              <span class="result-label" data-i18n="p.resultlabel">Target estimate</span>
               <span data-i18n="p2.result" data-i18n-type="html">One query replaces N ad-hoc spreadsheets; gold-layer
                 refresh is idempotent</span>
             </p>
-            <!-- Evidence block: sample formatting. Replace with your real output when done. -->
-            <div class="evidence" aria-label="Verification query (sample — replace with your real output)">
-              <span class="ev-label" data-i18n="p2.evlabel">dbt · gold refresh</span>
-              <p class="ev-line"><span class="ev-prompt">$</span> dbt run --select g_* --full-refresh</p>
-              <p class="ev-line"><span class="ev-mute" data-i18n="p2.evl2">9/9 models pass · idempotent (byte-identical
-                  re-run)</span></p>
+            <!-- Pending block: no real output yet. Paste the real dbt run log here when the gold layer ships. -->
+            <div class="evidence" aria-label="Verification query — pending real data">
+              <span class="ev-label" data-i18n="p2.evlabel">dbt · pending</span>
+              <p class="ev-line"><span class="ev-prompt">$</span> dbt run --select g_* — awaiting first gold refresh</p>
+              <p class="ev-line"><span class="ev-mute" data-i18n="p2.evl2">will show here: models passed, idempotency check</span></p>
             </div>
             <footer class="project-links">
               <a class="link-arrow" href="https://github.com/nguyendinhtanloc" target="_blank" rel="noopener"
@@ -566,7 +567,7 @@
               </div>
             </div>
             <p class="project-result">
-              <span class="result-label" data-i18n="p.resultlabel">Verified result</span>
+              <span class="result-label" data-i18n="p.resultlabel">Target estimate</span>
               <span data-i18n="p3.result" data-i18n-type="html">Tracked runs beat the baseline with full lineage and
                 reproducible checkpoints</span>
             </p>
@@ -648,7 +649,7 @@
         </div>
 
         <ol class="timeline">
-          <li class="timeline-item is-now tl-de">
+          <li class="timeline-item tl-de">
             <div class="timeline-date" data-i18n="tl1.date" data-i18n-type="html">10/2026 — 12/2026<span class="now-label"
                 aria-label="current">intern</span></div>
             <div class="timeline-body">
@@ -710,7 +711,9 @@
     </section>
 
     <!-- ============ ENDORSEMENTS ============ -->
-    <section class="section endorsements" id="endorsements" aria-labelledby="endorsements-title">
+    <!-- Pending real names + quotes from mentors/advisors. Unhide once they exist;
+         remove `hidden` below and the matching cmd-item, then repoint PRODUCT.md Evidence. -->
+    <section class="section endorsements" id="endorsements" aria-labelledby="endorsements-title" hidden>
       <div class="container">
         <div class="section-head">
           <span class="section-badge" data-i18n="end.badge">References · Endorsements</span>
@@ -832,8 +835,8 @@
 
   <footer class="footer">
     <div class="container footer-inner">
-      <p>© <span class="js-year">2026</span> Nguyễn Đình Tấn Lộc</p>
-      <p class="footer-meta" data-i18n="footer.meta" data-i18n-type="html">Set in Fraunces, Inter &amp; IBM Plex Mono —
+      <p>© <span class="js-year">2026</span> Nguyễn Đình Tân Lộc</p>
+      <p class="footer-meta" data-i18n="footer.meta" data-i18n-type="html">Set in Inter &amp; IBM Plex Mono —
         no framework, no build step.</p>
       <a class="footer-top" href="#top" data-i18n="footer.top">Back to top ↑</a>
     </div>
@@ -844,66 +847,60 @@
     <div class="cmd-backdrop" id="cmd-backdrop"></div>
     <div class="cmd-dialog">
       <div class="cmd-search-bar">
-        <span class="cmd-search-icon" aria-hidden="true">🔍</span>
+        <svg class="cmd-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
         <input type="text" id="cmd-input" class="cmd-input" aria-label="Search commands or sections" placeholder="Type a command or jump to section..." data-i18n-placeholder="cmd.placeholder" autocomplete="off" spellcheck="false">
         <kbd class="cmd-kbd">ESC</kbd>
       </div>
       <div class="cmd-list" id="cmd-list" role="listbox">
         <div class="cmd-group-label" data-i18n="cmd.group.nav">Navigation</div>
-        <div class="cmd-item" role="option" data-action="nav" data-target="#home">
-          <span class="cmd-item-icon">🏠</span>
+        <div class="cmd-item" role="option" tabindex="-1" data-action="nav" data-target="#home">
+          <svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
           <span class="cmd-item-text" data-i18n="cmd.item.home">Home / Top</span>
           <span class="cmd-item-meta">00</span>
         </div>
-        <div class="cmd-item" role="option" data-action="nav" data-target="#about">
-          <span class="cmd-item-icon">👤</span>
+        <div class="cmd-item" role="option" tabindex="-1" data-action="nav" data-target="#about">
+          <svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
           <span class="cmd-item-text" data-i18n="cmd.item.about">About Tân Lộc</span>
           <span class="cmd-item-meta">01</span>
         </div>
-        <div class="cmd-item" role="option" data-action="nav" data-target="#projects">
-          <span class="cmd-item-icon">⚡</span>
+        <div class="cmd-item" role="option" tabindex="-1" data-action="nav" data-target="#projects">
+          <svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
           <span class="cmd-item-text" data-i18n="cmd.item.projects">Selected Work &amp; Projects</span>
           <span class="cmd-item-meta">02</span>
         </div>
-        <div class="cmd-item" role="option" data-action="nav" data-target="#skills">
-          <span class="cmd-item-icon">🛠</span>
+        <div class="cmd-item" role="option" tabindex="-1" data-action="nav" data-target="#skills">
+          <svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
           <span class="cmd-item-text" data-i18n="cmd.item.skills">Technical Skills &amp; Stack</span>
           <span class="cmd-item-meta">03</span>
         </div>
-        <div class="cmd-item" role="option" data-action="nav" data-target="#experience">
-          <span class="cmd-item-icon">📜</span>
+        <div class="cmd-item" role="option" tabindex="-1" data-action="nav" data-target="#experience">
+          <svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           <span class="cmd-item-text" data-i18n="cmd.item.exp">Experience &amp; Education</span>
           <span class="cmd-item-meta">04</span>
         </div>
-        <div class="cmd-item" role="option" data-action="nav" data-target="#endorsements">
-          <span class="cmd-item-icon">💬</span>
-          <span class="cmd-item-text" data-i18n="cmd.item.endorsements">Mentor Endorsements</span>
-          <span class="cmd-item-meta">05</span>
-        </div>
-        <div class="cmd-item" role="option" data-action="nav" data-target="#contact">
-          <span class="cmd-item-icon">✉️</span>
+        <!-- Endorsements entry hidden with the section until real references exist. -->
+        <div class="cmd-item" role="option" tabindex="-1" data-action="nav" data-target="#contact">
+          <svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,6 12,13 2,6"/></svg>
           <span class="cmd-item-text" data-i18n="cmd.item.contact">Contact &amp; Quick Dispatch</span>
-          <span class="cmd-item-meta">06</span>
+          <span class="cmd-item-meta">05</span>
         </div>
 
         <div class="cmd-group-label" data-i18n="cmd.group.actions">Quick Actions</div>
-        <div class="cmd-item" role="option" data-action="toggle-theme">
-          <span class="cmd-item-icon">🌗</span>
+        <div class="cmd-item" role="option" tabindex="-1" data-action="toggle-theme">
+          <svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
           <span class="cmd-item-text" data-i18n="cmd.item.theme">Toggle Dark / Light Theme</span>
-          <kbd class="cmd-shortcut">T</kbd>
         </div>
-        <div class="cmd-item" role="option" data-action="toggle-lang">
-          <span class="cmd-item-icon">🌐</span>
+        <div class="cmd-item" role="option" tabindex="-1" data-action="toggle-lang">
+          <svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
           <span class="cmd-item-text" data-i18n="cmd.item.lang">Switch Language (EN / VI)</span>
-          <kbd class="cmd-shortcut">L</kbd>
         </div>
-        <div class="cmd-item" role="option" data-action="download-resume">
-          <span class="cmd-item-icon">📄</span>
+        <div class="cmd-item" role="option" tabindex="-1" data-action="download-resume">
+          <svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg>
           <span class="cmd-item-text" data-i18n="cmd.item.resume">Download Résumé PDF</span>
           <span class="cmd-item-meta">PDF</span>
         </div>
-        <div class="cmd-item" role="option" data-action="view-cert">
-          <span class="cmd-item-icon">🏆</span>
+        <div class="cmd-item" role="option" tabindex="-1" data-action="view-cert">
+          <svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 5.21 21 12 17.77 18.79 21 15.79 13.89"/></svg>
           <span class="cmd-item-text" data-i18n="cmd.item.cert">View Samsung Big Data Certificate</span>
           <span class="cmd-item-meta">SIC</span>
         </div>
@@ -922,7 +919,6 @@
   <script src="js/navigation.js" defer></script>
   <script src="js/modal.js" defer></script>
   <script src="js/contact-form.js" defer></script>
-  <script src="js/spotlight.js" defer></script>
   <script src="js/project-filter.js" defer></script>
   <script src="js/terminal-runner.js" defer></script>
   <script src="js/clock.js" defer></script>
