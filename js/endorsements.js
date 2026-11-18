@@ -96,7 +96,7 @@
   }
 
   function buildCard(item, lang) {
-    var card = createEl("article", "endorsement-card spotlight-card");
+    var card = createEl("article", "endorsement-card");
 
     var top = createEl("div", "endorsement-top");
     var mark = createEl("span", "endorsement-quote-mark", "“");
