@@ -1186,7 +1186,12 @@
   .timeline-date { padding-top: 0; }
 
   .contact-line {
-    grid-template-columns: 6rem 1fr auto;
+    grid-template-columns: 6rem minmax(0, 1fr) auto;
+  }
+
+  /* Long values (emails) must be able to break inside the middle track */
+  .contact-val {
+    overflow-wrap: anywhere;
   }
 
   /* Pipeline flow: vertical, one step per line — readable without swipe */
@@ -1207,10 +1212,12 @@
     align-self: flex-start;
   }
 
-  /* Evidence lines wrap instead of forcing a horizontal scroll */
-  .ev-line,
-  .evidence {
+  /* Evidence lines wrap instead of forcing a horizontal scroll.
+     Target .ev-line/.ev-mute directly: their own nowrap rules beat
+     an inherited white-space, and overflow-x:visible let the text
+     stretch the 1fr grid track. */
+  .evidence .ev-line,
+  .evidence .ev-mute {
     white-space: normal;
-    overflow-x: visible;
   }
 }
