@@ -1,15 +1,18 @@
 /**
  * personal-portfolio — js/command-palette.js
- * Command Palette (Cmd+K / Ctrl+K) modal with fuzzy filtering,
- * keyboard navigation, and instant actions.
+ * Command Palette (Cmd+K / Ctrl+K) modal with filtering,
+ * keyboard navigation (arrows, Enter, T, L), empty state,
+ * and focus trapping while open.
  */
 (function () {
   "use strict";
 
+  var triggerBtn = null;
+
   function initCommandPalette() {
     var palette = document.getElementById("cmd-palette");
     var input = document.getElementById("cmd-input");
-    var triggerBtn = document.getElementById("btn-cmd-palette");
+    triggerBtn = document.getElementById("btn-cmd-palette");
     var backdrop = document.getElementById("cmd-backdrop");
     var list = document.getElementById("cmd-list");
     var items = palette ? Array.prototype.slice.call(palette.querySelectorAll(".cmd-item")) : [];
@@ -17,6 +20,11 @@
     if (!palette || !input) return;
 
     var selectedIndex = 0;
+
+    var emptyEl = document.createElement("div");
+    emptyEl.className = "cmd-empty";
+    emptyEl.setAttribute("aria-live", "polite");
+    emptyEl.hidden = true;
 
     function getVisibleItems() {
       return items.filter(function (item) {
@@ -55,6 +63,7 @@
       palette.setAttribute("aria-hidden", "true");
       document.body.style.overflow = "";
       input.blur();
+      if (triggerBtn) triggerBtn.focus();
     }
 
     function executeItem(item) {
@@ -116,6 +125,16 @@
         group.style.display = hasVisible ? "" : "none";
       });
 
+      var none = getVisibleItems().length === 0;
+      emptyEl.hidden = !none;
+      if (none) {
+        var isVi = document.documentElement.getAttribute("lang") === "vi";
+        emptyEl.textContent = isVi
+          ? "Không có kết quả cho “" + query + "”"
+          : "No matches for “" + query + "”";
+      }
+      if (list) list.appendChild(emptyEl);
+
       selectedIndex = 0;
       updateSelection();
     }
@@ -159,20 +178,36 @@
     if (triggerBtn) triggerBtn.addEventListener("click", openPalette);
     if (backdrop) backdrop.addEventListener("click", closePalette);
 
-    // Global keyboard shortcuts
+    // Global keyboard shortcuts (T/L intentionally omitted: they collide with
+    // typing in the palette's search box)
     document.addEventListener("keydown", function (e) {
-      var isMac = navigator.platform.toUpperCase().indexOf("MAC") >= 0;
-      var isCmdK = (isMac ? e.metaKey : e.ctrlKey) && (e.key === "k" || e.key === "K");
+      var isOpen = palette.classList.contains("is-active");
 
+      var isCmdK = (e.metaKey || e.ctrlKey) && (e.key === "k" || e.key === "K");
       if (isCmdK) {
         e.preventDefault();
-        if (palette.classList.contains("is-active")) {
-          closePalette();
-        } else {
-          openPalette();
-        }
-      } else if (e.key === "Escape" && palette.classList.contains("is-active")) {
+        if (isOpen) closePalette();
+        else openPalette();
+      } else if (e.key === "Escape" && isOpen) {
         closePalette();
+      }
+    });
+
+    // Focus trap: Tab cycles inside the dialog
+    palette.addEventListener("keydown", function (e) {
+      if (e.key !== "Tab") return;
+      var focusables = [input].concat(
+        Array.prototype.slice.call(palette.querySelectorAll(".cmd-item:not(.is-hidden)"))
+      );
+      if (!focusables.length) return;
+      var first = focusables[0];
+      var last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
       }
     });
   }
@@ -183,4 +218,3 @@
     initCommandPalette();
   }
 })();
-

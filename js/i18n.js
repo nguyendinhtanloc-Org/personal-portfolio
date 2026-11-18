@@ -13,12 +13,6 @@ window.PF_I18N = (function () {
 
   var STORAGE_KEY = "pf-lang";
 
-  // shared wavy underline so it survives language switching
-  var SQUIGGLE =
-    '<svg viewBox="0 0 220 8" preserveAspectRatio="none" aria-hidden="true">' +
-    '<path vector-effect="non-scaling-stroke" d="M0 5 Q 8 1, 16 5 T 32 5 T 48 5 T 64 5 T 80 5 T 96 5 T 112 5 T 128 5 T 144 5 T 160 5 T 176 5 T 192 5 T 208 5 T 220 5"/>' +
-    "</svg>";
-
   var VI = {
     /* nav */
     "nav.home": "Trang chủ",
@@ -35,7 +29,7 @@ window.PF_I18N = (function () {
     "hero.lede":
       "Tôi là Tân Lộc, sinh viên ngành Kỹ thuật Dữ liệu tại HCMUTE (dự kiến tốt nghiệp 2027). " +
       "Định hướng chuyên sâu vào Data Engineering (DE), Data Analytics (DA) và Computer Vision (CV); " +
-      "hiện đang tìm kiếm cơ hội thực tập thực tế tại TP.HCM &amp; Đồng Nai.",
+      "hiện đang tìm kiếm cơ hội thực tập thực tế tại TP.HCM & Đồng Nai.",
     "hero.cta.primary": "Xem dự án",
     "hero.cta.about": "Giới thiệu",
     "hero.figcap":
@@ -58,22 +52,22 @@ window.PF_I18N = (function () {
       "Ranh giới giữa sản phẩm thật và bản vẽ lý thuyết: " +
       "nhận định chưa chứng minh chỉ là <em>ước tính</em>, không bao giờ nhận là kết quả.",
     "about.portrait.cap": "Tân Lộc · Kỹ thuật Dữ liệu",
-    "bento.story.tag": "Câu chuyện &amp; Phương pháp",
+    "bento.story.tag": "Câu chuyện & Phương pháp",
     "bento.quote":
       "“Tập trung xây dựng nền tảng Kỹ nghệ dữ liệu vững chắc, năng lực phân tích thực tiễn và ứng dụng thị giác máy tính.”",
-    "bento.stats.tag": "Điểm nhấn &amp; Nghiên cứu",
+    "bento.stats.tag": "Điểm nhấn & Nghiên cứu",
     "bento.stat.paper.title": "Công bố khoa học",
     "bento.stat.paper.desc": "Đồng tác giả bài báo JTE (2026)",
     "paper.btn.view": "Đọc bài báo ↗",
     "about.principle.title": "Nguyên tắc làm việc",
     "about.principle.tag": "Quy chuẩn minh chứng",
-    "bento.connect.tag": "Hồ sơ &amp; Kết nối",
+    "bento.connect.tag": "Hồ sơ & Kết nối",
     "about.f.edu.d": "Học vấn",
     "about.f.edu.v": "HCMUTE · Kỹ sư Kỹ thuật Dữ liệu",
     "about.f.cert.d": "Chứng chỉ",
     "about.f.cert.v": "Big Data — Samsung Innovation Campus",
     "about.f.base.d": "Đóng tại",
-    "about.f.base.v": "TP.HCM &amp; Đồng Nai, Việt Nam",
+    "about.f.base.v": "TP.HCM & Đồng Nai, Việt Nam",
     "about.f.open.v": "Thực tập: DE · DA · CV (TP.HCM / Đồng Nai)",
     "about.f.lang.d": "Ngoại ngữ",
     "about.f.lang.v": "Tiếng Anh, Tiếng Việt (mẹ đẻ)",
@@ -87,7 +81,7 @@ window.PF_I18N = (function () {
     "p.status.planned": "dự kiến",
     "p.techlabel": "công nghệ",
     "p.flowlabel": "Kiến trúc luồng dữ liệu",
-    "p.resultlabel": "Kết quả đã kiểm chứng",
+    "p.resultlabel": "Mục tiêu ước tính",
     "p.repo": 'Mã nguồn <span aria-hidden="true">→</span>',
     "p1.name": "Pipeline telemetri streaming",
     "p1.problem":
@@ -99,8 +93,8 @@ window.PF_I18N = (function () {
       "<code>event_id</code> từng sự kiện kèm test kill/restart.",
     "p1.result":
       "0% sự kiện mất trong cửa sổ kiểm chứng; phục hồi &lt;30s sau khi broker restart",
-    "p1.evlabel": "nhật ký chạy · kill test",
-    "p1.evl2": "broker restart lúc T+42s · replay xong T+71s · p95 5.2s",
+    "p1.evlabel": "nhật ký chạy · đang chờ dữ liệu thật",
+    "p1.evl2": "sẽ hiện: sent / received / lost, replay kill-restart, p95",
     "p2.name": "Dashboard hỗ trợ quyết định",
     "p2.problem":
       "Stack báo cáo trả lời đúng câu hỏi mà cấp quản lý thật sự hỏi — không phải câu " +
@@ -110,8 +104,8 @@ window.PF_I18N = (function () {
       "trước khi đẩy phần nặng sang SQL và Spark.",
     "p2.result":
       "Một query thay N spreadsheet ad-hoc; refresh tầng gold là idempotent",
-    "p2.evlabel": "dbt · refresh gold",
-    "p2.evl2": "9/9 model pass · idempotent (chạy lại byte-identical)",
+    "p2.evlabel": "dbt · đang chờ dữ liệu thật",
+    "p2.evl2": "sẽ hiện: số model pass, kiểm tra idempotency",
     "p3.name": "Mô hình thị giác, từ train đến serving",
     "p3.problem":
       "Một mô hình vision phải rời notebook sang setup tái lập được: run được theo " +
@@ -128,17 +122,17 @@ window.PF_I18N = (function () {
     "skills.badge": "Kỹ năng · Công nghệ",
     "skills.title": "Cái tôi thực sự dùng",
     "skills.note": "Chỉ các công cụ tôi đã trực tiếp sử dụng trong đồ án và công việc thực tế.",
-    "skills.cat.de": "Kỹ nghệ Dữ liệu &amp; Ngôn ngữ",
-    "skills.cat.da": "Cơ sở dữ liệu &amp; Phân tích",
-    "skills.cat.cv": "Thị giác Máy tính &amp; AI",
-    "skills.cat.infra": "Công cụ &amp; Môi trường",
+    "skills.cat.de": "Kỹ nghệ Dữ liệu & Ngôn ngữ",
+    "skills.cat.da": "Cơ sở dữ liệu & Phân tích",
+    "skills.cat.cv": "Thị giác Máy tính & AI",
+    "skills.cat.infra": "Công cụ & Môi trường",
 
     /* experience */
     "exp.badge": "Kinh nghiệm · Lộ trình",
     "exp.title": "Nơi công việc đã diễn ra",
     "tl1.date":
       "10/2026 — 12/2026<span class=\"now-label\" aria-label=\"current\">thực tập</span>",
-    "tl1.title": "Thực tập sinh Điện toán đám mây &amp; Dữ liệu",
+    "tl1.title": "Thực tập sinh Điện toán đám mây & Dữ liệu",
     "tl1.org": "AWS FCAJ",
     "tl1.desc":
       "Tiếp cận thực tế hạ tầng đám mây AWS, xây dựng pipeline xử lý dữ liệu đám mây và kiến trúc phân tán.",
@@ -169,7 +163,7 @@ window.PF_I18N = (function () {
     "cert.modal.sub": "Samsung Innovation Campus · Cấp cho Nguyễn Đình Tân Lộc",
 
     /* endorsements */
-    "end.badge": "Tham chiếu · Tiến cử",
+    "end.badge": "Tham chiếu · Đánh giá",
     "end.title": "Nhận xét từ người hướng dẫn",
     "end.note": "Đánh giá từ giảng viên hướng dẫn và mentor trong quá trình nghiên cứu và thực tập.",
 
@@ -192,7 +186,7 @@ window.PF_I18N = (function () {
     "form.submit": "Gửi tin nhắn →",
 
     /* footer */
-    "footer.meta": "Trình bày bằng Fraunces, Inter &amp; IBM Plex Mono — không framework, không build step.",
+    "footer.meta": "Trình bày bằng Inter &amp; IBM Plex Mono — không framework, không build step.",
     "footer.top": "Về đầu trang ↑",
 
     /* project discipline filters */
@@ -326,10 +320,21 @@ window.PF_I18N = (function () {
 
     isTransitioning = true;
     document.body.classList.add("is-lang-transitioning");
+    var scrollBefore = window.scrollY;
 
     setTimeout(function () {
       apply(targetLang);
+      // Text length changes between EN and VI; keep the reader at the same
+      // visual anchor (top of the section in view) instead of a raw pixel offset.
       requestAnimationFrame(function () {
+        var active = document.querySelector("a[data-spy].is-active");
+        if (active) {
+          var target = document.getElementById(active.getAttribute("href").slice(1));
+          if (target && Math.abs(window.scrollY - scrollBefore) > 4) {
+            var rect = target.getBoundingClientRect();
+            window.scrollBy(0, Math.round(rect.top) + 48);
+          }
+        }
         document.body.classList.remove("is-lang-transitioning");
         setTimeout(function () {
           isTransitioning = false;

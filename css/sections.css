@@ -374,7 +374,7 @@
 
 .bento-stat-meta strong {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.78rem;
   color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -600,8 +600,6 @@
 
 .status-dot-amber {
   background: #f59e0b;
-  box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
-  animation: pulse-amber 2s infinite;
 }
 
 .status-dot-blue {
@@ -609,20 +607,26 @@
   opacity: 0.75;
 }
 
-@keyframes pulse-amber {
-  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); }
-  70% { transform: scale(1); box-shadow: 0 0 0 5px rgba(245, 158, 11, 0); }
-  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
-}
-
 .project-status-planned {
   color: var(--muted);
   border-style: dashed;
 }
 
-.project-de:hover { border-color: var(--de); }
-.project-da:hover { border-color: var(--da); }
-.project-cv:hover { border-color: var(--cv); }
+.project-de:hover {
+  border-color: var(--de);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(28, 25, 23, 0.06);
+}
+.project-da:hover {
+  border-color: var(--da);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(28, 25, 23, 0.06);
+}
+.project-cv:hover {
+  border-color: var(--cv);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(28, 25, 23, 0.06);
+}
 
 .project-name {
   font-family: var(--font-display);
@@ -1183,5 +1187,30 @@
 
   .contact-line {
     grid-template-columns: 6rem 1fr auto;
+  }
+
+  /* Pipeline flow: vertical, one step per line — readable without swipe */
+  .flow-track {
+    flex-direction: column;
+    align-items: stretch;
+    overflow-x: visible;
+  }
+  .flow-step {
+    min-width: 0;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 0.4rem;
+  }
+  .flow-arrow {
+    transform: rotate(90deg);
+    margin-left: 0.85rem;
+    align-self: flex-start;
+  }
+
+  /* Evidence lines wrap instead of forcing a horizontal scroll */
+  .ev-line,
+  .evidence {
+    white-space: normal;
+    overflow-x: visible;
   }
 }

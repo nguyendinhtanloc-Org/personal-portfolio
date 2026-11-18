@@ -46,7 +46,7 @@ Dự án được xây dựng theo chuẩn mực **Distinctive UI Engineering**:
 │   ├── navigation.js           # Nav mobile, scroll-spy, progress bar, copy-to-clipboard, reveal animation
 │   ├── modal.js                # Lightbox modal phóng to chứng chỉ Big Data SIC, hỗ trợ phím Escape
 │   ├── contact-form.js         # Gửi tin nhắn nhanh qua Formspree AJAX, thông báo trạng thái & fallback mailto
-│   ├── spotlight.js            # Hiệu ứng ánh sáng viền theo con trỏ chuột (Spotlight Card Glow)
+│   ├── endorsements.js         # Render section endorsements từ dữ liệu, đồng bộ i18n + toggle show/hide
 │   ├── project-filter.js       # Bộ lọc phân loại dự án (All, Data Engineering, Analytics, Computer Vision)
 │   ├── terminal-runner.js      # Giả lập chạy kiểm thử streaming log đường ống dữ liệu (Bento Card 4)
 │   ├── clock.js                # Đồng hồ thời gian thực TP. Hồ Chí Minh (UTC+7) trên thanh Navigation

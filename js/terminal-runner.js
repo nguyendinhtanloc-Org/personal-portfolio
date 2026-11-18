@@ -18,11 +18,11 @@
     var isCompleted = false;
 
     var logLines = [
-      { text: "$ pytest test_cdc_pipeline.py -v", cls: "term-run-info", delay: 150 },
+      { text: "$ pytest test_cdc_pipeline.py -v   (simulated — real test suite pending)", cls: "term-run-info", delay: 150 },
       { text: "→ [1/3] test_broker_handshake (latency: 14ms) ... OK", cls: "term-run-ok", delay: 400 },
       { text: "→ [2/3] test_reconcile_checksum (1,000,000 / 1,000,000) ... MATCH", cls: "term-run-ok", delay: 850 },
       { text: "→ [3/3] test_zero_loss_at_restart (0 dropped, 0 dupes) ... PASS", cls: "term-run-ok", delay: 1300 },
-      { text: "✓ 3 passed in 0.05s — claim VERIFIED", cls: "term-run-ok", delay: 1750 }
+      { text: "✓ 3 passed in 0.05s — demo of the test format I use", cls: "term-run-ok", delay: 1750 }
     ];
 
     function runSimulation() {

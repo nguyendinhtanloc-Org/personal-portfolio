@@ -10,12 +10,15 @@
   var certCloseBtn = document.getElementById("cert-modal-close");
   var certBackdrop = document.getElementById("cert-modal-backdrop");
   var certTriggers = document.querySelectorAll(".btn-cert-link");
+  var lastFocused = null;
 
   function openCertModal() {
     if (!certModal) return;
+    lastFocused = document.activeElement;
     certModal.classList.add("is-active");
     certModal.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
+    if (certCloseBtn) certCloseBtn.focus();
   }
 
   function closeCertModal() {
@@ -23,6 +26,8 @@
     certModal.classList.remove("is-active");
     certModal.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
+    if (lastFocused && lastFocused.focus) lastFocused.focus();
+    lastFocused = null;
   }
 
   certTriggers.forEach(function (btn) {

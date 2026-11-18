@@ -44,7 +44,7 @@
   .hero-cta,
   .nav-toggle,
   .cert-modal,
-  .quick-contact-card {
+  .contact-form-card {
     display: none !important;
   }
 
@@ -88,4 +88,3 @@
     padding-block: 1rem;
   }
 }
-

@@ -87,20 +87,28 @@
   var copyButtons = Array.prototype.slice.call(
     document.querySelectorAll(".btn-copy")
   );
+  // The label lives in the inner .copy-status span, owned by the i18n engine
+  // (data-i18n="c.copy"). Never rewrite the button's textContent — that
+  // destroys the span and desyncs the language switcher. We only swap the
+  // span's own text, and restore it from the *current* language, not a cache.
   copyButtons.forEach(function (btn) {
+    var label = btn.querySelector(".copy-status");
+    btn.setAttribute("aria-live", "polite");
     btn.addEventListener("click", function (e) {
       e.preventDefault();
       var text = btn.getAttribute("data-copy");
       if (!text) return;
 
-      var originalText = btn.textContent;
+      function copyLabel() {
+        return document.documentElement.getAttribute("lang") === "vi" ? "chép" : "copy";
+      }
 
       function onCopied() {
-        btn.textContent = "COPIED";
-        btn.classList.add("is-copied");
+        btn.setAttribute("data-copied", "");
+        label.textContent = document.documentElement.getAttribute("lang") === "vi" ? "Đã sao chép" : "Copied";
         setTimeout(function () {
-          btn.textContent = originalText;
-          btn.classList.remove("is-copied");
+          btn.removeAttribute("data-copied");
+          label.textContent = copyLabel(); // current language, not a stale value
         }, 1800);
       }
 
@@ -132,7 +140,7 @@
   /* ---------- Reveal on Scroll ---------- */
   var revealables = Array.prototype.slice.call(
     document.querySelectorAll(
-      ".section-head, .skill-group, .timeline-item, .bento-card, .endorsement-card, .contact-line"
+      ".section-head, .skill-group, .timeline-item, .bento-card, .endorsement-card, .project, .contact-line"
     )
   );
 
