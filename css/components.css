@@ -200,8 +200,10 @@
   display: none;
 }
 
-/* ---------- Mobile Nav Responsive (< 640px) ---------- */
-@media (max-width: 640px) {
+/* ---------- Mobile Nav Responsive (< 1024px) ----------
+   The inline desktop menu + controls need ~990px, so everything below
+   1024 (incl. landscape phones 780–844) uses the hamburger menu. */
+@media (max-width: 1023px) {
   .nav-inner {
     gap: 0.45rem;
   }
