@@ -3,7 +3,16 @@
   "trailingSlash": false,
   "headers": [
     {
-      "source": "/(.*)\\.(css|js|svg|png|pdf)",
+      "source": "/(.*)\\.(css|js)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=300"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)\\.(svg|png|pdf)",
       "headers": [
         {
           "key": "Cache-Control",
@@ -20,7 +29,7 @@
         },
         {
           "key": "X-Frame-Options",
-          "value": "DENY"
+          "value": "SAMEORIGIN"
         }
       ]
     }
