@@ -4,21 +4,21 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tân Lộc — Data Engineering · Analytics · Computer Vision</title>
+  <title>Tan Loc — Data Engineering · Analytics · Computer Vision</title>
   <meta name="description"
-    content="Nguyễn Đình Tân Lộc — Data Engineering student at HCMUTE (graduating 2027) building data pipelines, analytics, and computer-vision systems. Selected projects, capabilities, and contact.">
-  <meta property="og:title" content="Tân Lộc — Data Engineering · Analytics · Computer Vision">
+    content="Nguyễn Đình Tan Loc — Data Engineering student at HCMUTE (graduating 2027) building data pipelines, analytics, and computer-vision systems. Selected projects, capabilities, and contact.">
+  <meta property="og:title" content="Tan Loc — Data Engineering · Analytics · Computer Vision">
   <meta property="og:description"
-    content="Data Engineering portfolio of Tân Lộc (HCMUTE 2027): data pipelines, analytics, and computer vision.">
+    content="Data Engineering portfolio of Tan Loc (HCMUTE 2027): data pipelines, analytics, and computer vision.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="assets/images/og-image.png">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Tân Lộc — Data Engineering · Analytics · Computer Vision">
+  <meta name="twitter:title" content="Tan Loc — Data Engineering · Analytics · Computer Vision">
   <meta name="twitter:description"
-    content="Data Engineering portfolio of Tân Lộc (HCMUTE 2027): data pipelines, analytics, and computer vision.">
+    content="Data Engineering portfolio of Tan Loc (HCMUTE 2027): data pipelines, analytics, and computer vision.">
   <meta name="twitter:image" content="assets/images/og-image.png">
   <meta name="theme-color" content="#faf8f5">
   <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
@@ -27,7 +27,7 @@
   {
     "@context": "https://schema.org",
     "@type": "Person",
-    "name": "Nguyễn Đình Tân Lộc",
+    "name": "Nguyễn Đình Tan Loc",
     "alternateName": "Tan Loc Nguyen",
     "jobTitle": "Data Engineer",
     "alumniOf": {
@@ -59,7 +59,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=5">
   <script>
     (function () {
       try {
@@ -91,7 +91,7 @@
         <a href="#experience" class="nav-link" data-spy data-i18n="nav.exp">Experience</a>
         <a href="#contact" class="nav-link" data-spy data-i18n="nav.contact">Contact</a>
         <div class="mobile-nav-extra">
-          <a class="btn-resume" href="assets/docs/NguyenDinhTanLoc_Resume.pdf" download="NguyenDinhTanLoc_Resume.pdf" data-i18n="nav.resume">Resume</a>
+          <a class="btn-resume" href="assets/docs/NguyenDinhTanLoc_Resume.pdf" data-resume-preview data-i18n="nav.resume">Resume</a>
         </div>
       </nav>
       <div class="nav-actions">
@@ -110,7 +110,7 @@
           <span class="lang-sep">/</span>
           <span class="lang-opt" data-lang="vi">VI</span>
         </button>
-        <a class="btn-resume" href="assets/docs/NguyenDinhTanLoc_Resume.pdf" download="NguyenDinhTanLoc_Resume.pdf"
+        <a class="btn-resume" href="assets/docs/NguyenDinhTanLoc_Resume.pdf" data-resume-preview
           data-i18n="nav.resume">Resume</a>
       </div>
     </div>
@@ -126,7 +126,7 @@
             Building reliable data systems for meaningful impact.
           </h1>
           <p class="hero-lede" data-i18n="hero.lede">
-            I'm Tân Lộc, a Data Engineering student at HCMUTE (graduating 2027). I focus on data pipelines, analytics, and computer vision, actively seeking internship opportunities across DE, DA, and CV in HCM &amp; Dong Nai.
+            I'm Tan Loc, a Data Engineering student at HCMUTE (graduating 2027). I focus on data pipelines, analytics, and computer vision, actively seeking internship opportunities across DE, DA, and CV in HCM &amp; Dong Nai.
           </p>
           <div class="hero-cta">
             <a class="btn-primary" href="#projects" data-i18n="hero.cta.primary">Explore Projects</a>
@@ -137,7 +137,7 @@
 
         <!-- Editorial visual: restrained data-lab motif (pure CSS/SVG, no fake photos) -->
         <figure class="hero-visual" aria-label="Abstract pipeline motif: source, stream, and warehouse">
-          <svg class="hero-motif" viewBox="0 0 320 300" aria-hidden="true">
+          <svg class="hero-motif" viewBox="0 0 320 300">
             <defs>
               <marker id="hero-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6"
                 orient="auto-start-reverse">
@@ -153,20 +153,28 @@
             </g>
             <!-- pipeline -->
             <g>
-              <rect class="pipe-node" x="24" y="70" width="72" height="48" />
-              <text class="pipe-label" x="40" y="98">source</text>
+              <g class="pipe-group" data-node="source">
+                <rect class="pipe-node" x="24" y="70" width="72" height="48" />
+                <text class="pipe-label" x="40" y="98">source</text>
+              </g>
 
-              <rect class="pipe-node pipe-node-acc" x="124" y="70" width="72" height="48" />
-              <text class="pipe-label" x="140" y="98">stream</text>
+              <g class="pipe-group is-selected" data-node="stream">
+                <rect class="pipe-node pipe-node-acc" x="124" y="70" width="72" height="48" />
+                <text class="pipe-label" x="140" y="98">stream</text>
+              </g>
 
-              <rect class="pipe-node" x="224" y="70" width="72" height="48" />
-              <text class="pipe-label" x="240" y="98">store</text>
+              <g class="pipe-group" data-node="store">
+                <rect class="pipe-node" x="224" y="70" width="72" height="48" />
+                <text class="pipe-label" x="240" y="98">store</text>
+              </g>
 
               <path class="pipe-line" d="M96 94 H124" />
               <path class="pipe-line" d="M196 94 H224" />
 
-              <rect class="pipe-node" x="124" y="190" width="72" height="48" />
-              <text class="pipe-label" x="140" y="218">model</text>
+              <g class="pipe-group" data-node="model">
+                <rect class="pipe-node" x="124" y="190" width="72" height="48" />
+                <text class="pipe-label" x="140" y="218">model</text>
+              </g>
               <path class="pipe-line" d="M160 118 V190" />
 
               <!-- one signal pulse that SPLITS at the stream:
@@ -184,8 +192,14 @@
             </g>
           </svg>
 
-          <!-- floating note -->
-          <div class="hero-note" role="note" aria-label="Design principle">
+          <!-- interactive layer inspector note -->
+          <div class="hero-note" role="region" aria-label="Pipeline layer inspector">
+            <div class="hero-layer-tabs" role="tablist" aria-label="Inspect pipeline layers">
+              <button type="button" class="hero-layer-btn" role="tab" aria-selected="false" data-node="source">01 · source</button>
+              <button type="button" class="hero-layer-btn is-active" role="tab" aria-selected="true" data-node="stream">02 · stream</button>
+              <button type="button" class="hero-layer-btn" role="tab" aria-selected="false" data-node="store">03 · store</button>
+              <button type="button" class="hero-layer-btn" role="tab" aria-selected="false" data-node="model">04 · model</button>
+            </div>
             <p class="hero-note-label" data-i18n="hero.note.label">Design rule</p>
             <p class="hero-note-text" data-i18n="hero.note.text">One source of truth per layer — if a number disagrees,
               the disagreement is findable.</p>
@@ -213,10 +227,10 @@
               <span class="status-text" data-i18n="about.f.open.v">Internships: DE · DA · CV (HCM / Dong Nai)</span>
             </div>
             <div class="bento-portrait-frame">
-              <img src="assets/images/anh-cv.jpg" alt="Nguyễn Đình Tân Lộc" class="bento-portrait-img" width="437" height="614" loading="lazy">
+              <img src="assets/images/anh-cv.jpg" alt="Nguyễn Đình Tan Loc" class="bento-portrait-img" width="437" height="614" loading="lazy">
             </div>
             <div class="bento-card-footer">
-              <span data-i18n="about.portrait.cap">Tân Lộc · Data Engineering</span>
+              <span data-i18n="about.portrait.cap">Tan Loc · Data Engineering</span>
             </div>
           </article>
 
@@ -333,10 +347,14 @@
                 <span class="link-label">LinkedIn</span>
                 <span class="link-val">lộc-nguyễn →</span>
               </a>
-              <a class="bento-action-link bento-action-highlight" href="assets/docs/NguyenDinhTanLoc_Resume.pdf" download="NguyenDinhTanLoc_Resume.pdf">
+              <a class="bento-action-link bento-action-highlight" href="assets/docs/NguyenDinhTanLoc_Resume.pdf" data-resume-preview>
                 <span class="link-label" data-i18n="c.resume.k">Resume</span>
                 <span class="link-val" data-i18n="c.resume.v">Download PDF ↓</span>
               </a>
+              <button type="button" class="bento-action-link" data-copy-pitch>
+                <span class="link-label" data-i18n="bento.pitch.k">30s Pitch</span>
+                <span class="link-val" data-i18n="bento.pitch.v">Copy summary ⎘</span>
+              </button>
             </div>
           </article>
         </div>
@@ -350,7 +368,7 @@
           <span class="section-badge" data-i18n="projects.badge">Projects · Work</span>
           <h2 id="projects-title" class="section-title" data-i18n="projects.title">Selected work, by discipline</h2>
           <p class="section-note" data-i18n="projects.note">
-            Telemetry pipelines, idempotent warehouse models, and reproducible vision training.
+            Decoupled data lakehouse, decision-support analytics, and metadata-stratified active learning.
           </p>
         </div>
 
@@ -378,67 +396,63 @@
               <span class="project-cat">Data Engineering</span>
               <span class="project-status"><span class="status-dot-pulse status-dot-amber" aria-hidden="true"></span><span data-i18n="p.status.wip">in progress</span></span>
             </header>
-            <h3 id="p1-title" class="project-name" data-i18n="p1.name">Streaming telemetry pipeline</h3>
+            <h3 id="p1-title" class="project-name" data-i18n="p1.name">PropMatch Engine — PropTech Data Lakehouse</h3>
             <p class="project-problem" data-i18n="p1.problem">
-              Sensor telemetry from multiple sources had to reach dashboards in seconds,
-              survive restarts, and be rebuildable when upstream schema changes.
+              Multi-source real-estate listings suffer from duplicate entities, inconsistent pricing/coordinates, and price anomalies — requiring a decoupled compute-storage lakehouse with zero silent data loss.
             </p>
             <p class="project-impl" data-i18n="p1.impl" data-i18n-type="html">
-              Telegraf into Redpanda; Airflow-orchestrated extraction; idempotent dbt
-              models in bronze/silver/gold; loss proven by per-event
-              <code>event_id</code> reconciliation plus kill/restart tests.
+              Immutable Raw &amp; Dead-Letter storage on MinIO; Polars &amp; Pydantic normalization to Silver GeoParquet; multi-pass blocking + NetworkX graph Entity Resolution &amp; Z-score/IQR risk scoring into Gold via DuckDB Spatial and <code>dbt-duckdb</code>.
             </p>
             <p class="project-tech" aria-label="Technologies">
               <span class="tech-label" data-i18n="p.techlabel">stack</span>
-              Telegraf · Redpanda · Airflow · PostgreSQL · dbt · Metabase
+              Python · Polars · DuckDB Spatial · dbt-duckdb · MinIO · GeoParquet · Docker
             </p>
             <div class="pipeline-flow" aria-label="Pipeline Architecture Flow">
               <span class="flow-label" data-i18n="p.flowlabel">Pipeline Architecture</span>
               <div class="flow-track">
                 <div class="flow-step">
                   <span class="flow-step-idx">01</span>
-                  <span class="flow-step-name">Sensors</span>
-                  <span class="flow-step-sub">Telemetry</span>
+                  <span class="flow-step-name">Crawler / Seed</span>
+                  <span class="flow-step-sub">Ingest</span>
                 </div>
                 <span class="flow-arrow" aria-hidden="true">→</span>
                 <div class="flow-step">
                   <span class="flow-step-idx">02</span>
-                  <span class="flow-step-name">Telegraf</span>
-                  <span class="flow-step-sub">Ingest</span>
+                  <span class="flow-step-name">MinIO Raw + DLQ</span>
+                  <span class="flow-step-sub">Immutable S3</span>
                 </div>
                 <span class="flow-arrow" aria-hidden="true">→</span>
                 <div class="flow-step flow-step-highlight">
                   <span class="flow-step-idx">03</span>
-                  <span class="flow-step-name">Redpanda</span>
-                  <span class="flow-step-sub">Event stream</span>
+                  <span class="flow-step-name">Polars &amp; GeoParquet</span>
+                  <span class="flow-step-sub">Silver SoT</span>
                 </div>
                 <span class="flow-arrow" aria-hidden="true">→</span>
                 <div class="flow-step">
                   <span class="flow-step-idx">04</span>
-                  <span class="flow-step-name">Airflow &amp; dbt</span>
-                  <span class="flow-step-sub">Medallion</span>
+                  <span class="flow-step-name">Entity Resolution</span>
+                  <span class="flow-step-sub">DuckDB + NetworkX</span>
                 </div>
                 <span class="flow-arrow" aria-hidden="true">→</span>
                 <div class="flow-step">
                   <span class="flow-step-idx">05</span>
-                  <span class="flow-step-name">Postgres &amp; BI</span>
-                  <span class="flow-step-sub">Metabase</span>
+                  <span class="flow-step-name">Gold &amp; Spatial BI</span>
+                  <span class="flow-step-sub">dbt-duckdb</span>
                 </div>
               </div>
             </div>
             <p class="project-result">
               <span class="result-label" data-i18n="p.resultlabel">Target estimate</span>
-              <span data-i18n="p1.result" data-i18n-type="html">0% event loss over the reconciliation window; &lt;30s
-                recovery after broker restart</span>
+              <span data-i18n="p1.result" data-i18n-type="html">Zero silent data loss (DLQ + Review Queue quarantine), zero false merges in Gold, and 100% reproducible replay from immutable Raw storage</span>
             </p>
-            <!-- Pending block: no real logs yet (project in progress). Paste real run output here when the pipeline ships. -->
-            <div class="evidence" aria-label="Verification run log — pending real data">
-              <span class="ev-label" data-i18n="p1.evlabel">run log · pending</span>
-              <p class="ev-line"><span class="ev-prompt">$</span> reconciliation — awaiting first full pipeline run</p>
-              <p class="ev-line"><span class="ev-mute" data-i18n="p1.evl2">will show here: sent / received / lost, kill-restart replay, p95</span></p>
+            <div class="evidence" aria-label="Verification run log">
+              <span class="ev-label" data-i18n="p1.evlabel">lakehouse · develop branch</span>
+              <p class="ev-line"><span class="ev-prompt">$</span> docker compose exec etl python -m propmatch.pipeline --stage full</p>
+              <p class="ev-line"><span class="ev-mute" data-i18n="p1.evl2">raw → silver GeoParquet → multi-pass ER &amp; Z-score/IQR risk → gold</span></p>
             </div>
             <footer class="project-links">
-              <a class="link-arrow" href="https://github.com/nguyendinhtanloc" target="_blank" rel="noopener"
+              <button type="button" class="btn-case-study" data-case="p1" data-i18n="p.casestudy">Architecture specs</button>
+              <a class="link-arrow" href="https://github.com/nguyendinhtanloc-Org/propmatch-engine/tree/develop" target="_blank" rel="noopener"
                 data-i18n="p.repo" data-i18n-type="html">Repository <span aria-hidden="true">→</span></a>
             </footer>
           </article>
@@ -517,62 +531,65 @@
           <article class="project project-cv" aria-labelledby="p3-title">
             <header class="project-top">
               <span class="project-cat">Computer Vision</span>
-              <span class="project-status project-status-planned"><span class="status-dot-pulse status-dot-blue" aria-hidden="true"></span><span data-i18n="p.status.planned">planned</span></span>
+              <span class="project-status"><span class="status-dot-pulse status-dot-amber" aria-hidden="true"></span><span data-i18n="p.status.wip">in progress</span></span>
             </header>
-            <h3 id="p3-title" class="project-name" data-i18n="p3.name">Vision model, training-to-serving</h3>
+            <h3 id="p3-title" class="project-name" data-i18n="p3.name">Metadata-Stratified Active Learning (BDD100K)</h3>
             <p class="project-problem" data-i18n="p3.problem">
-              A vision model had to move from notebook to a reproducible setup: tracked
-              runs, resumable checkpoints, and a clean path to a serving artifact.
+              Standard uncertainty sampling in autonomous-driving object detection suffers from batch diversity collapse, degrading mAP on rare safety-critical slices (adverse weather, night).
             </p>
             <p class="project-impl" data-i18n="p3.impl">
-              PyTorch loop with DataLoader + AMP where it paid off; MLflow for run
-              comparison; MinIO for datasets and checkpoints; Docker for the artifact.
+              Hybrid Top-K uncertainty filtering, square-root frequency quota allocation, and 3D Iterative Proportional Fitting (IPF / Sinkhorn) across weather, scene, and timeofday with YOLOv8n.
             </p>
             <p class="project-tech" aria-label="Technologies">
               <span class="tech-label" data-i18n="p.techlabel">stack</span>
-              PyTorch · MLflow · MinIO · Docker
+              Python · PyTorch · YOLOv8 · BDD100K · IPF / Sinkhorn · pytest · Docker
             </p>
             <div class="pipeline-flow" aria-label="Pipeline Architecture Flow">
               <span class="flow-label" data-i18n="p.flowlabel">Pipeline Architecture</span>
               <div class="flow-track">
                 <div class="flow-step">
                   <span class="flow-step-idx">01</span>
-                  <span class="flow-step-name">Dataset</span>
-                  <span class="flow-step-sub">Images</span>
+                  <span class="flow-step-name">BDD100K Pool</span>
+                  <span class="flow-step-sub">Metadata index</span>
                 </div>
                 <span class="flow-arrow" aria-hidden="true">→</span>
                 <div class="flow-step">
                   <span class="flow-step-idx">02</span>
-                  <span class="flow-step-name">PyTorch + AMP</span>
-                  <span class="flow-step-sub">Training loop</span>
+                  <span class="flow-step-name">Hybrid Top-K</span>
+                  <span class="flow-step-sub">Box uncertainty</span>
                 </div>
                 <span class="flow-arrow" aria-hidden="true">→</span>
                 <div class="flow-step flow-step-highlight">
                   <span class="flow-step-idx">03</span>
-                  <span class="flow-step-name">MLflow</span>
-                  <span class="flow-step-sub">Run lineage</span>
+                  <span class="flow-step-name">IPF / Sinkhorn</span>
+                  <span class="flow-step-sub">3D Stratification</span>
                 </div>
                 <span class="flow-arrow" aria-hidden="true">→</span>
                 <div class="flow-step">
                   <span class="flow-step-idx">04</span>
-                  <span class="flow-step-name">MinIO</span>
-                  <span class="flow-step-sub">Checkpoints</span>
+                  <span class="flow-step-name">YOLOv8n Loop</span>
+                  <span class="flow-step-sub">3 seeds × 6 runs</span>
                 </div>
                 <span class="flow-arrow" aria-hidden="true">→</span>
                 <div class="flow-step">
                   <span class="flow-step-idx">05</span>
-                  <span class="flow-step-name">Docker API</span>
-                  <span class="flow-step-sub">Serving</span>
+                  <span class="flow-step-name">Statistical Test</span>
+                  <span class="flow-step-sub">Paired t-test</span>
                 </div>
               </div>
             </div>
             <p class="project-result">
               <span class="result-label" data-i18n="p.resultlabel">Target estimate</span>
-              <span data-i18n="p3.result" data-i18n-type="html">Tracked runs beat the baseline with full lineage and
-                reproducible checkpoints</span>
+              <span data-i18n="p3.result" data-i18n-type="html">+2.08% mAP<sub>50</sub> on adverse_weather domain; batch Shannon entropy reaches 5.20 vs 3.84 bits (p = 0.00076, Cohen's d = 20.93)</span>
             </p>
+            <div class="evidence" aria-label="Experimental verification log">
+              <span class="ev-label" data-i18n="p3.evlabel">bdd100k · 3 seeds verified</span>
+              <p class="ev-line"><span class="ev-prompt">$</span> pytest test/ -v &amp;&amp; bash scripts/run_stratify.sh</p>
+              <p class="ev-line"><span class="ev-mute" data-i18n="p3.evl2">35/35 unit tests pass · adverse_weather mAP50: 0.3430 vs 0.3223 (+2.08%)</span></p>
+            </div>
             <footer class="project-links">
-              <a class="link-arrow" href="https://github.com/nguyendinhtanloc" target="_blank" rel="noopener"
+              <button type="button" class="btn-case-study" data-case="p3" data-i18n="p.casestudy">Architecture specs</button>
+              <a class="link-arrow" href="https://github.com/nguyendinhtanloc-Org/metadata-stratified-active-learning/tree/develop" target="_blank" rel="noopener"
                 data-i18n="p.repo" data-i18n-type="html">Repository <span aria-hidden="true">→</span></a>
             </footer>
           </article>
@@ -584,6 +601,31 @@
             rel="noopener">GitHub <span aria-hidden="true">→</span></a>
           <span data-i18n="projects.more.b">— including coursework and tooling projects.</span>
         </p>
+
+        <!-- Engineering Notes & Architecture Decision Records (ADRs) -->
+        <div class="adr-block" aria-labelledby="adr-heading">
+          <div class="adr-head">
+            <span class="adr-badge" data-i18n="adr.badge">Engineering Notes · ADR</span>
+            <h3 id="adr-heading" class="adr-title" data-i18n="adr.title">Architecture decisions &amp; research write-ups</h3>
+          </div>
+          <div class="adr-list">
+            <button type="button" class="adr-item" data-case="adr1">
+              <span class="adr-code">ADR-01</span>
+              <span class="adr-name" data-i18n="adr1.name">Why MinIO + Polars + DuckDB Spatial ($0) instead of a Spark cluster for &lt;1M listings</span>
+              <span class="adr-read" data-i18n="adr.read">Read note →</span>
+            </button>
+            <button type="button" class="adr-item" data-case="adr2">
+              <span class="adr-code">ADR-02</span>
+              <span class="adr-name" data-i18n="adr2.name">Preventing Batch Diversity Collapse on BDD100K with 3D Iterative Proportional Fitting (IPF / Sinkhorn)</span>
+              <span class="adr-read" data-i18n="adr.read">Read note →</span>
+            </button>
+            <button type="button" class="adr-item" data-case="adr3">
+              <span class="adr-code">JTE-26</span>
+              <span class="adr-name" data-i18n="adr3.name">Application of Comics Generation Techniques in the Visualization of Vietnamese Folk Tales (DOI: 10.54644/jte.2026.2148)</span>
+              <span class="adr-read" data-i18n="adr.read">Read note →</span>
+            </button>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -711,9 +753,7 @@
     </section>
 
     <!-- ============ ENDORSEMENTS ============ -->
-    <!-- Pending real names + quotes from mentors/advisors. Unhide once they exist;
-         remove `hidden` below and the matching cmd-item, then repoint PRODUCT.md Evidence. -->
-    <section class="section endorsements" id="endorsements" aria-labelledby="endorsements-title" hidden>
+    <section class="section endorsements" id="endorsements" aria-labelledby="endorsements-title">
       <div class="container">
         <div class="section-head">
           <span class="section-badge" data-i18n="end.badge">References · Endorsements</span>
@@ -776,11 +816,16 @@
                 <span class="dots" aria-hidden="true"></span>
                 <span class="contact-val">linkedin.com/in/lộc-nguyễn</span>
               </a>
-              <a class="contact-line" href="assets/docs/NguyenDinhTanLoc_Resume.pdf" download="NguyenDinhTanLoc_Resume.pdf">
+              <div class="contact-line">
                 <span class="contact-key" data-i18n="c.resume.k">Resume</span>
                 <span class="dots" aria-hidden="true"></span>
-                <span class="contact-val" data-i18n="c.resume.v">Download PDF ↓</span>
-              </a>
+                <div class="contact-actions">
+                  <a class="contact-val" href="assets/docs/NguyenDinhTanLoc_Resume.pdf" download="NguyenDinhTanLoc_Resume.pdf" data-i18n="c.resume.v">Download PDF ↓</a>
+                  <button type="button" class="btn-copy btn-resume-preview" data-resume-preview aria-label="Preview Resume PDF">
+                    <span class="copy-status" data-i18n="c.resume.preview">preview</span>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -818,12 +863,12 @@
       <div class="cert-modal-header">
         <div>
           <h3 id="cert-modal-title" class="cert-modal-title" data-i18n="cert.modal.title">Big Data Certification</h3>
-          <p class="cert-modal-sub" data-i18n="cert.modal.sub">Samsung Innovation Campus · Awarded to Nguyễn Đình Tân Lộc</p>
+          <p class="cert-modal-sub" data-i18n="cert.modal.sub">Samsung Innovation Campus · Awarded to Nguyễn Đình Tan Loc</p>
         </div>
         <button type="button" class="cert-modal-close" id="cert-modal-close" aria-label="Close modal">✕</button>
       </div>
       <div class="cert-modal-body">
-        <img src="assets/images/bd-certificate.jpg" alt="Samsung Innovation Campus Certificate - Nguyễn Đình Tân Lộc" class="cert-full-image" loading="lazy">
+        <img data-src="assets/images/bd-certificate.jpg" alt="Samsung Innovation Campus Certificate - Nguyễn Đình Tan Loc" class="cert-full-image" loading="lazy" decoding="async">
       </div>
       <div class="cert-modal-footer">
         <a href="assets/images/bd-certificate.jpg" target="_blank" rel="noopener" class="cert-modal-external">
@@ -833,12 +878,64 @@
     </div>
   </div>
 
+  <!-- ============ CASE STUDY ARCHITECTURE MODAL ============ -->
+  <div id="case-study-modal" class="cert-modal case-study-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="case-study-title">
+    <div class="cert-modal-backdrop" id="case-study-backdrop"></div>
+    <div class="cert-modal-dialog case-study-dialog">
+      <div class="cert-modal-header">
+        <div>
+          <span class="case-study-cat" id="case-study-cat">Data Engineering</span>
+          <h3 id="case-study-title" class="cert-modal-title">PropMatch Engine</h3>
+        </div>
+        <button type="button" class="cert-modal-close" id="case-study-close" aria-label="Close case study">✕</button>
+      </div>
+      <div class="cert-modal-body case-study-body" id="case-study-body"></div>
+      <div class="cert-modal-footer case-study-footer">
+        <a href="https://github.com/nguyendinhtanloc" target="_blank" rel="noopener" class="btn-primary case-study-repo-btn" id="case-study-repo-link" data-i18n="p.repo" data-i18n-type="html">Repository <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ RESUME INLINE PREVIEW MODAL ============ -->
+  <div id="resume-modal" class="cert-modal resume-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="resume-modal-title">
+    <div class="cert-modal-backdrop" id="resume-modal-backdrop"></div>
+    <div class="cert-modal-dialog resume-modal-dialog">
+      <div class="cert-modal-header">
+        <div>
+          <h3 id="resume-modal-title" class="cert-modal-title" data-i18n="resume.modal.title">Résumé — Nguyễn Đình Tân Lộc</h3>
+          <p class="cert-modal-sub" data-i18n="resume.modal.sub">Data Engineering · Analytics · Computer Vision</p>
+        </div>
+        <button type="button" class="cert-modal-close" id="resume-modal-close" aria-label="Close resume preview">✕</button>
+      </div>
+      <div class="cert-modal-body resume-modal-body">
+        <iframe id="resume-iframe" class="resume-iframe" title="Résumé PDF Preview" loading="lazy"></iframe>
+      </div>
+      <div class="cert-modal-footer">
+        <a href="assets/docs/NguyenDinhTanLoc_Resume.pdf" download="NguyenDinhTanLoc_Resume.pdf" class="btn-primary" data-i18n="c.resume.v">Download PDF ↓</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ FLOATING BACK TO TOP & PROGRESS RING ============ -->
+  <button type="button" id="floating-top-btn" class="floating-top-btn" aria-label="Back to top" title="Back to top">
+    <svg class="floating-top-ring" viewBox="0 0 40 40" aria-hidden="true">
+      <circle class="ring-track" cx="20" cy="20" r="17" />
+      <circle class="ring-progress" id="floating-top-progress" cx="20" cy="20" r="17" />
+    </svg>
+    <span class="floating-top-arrow" aria-hidden="true">↑</span>
+  </button>
+
+  <!-- ============ TOAST NOTIFICATION ============ -->
+  <div id="pf-toast" class="pf-toast" role="status" aria-live="polite" aria-hidden="true">
+    <span class="pf-toast-dot" aria-hidden="true">✓</span>
+    <span class="pf-toast-text" id="pf-toast-text"></span>
+  </div>
+
   <footer class="footer">
     <div class="container footer-inner">
-      <p>© <span class="js-year">2026</span> Nguyễn Đình Tân Lộc</p>
+      <p>© <span class="js-year">2026</span> <span data-i18n="footer.name">Nguyễn Đình Tan Loc</span></p>
       <p class="footer-meta" data-i18n="footer.meta" data-i18n-type="html">Set in Inter &amp; IBM Plex Mono —
         no framework, no build step.</p>
-      <a class="footer-top" href="#top" data-i18n="footer.top">Back to top ↑</a>
     </div>
   </footer>
 
@@ -860,7 +957,7 @@
         </div>
         <div class="cmd-item" role="option" tabindex="-1" data-action="nav" data-target="#about">
           <svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-          <span class="cmd-item-text" data-i18n="cmd.item.about">About Tân Lộc</span>
+          <span class="cmd-item-text" data-i18n="cmd.item.about">About Tan Loc</span>
           <span class="cmd-item-meta">01</span>
         </div>
         <div class="cmd-item" role="option" tabindex="-1" data-action="nav" data-target="#projects">
@@ -878,26 +975,37 @@
           <span class="cmd-item-text" data-i18n="cmd.item.exp">Experience &amp; Education</span>
           <span class="cmd-item-meta">04</span>
         </div>
-        <!-- Endorsements entry hidden with the section until real references exist. -->
+        <div class="cmd-item" role="option" tabindex="-1" data-action="nav" data-target="#endorsements">
+          <svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <span class="cmd-item-text" data-i18n="cmd.item.endorsements">From Mentors &amp; Advisors</span>
+          <span class="cmd-item-meta">05</span>
+        </div>
         <div class="cmd-item" role="option" tabindex="-1" data-action="nav" data-target="#contact">
           <svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,6 12,13 2,6"/></svg>
           <span class="cmd-item-text" data-i18n="cmd.item.contact">Contact &amp; Quick Dispatch</span>
-          <span class="cmd-item-meta">05</span>
+          <span class="cmd-item-meta">06</span>
         </div>
 
         <div class="cmd-group-label" data-i18n="cmd.group.actions">Quick Actions</div>
         <div class="cmd-item" role="option" tabindex="-1" data-action="toggle-theme">
           <svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
           <span class="cmd-item-text" data-i18n="cmd.item.theme">Toggle Dark / Light Theme</span>
+          <kbd class="cmd-shortcut">T</kbd>
         </div>
         <div class="cmd-item" role="option" tabindex="-1" data-action="toggle-lang">
           <svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
           <span class="cmd-item-text" data-i18n="cmd.item.lang">Switch Language (EN / VI)</span>
+          <kbd class="cmd-shortcut">L</kbd>
         </div>
-        <div class="cmd-item" role="option" tabindex="-1" data-action="download-resume">
+        <div class="cmd-item" role="option" tabindex="-1" data-action="preview-resume">
           <svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg>
-          <span class="cmd-item-text" data-i18n="cmd.item.resume">Download Résumé PDF</span>
-          <span class="cmd-item-meta">PDF</span>
+          <span class="cmd-item-text" data-i18n="cmd.item.resume">Preview / Download Résumé PDF</span>
+          <kbd class="cmd-shortcut">R</kbd>
+        </div>
+        <div class="cmd-item" role="option" tabindex="-1" data-action="copy-pitch">
+          <svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span class="cmd-item-text" data-i18n="cmd.item.pitch">Copy 30s Recruiter Summary</span>
+          <kbd class="cmd-shortcut">C</kbd>
         </div>
         <div class="cmd-item" role="option" tabindex="-1" data-action="view-cert">
           <svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 5.21 21 12 17.77 18.79 21 15.79 13.89"/></svg>
@@ -913,16 +1021,16 @@
     </div>
   </div>
 
-  <script src="js/i18n.js" defer></script>
-  <script src="js/endorsements.js" defer></script>
-  <script src="js/theme.js" defer></script>
-  <script src="js/navigation.js" defer></script>
-  <script src="js/modal.js" defer></script>
-  <script src="js/contact-form.js" defer></script>
-  <script src="js/project-filter.js" defer></script>
-  <script src="js/terminal-runner.js" defer></script>
-  <script src="js/clock.js" defer></script>
-  <script src="js/command-palette.js" defer></script>
+  <script src="js/i18n.js?v=5" defer></script>
+  <script src="js/endorsements.js?v=5" defer></script>
+  <script src="js/theme.js?v=5" defer></script>
+  <script src="js/navigation.js?v=5" defer></script>
+  <script src="js/modal.js?v=5" defer></script>
+  <script src="js/contact-form.js?v=5" defer></script>
+  <script src="js/project-filter.js?v=5" defer></script>
+  <script src="js/terminal-runner.js?v=5" defer></script>
+  <script src="js/clock.js?v=5" defer></script>
+  <script src="js/command-palette.js?v=5" defer></script>
 </body>
 
 </html>

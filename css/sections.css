@@ -133,10 +133,21 @@
 
 .dot circle { fill: var(--hairline-soft); }
 
+.pipe-group {
+  cursor: pointer;
+  outline: none;
+}
+
 .pipe-node {
   fill: var(--surface);
   stroke: var(--ink);
   stroke-width: 1.5;
+  transition: fill 0.2s ease, stroke 0.2s ease;
+}
+
+.pipe-group:hover .pipe-node,
+.pipe-group:focus-visible .pipe-node {
+  stroke: var(--accent);
 }
 
 .pipe-node-acc {
@@ -148,6 +159,7 @@
   font-family: var(--font-mono);
   font-size: 11px;
   fill: var(--ink);
+  pointer-events: none;
 }
 
 .pipe-line {
@@ -167,6 +179,40 @@
   border-radius: 4px;
   padding: 0.85rem 1.1rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.hero-layer-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.65rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.hero-layer-btn {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: 3px;
+  padding: 0.18rem 0.48rem;
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.hero-layer-btn:hover {
+  color: var(--ink);
+  border-color: var(--ink);
+}
+
+.hero-layer-btn.is-active {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  font-weight: 600;
 }
 
 [data-theme="dark"] .hero-note {
@@ -779,8 +825,29 @@
   margin-top: auto;
   padding-top: 1.1rem;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   flex-wrap: wrap;
-  gap: 1.1rem;
+  gap: 0.75rem 1.1rem;
+}
+
+.btn-case-study {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 500;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: 4px;
+  padding: 0.34rem 0.72rem;
+  cursor: pointer;
+  transition: border-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+
+.btn-case-study:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-1px);
 }
 
 .projects-more {
@@ -790,6 +857,104 @@
 }
 
 .projects-more .link-arrow { color: var(--ink); font-weight: 500; }
+
+/* Engineering Notes & Architecture Decision Records (ADRs) */
+.adr-block {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--hairline);
+}
+
+.adr-head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-bottom: 1.1rem;
+}
+
+.adr-badge {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.adr-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+.adr-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.adr-item {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 4.5rem 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 1.15rem;
+  background: var(--paper);
+  border: 1px solid var(--hairline);
+  border-radius: 5px;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.18s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.2s ease;
+}
+
+.adr-item:hover {
+  border-color: var(--accent);
+  transform: translateX(3px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+}
+
+.adr-code {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  border-radius: 3px;
+  padding: 0.15rem 0.4rem;
+  text-align: center;
+}
+
+.adr-name {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.45;
+}
+
+.adr-read {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--muted);
+  white-space: nowrap;
+  transition: color 0.15s ease;
+}
+
+.adr-item:hover .adr-read {
+  color: var(--accent);
+}
+
+@media (max-width: 640px) {
+  .adr-item {
+    grid-template-columns: 1fr;
+    gap: 0.45rem;
+  }
+  .adr-code {
+    width: fit-content;
+  }
+}
 
 /* ---------- Skills Section ---------- */
 .skill-groups {
@@ -892,6 +1057,13 @@
   background: var(--paper);
   border: 1.5px solid var(--ink);
   transform: rotate(45deg);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.timeline-item:hover::before {
+  transform: rotate(45deg) scale(1.28);
+  border-color: var(--accent);
 }
 
 .timeline-item.tl-de::before {
@@ -1055,6 +1227,13 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+/* A lone endorsement renders as one featured card, capped so it does
+   not stretch edge-to-edge on wide screens. */
+.endorsement-grid.is-1col {
+  grid-template-columns: 1fr;
+  max-width: 38rem;
+}
+
 .endorsements-actions {
   margin-top: 1.75rem;
   display: flex;
@@ -1150,7 +1329,7 @@
   .hero-visual { max-width: 32rem; }
 
   .bento-grid {
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(6, minmax(0, 1fr));
   }
   .bento-portrait-card { grid-column: span 6; }
   .bento-story-card { grid-column: span 6; }
@@ -1158,7 +1337,7 @@
   .bento-principle-card { grid-column: span 6; }
   .bento-connect-card { grid-column: span 6; }
 
-  .project-grid { grid-template-columns: 1fr; }
+  .project-grid { grid-template-columns: minmax(0, 1fr); }
 
   .skill-groups { grid-template-columns: 1fr; }
 
@@ -1219,5 +1398,70 @@
   .evidence .ev-line,
   .evidence .ev-mute {
     white-space: normal;
+  }
+}
+
+/* ---------- Motion Entrances (one-shot, composite-only) ----------
+   Hero content fades up on page load; the signal SVG split already fires
+   at 0.4s/1.5s, so the 0.25s base delay lands just before it. */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-issue,
+  .hero-title,
+  .hero-lede,
+  .hero-cta,
+  .hero-visual {
+    animation: hero-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.25s backwards;
+  }
+
+  .hero-title { animation-delay: 0.31s; }
+  .hero-lede { animation-delay: 0.37s; }
+  .hero-cta { animation-delay: 0.43s; }
+  .hero-visual { animation-delay: 0.49s; }
+
+  @keyframes hero-in {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+  }
+
+  /* Bento cards reveal with a 50ms stagger — animation-delay only,
+     so hover transitions on .bento-card are unaffected. */
+  .bento-grid .bento-card.reveal.is-visible:nth-child(1) { animation-delay: 0s; }
+  .bento-grid .bento-card.reveal.is-visible:nth-child(2) { animation-delay: 0.05s; }
+  .bento-grid .bento-card.reveal.is-visible:nth-child(3) { animation-delay: 0.1s; }
+  .bento-grid .bento-card.reveal.is-visible:nth-child(4) { animation-delay: 0.15s; }
+  .bento-grid .bento-card.reveal.is-visible:nth-child(5) { animation-delay: 0.2s; }
+
+  /* The pipeline flow lights up step-by-step as its card reveals —
+     the one motion that shows data moving through the architecture.
+     Subtle, one-shot, composite-only (opacity + small Y). */
+  .project.reveal.is-visible .flow-step {
+    animation: flow-step-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  }
+  .project.reveal.is-visible .flow-step:nth-child(1) { animation-delay: 0.15s; }
+  .project.reveal.is-visible .flow-step:nth-child(3) { animation-delay: 0.24s; }
+  .project.reveal.is-visible .flow-step:nth-child(5) { animation-delay: 0.33s; }
+  .project.reveal.is-visible .flow-step:nth-child(7) { animation-delay: 0.42s; }
+  .project.reveal.is-visible .flow-step:nth-child(9) { animation-delay: 0.51s; }
+
+  @keyframes flow-step-in {
+    from {
+      opacity: 0;
+      transform: translateY(5px);
+    }
+  }
+
+  .endorsement-card.is-entering {
+    animation: reveal-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  }
+}
+
+/* Placed at the end of the file: this rule sits FURTHER DOWN than the
+   .status-pulse base (line ~263), so it wins the cascade. Stopping the
+   infinite loop for reduced-motion users. */
+@media (prefers-reduced-motion: reduce) {
+  .status-pulse {
+    animation: none;
   }
 }

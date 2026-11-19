@@ -12,7 +12,7 @@ Primary: technical recruiters and hiring leads for Data Engineering / Data Analy
 
 ## Product Purpose
 
-A static personal portfolio for Nguyễn Đình Tân Lộc (Data Engineering, HCMUTE, graduating 2027) that proves — not merely states — his DE/DA/CV capabilities. Success means: a recruiter can verify the three featured projects, read real references, and reach the owner (email/phone/resume PDF) without friction. It actively supports the job search for internships across DE, DA, and CV.
+A static personal portfolio for Nguyễn Đình Tan Loc (Data Engineering, HCMUTE, graduating 2027) that proves — not merely states — his DE/DA/CV capabilities. Success means: a recruiter can verify the three featured projects, read real references, and reach the owner (email/phone/resume PDF) without friction. It actively supports the job search for internships across DE, DA, and CV.
 
 ## Positioning
 
@@ -25,7 +25,7 @@ Static site, no build step, no framework, no npm. Deployed to Vercel (primary) a
 ## Capabilities and Constraints
 
 - Confirmed: vanilla HTML/CSS/JS modules in `js/` (i18n, theme, navigation, modal, contact form, spotlight, project filter, terminal runner, clock, command palette, endorsements); CSS split into 5 files under `css/` imported via `styles.css`; EN/VI toggle persisted in `localStorage`.
-- Hard constraint (user-confirmed): **evidence-first**. Every number on the page must be real. Project evidence blocks (`index.html` lines ~430, ~503) are currently *sample data* per their own comments and must be replaced with real output or removed before the site is treated as recruiter-facing. Endorsement author names in `js/endorsements.js` are still placeholders (`[Advisor Name]`, `[Mentor Name]`, `[Supervisor Name]`) and must not be presented as real references until real names/quotes exist.
+- Hard constraint (user-confirmed): **evidence-first**. Every number on the page must be real. Project evidence blocks (`index.html` lines ~430, ~503) are currently *sample data* per their own comments and must be replaced with real output or removed before the site is treated as recruiter-facing. Endorsements: one real named reference now live in `js/endorsements.js` (ThS. Lê Minh Tân, NCKH · HCMUTE); two more are drafted behind a comment block and still use placeholder names (`[Mentor Name]`, `[Supervisor Name]`) — they must not be re-enabled until real names/quotes exist.
 - Constraint: no new runtime dependencies; no build step; keeps both deploy targets working.
 - Open decision: canonical URL / `og:url` are intentionally absent until the final domain is chosen (noted in `index.html` comment).
 
@@ -42,7 +42,7 @@ Static site, no build step, no framework, no npm. Deployed to Vercel (primary) a
 - `assets/images/bd-certificate.jpg` — Samsung Innovation Campus Big Data certificate (real, shown in lightbox).
 - JTE research paper: co-authored, published — live link `https://jte.edu.vn/index.php/jte/article/view/2148` (DOI 10.54644/jte.2026.2148).
 - Internships claimed: AWS FCAJ (cloud & data, 10–12/2026), QT-Data VN (data, 10–11/2026).
-- Absent, and future work must NOT fabricate: real project run logs (current evidence blocks are marked samples), named mentors/supervisors (current endorsements are placeholders), deployment URL (canonical/og:url pending).
+- Absent, and future work must NOT fabricate: real project run logs (current evidence blocks are marked samples), named mentors/supervisors for the two placeholder endorsements kept in the comment block in `js/endorsements.js` (the ThS. Lê Minh Tân NCKH endorsement is real and live), deployment URL (canonical/og:url pending).
 
 ## Product Principles
 

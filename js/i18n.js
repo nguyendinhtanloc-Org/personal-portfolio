@@ -27,7 +27,7 @@ window.PF_I18N = (function () {
     "hero.issue": "Hồ sơ Kỹ thuật Dữ liệu · 2026",
     "hero.title": "Xây dựng hệ thống dữ liệu tin cậy tạo tác động thực tiễn.",
     "hero.lede":
-      "Tôi là Tân Lộc, sinh viên ngành Kỹ thuật Dữ liệu tại HCMUTE (dự kiến tốt nghiệp 2027). " +
+      "Tôi là Tấn Lộc, sinh viên ngành Kỹ thuật Dữ liệu tại HCMUTE (dự kiến tốt nghiệp 2027). " +
       "Định hướng chuyên sâu vào Data Engineering (DE), Data Analytics (DA) và Computer Vision (CV); " +
       "hiện đang tìm kiếm cơ hội thực tập thực tế tại TP.HCM & Đồng Nai.",
     "hero.cta.primary": "Xem dự án",
@@ -51,7 +51,7 @@ window.PF_I18N = (function () {
     "about.margin":
       "Ranh giới giữa sản phẩm thật và bản vẽ lý thuyết: " +
       "nhận định chưa chứng minh chỉ là <em>ước tính</em>, không bao giờ nhận là kết quả.",
-    "about.portrait.cap": "Tân Lộc · Kỹ thuật Dữ liệu",
+    "about.portrait.cap": "Tấn Lộc · Kỹ thuật Dữ liệu",
     "bento.story.tag": "Câu chuyện & Phương pháp",
     "bento.quote":
       "“Tập trung xây dựng nền tảng Kỹ nghệ dữ liệu vững chắc, năng lực phân tích thực tiễn và ứng dụng thị giác máy tính.”",
@@ -76,25 +76,22 @@ window.PF_I18N = (function () {
     "projects.badge": "Dự án · Kỹ nghệ",
     "projects.title": "Dự án chọn lọc, theo lĩnh vực",
     "projects.note":
-      "Pipeline telemetri, data model idempotent và mô hình thị giác có thể tái lập.",
+      "Lakehouse tách rời Compute & Storage, phân tích hỗ trợ quyết định và Active Learning phân tầng theo Metadata.",
     "p.status.wip": "đang thực hiện",
-    "p.status.planned": "dự kiến",
     "p.techlabel": "công nghệ",
     "p.flowlabel": "Kiến trúc luồng dữ liệu",
-    "p.resultlabel": "Mục tiêu ước tính",
+    "p.resultlabel": "Mục tiêu & kiểm định",
+    "p.casestudy": "Chi tiết kiến trúc",
     "p.repo": 'Mã nguồn <span aria-hidden="true">→</span>',
-    "p1.name": "Pipeline telemetri streaming",
+    "p1.name": "PropMatch Engine — Lakehouse hợp nhất & chấm điểm BĐS",
     "p1.problem":
-      "Telemetri từ nhiều nguồn cảm biến phải đến dashboard trong vài giây, sống qua " +
-      "restart, và build lại được khi schema đầu vào thay đổi.",
+      "Tin đăng bất động sản đa nguồn bị trùng lặp thực thể, lệch chuẩn giá/tọa độ và bất thường giá — cần kiến trúc Lakehouse tách rời Compute & Storage với cam kết không mất dữ liệu âm thầm.",
     "p1.impl":
-      "Telegraf vào Redpanda; Airflow điều phối trích xuất; model dbt idempotent theo " +
-      "Medallion (bronze/silver/gold); chứng minh không mất dữ liệu bằng đối chiếu " +
-      "<code>event_id</code> từng sự kiện kèm test kill/restart.",
+      "Lưu trữ Raw bất biến &amp; Dead-Letter trên MinIO; Polars &amp; Pydantic chuẩn hoá sang Silver GeoParquet; Entity Resolution đa tầng (NetworkX) &amp; chấm điểm rủi ro Z-score/IQR vào tầng Gold qua DuckDB Spatial và <code>dbt-duckdb</code>.",
     "p1.result":
-      "0% sự kiện mất trong cửa sổ kiểm chứng; phục hồi &lt;30s sau khi broker restart",
-    "p1.evlabel": "nhật ký chạy · đang chờ dữ liệu thật",
-    "p1.evl2": "sẽ hiện: sent / received / lost, replay kill-restart, p95",
+      "Không mất dữ liệu âm thầm (cách ly DLQ + Review Queue), 0% gộp nhầm thực thể ở tầng Gold và replay tái lập 100% từ tầng Raw",
+    "p1.evlabel": "lakehouse · nhánh develop",
+    "p1.evl2": "raw → silver GeoParquet → ER đa tầng & chấm điểm Z-score/IQR → gold",
     "p2.name": "Dashboard hỗ trợ quyết định",
     "p2.problem":
       "Stack báo cáo trả lời đúng câu hỏi mà cấp quản lý thật sự hỏi — không phải câu " +
@@ -106,17 +103,25 @@ window.PF_I18N = (function () {
       "Một query thay N spreadsheet ad-hoc; refresh tầng gold là idempotent",
     "p2.evlabel": "dbt · đang chờ dữ liệu thật",
     "p2.evl2": "sẽ hiện: số model pass, kiểm tra idempotency",
-    "p3.name": "Mô hình thị giác, từ train đến serving",
+    "p3.name": "Active Learning phân tầng theo Metadata (BDD100K)",
     "p3.problem":
-      "Một mô hình vision phải rời notebook sang setup tái lập được: run được theo " +
-      "dõi, checkpoint resume được, và con đường rõ ràng tới artifact serving.",
+      "Chọn mẫu theo độ bất định truyền thống trong phát hiện vật thể xe tự hành bị sụp đổ độ đa dạng (Batch Diversity Collapse), làm suy giảm mAP ở các lát cắt hiếm (thời tiết xấu, ban đêm).",
     "p3.impl":
-      "Vòng train PyTorch có DataLoader + AMP ở chỗ đáng giá; MLflow so sánh run; " +
-      "MinIO lưu dataset và checkpoint; Docker đóng gói artifact.",
+      "Lọc khó Hybrid Top-K, phân bổ quota căn bậc hai tần suất và cân bằng biên 3 chiều IPF / Sinkhorn (weather, scene, timeofday) huấn luyện trên YOLOv8n.",
     "p3.result":
-      "Run có theo dõi vượt baseline không theo dõi với đầy đủ checkpoint và lineage",
+      "+2.08% mAP<sub>50</sub> trên miền adverse_weather; Shannon entropy đạt 5.20 so với 3.84 bits (p = 0.00076, Cohen's d = 20.93)",
+    "p3.evlabel": "bdd100k · kiểm định 3 seeds",
+    "p3.evl2": "35/35 unit tests pass · adverse_weather mAP50: 0.3430 vs 0.3223 (+2.08%)",
     "projects.more.a": "Thêm dự án khác trên",
     "projects.more.b": "— gồm môn học và các project tooling.",
+    "bento.pitch.k": "Tóm tắt 30s",
+    "bento.pitch.v": "Sao chép hồ sơ ⎘",
+    "adr.badge": "Ghi chép Kỹ thuật · ADR",
+    "adr.title": "Quyết định kiến trúc & bài viết nghiên cứu",
+    "adr.read": "Đọc ghi chép →",
+    "adr1.name": "Vì sao chọn MinIO + Polars + DuckDB Spatial ($0) thay vì cụm Spark cho <1M tin đăng?",
+    "adr2.name": "Chống sụp đổ độ đa dạng (Batch Diversity Collapse) trên BDD100K bằng cân bằng biên 3 chiều IPF / Sinkhorn",
+    "adr3.name": "Ứng dụng kỹ thuật sinh truyện tranh trong trực quan hóa truyện dân gian Việt Nam (DOI: 10.54644/jte.2026.2148)",
 
     /* skills */
     "skills.badge": "Kỹ năng · Công nghệ",
@@ -160,7 +165,7 @@ window.PF_I18N = (function () {
     /* cert modal */
     "cert.btn.view": "Xem chứng chỉ ↗",
     "cert.modal.title": "Chứng chỉ Big Data",
-    "cert.modal.sub": "Samsung Innovation Campus · Cấp cho Nguyễn Đình Tân Lộc",
+    "cert.modal.sub": "Samsung Innovation Campus · Cấp cho Nguyễn Đình Tấn Lộc",
 
     /* endorsements */
     "end.badge": "Tham chiếu · Đánh giá",
@@ -176,6 +181,9 @@ window.PF_I18N = (function () {
     "c.copy": "chép",
     "c.resume.k": "CV",
     "c.resume.v": "Tải PDF ↓",
+    "c.resume.preview": "xem",
+    "resume.modal.title": "Hồ sơ Résumé — Nguyễn Đình Tấn Lộc",
+    "resume.modal.sub": "Kỹ nghệ Dữ liệu · Phân tích · Thị giác Máy tính",
 
     /* contact form */
     "form.title": "Gửi tin nhắn nhanh",
@@ -187,7 +195,7 @@ window.PF_I18N = (function () {
 
     /* footer */
     "footer.meta": "Trình bày bằng Inter &amp; IBM Plex Mono — không framework, không build step.",
-    "footer.top": "Về đầu trang ↑",
+    "footer.name": "Nguyễn Đình Tấn Lộc",
 
     /* project discipline filters */
     "p.filter.all": "Tất cả",
@@ -204,7 +212,7 @@ window.PF_I18N = (function () {
     "cmd.group.nav": "Điều hướng",
     "cmd.group.actions": "Tác vụ nhanh",
     "cmd.item.home": "Trang chủ / Đầu trang",
-    "cmd.item.about": "Giới thiệu Tân Lộc",
+    "cmd.item.about": "Giới thiệu Tấn Lộc",
     "cmd.item.projects": "Dự án kỹ nghệ tiêu biểu",
     "cmd.item.skills": "Kỹ năng chuyên môn & Công nghệ",
     "cmd.item.exp": "Kinh nghiệm & Học vấn",
@@ -212,7 +220,8 @@ window.PF_I18N = (function () {
     "cmd.item.contact": "Liên hệ & Gửi tin nhắn",
     "cmd.item.theme": "Đổi giao diện Sáng / Tối",
     "cmd.item.lang": "Đổi ngôn ngữ (EN / VI)",
-    "cmd.item.resume": "Tải hồ sơ Résumé PDF",
+    "cmd.item.resume": "Xem trước / Tải Résumé PDF",
+    "cmd.item.pitch": "Sao chép tóm tắt hồ sơ 30s (Recruiter)",
     "cmd.item.cert": "Xem chứng chỉ Big Data SIC"
   };
 

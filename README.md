@@ -1,6 +1,6 @@
 # personal-portfolio
 
-Portfolio tĩnh cá nhân của **Nguyễn Đình Tân Lộc** (Data Engineering · Analytics · Computer Vision).
+Portfolio tĩnh cá nhân của **Nguyễn Đình Tấn Lộc** (Data Engineering · Analytics · Computer Vision).
 
 Stack: **HTML + CSS + JS thuần** — không build step, không phụ thuộc framework/bundler/npm, deploy thẳng lên Vercel hoặc GitHub Pages.
 
@@ -59,7 +59,7 @@ Dự án được xây dựng theo chuẩn mực **Distinctive UI Engineering**:
 │   │   ├── og-image.png        # Banner xem trước khi chia sẻ mạng xã hội (1200x630)
 │   │   └── og-image.svg        # File vector gốc của banner Open Graph
 │   ├── docs/
-│   │   └── NguyenDinhTanLoc_Resume.pdf # Résumé PDF của Tân Lộc tải về
+│   │   └── NguyenDinhTanLoc_Resume.pdf # Résumé PDF của Tấn Lộc tải về
 │   └── icons/
 │       └── favicon.svg         # Favicon monogram "T."
 │

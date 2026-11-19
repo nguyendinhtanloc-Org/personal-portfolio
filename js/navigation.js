@@ -26,17 +26,47 @@
     });
   }
 
-  /* ---------- Scroll-spy & Reading Progress Bar ---------- */
+  /* ---------- Toast Notification Helper ---------- */
+  var toastEl = document.getElementById("pf-toast");
+  var toastTextEl = document.getElementById("pf-toast-text");
+  var toastTimer = null;
+
+  function showToast(msg) {
+    if (!toastEl || !toastTextEl || !msg) return;
+    toastTextEl.textContent = msg;
+    toastEl.classList.add("is-visible");
+    toastEl.setAttribute("aria-hidden", "false");
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () {
+      toastEl.classList.remove("is-visible");
+      toastEl.setAttribute("aria-hidden", "true");
+    }, 2200);
+  }
+  window.PF_TOAST = { show: showToast };
+
+  /* ---------- Scroll-spy, Progress Bar & Floating Top Ring ---------- */
   var progressBar = document.getElementById("progress-bar");
+  var navBar = document.querySelector(".nav");
+  var floatingTopBtn = document.getElementById("floating-top-btn");
+  var floatingTopCircle = document.getElementById("floating-top-progress");
+  var RING_CIRCUMFERENCE = 106.81; // 2 * Math.PI * 17
+
   function updateProgressBar() {
-    if (!progressBar) return;
-    var maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-    if (maxScroll <= 0) {
-      progressBar.style.width = "0%";
-      return;
+    if (navBar) {
+      navBar.classList.toggle("is-scrolled", window.scrollY > 12);
     }
-    var progress = (window.scrollY / maxScroll) * 100;
-    progressBar.style.width = Math.min(100, Math.max(0, progress)) + "%";
+    if (floatingTopBtn) {
+      floatingTopBtn.classList.toggle("is-visible", window.scrollY > 180);
+    }
+    var maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = maxScroll > 0 ? Math.min(100, Math.max(0, (window.scrollY / maxScroll) * 100)) : 0;
+    if (progressBar) {
+      progressBar.style.width = pct + "%";
+    }
+    if (floatingTopCircle) {
+      var offset = RING_CIRCUMFERENCE - (pct / 100) * RING_CIRCUMFERENCE;
+      floatingTopCircle.style.strokeDashoffset = String(offset);
+    }
   }
 
   var links = Array.prototype.slice.call(
@@ -85,7 +115,7 @@
 
   /* ---------- Copy to Clipboard ---------- */
   var copyButtons = Array.prototype.slice.call(
-    document.querySelectorAll(".btn-copy")
+    document.querySelectorAll(".btn-copy[data-copy]")
   );
   // The label lives in the inner .copy-status span, owned by the i18n engine
   // (data-i18n="c.copy"). Never rewrite the button's textContent — that
@@ -104,11 +134,13 @@
       }
 
       function onCopied() {
+        var isVi = document.documentElement.getAttribute("lang") === "vi";
         btn.setAttribute("data-copied", "");
-        label.textContent = document.documentElement.getAttribute("lang") === "vi" ? "Đã sao chép" : "Copied";
+        if (label) label.textContent = isVi ? "Đã sao chép" : "Copied";
+        showToast((isVi ? "Đã sao chép " : "Copied ") + text);
         setTimeout(function () {
           btn.removeAttribute("data-copied");
-          label.textContent = copyLabel(); // current language, not a stale value
+          if (label) label.textContent = copyLabel(); // current language, not a stale value
         }, 1800);
       }
 
@@ -174,7 +206,7 @@
 
   /* ---------- Back to Top Button ---------- */
   var footerTopLinks = Array.prototype.slice.call(
-    document.querySelectorAll(".footer-top")
+    document.querySelectorAll(".footer-top, #floating-top-btn")
   );
   footerTopLinks.forEach(function (btn) {
     btn.addEventListener("click", function (e) {
@@ -196,6 +228,17 @@
         window.history.pushState(null, "", "#top");
       }
     });
+  });
+
+  var langReady = false;
+  setTimeout(function () {
+    langReady = true;
+  }, 300);
+
+  document.addEventListener("pf:langchange", function (e) {
+    if (!langReady) return;
+    var nextLang = e.detail && e.detail.lang ? e.detail.lang : document.documentElement.getAttribute("lang");
+    showToast(nextLang === "vi" ? "Đã chuyển sang Tiếng Việt" : "Switched to English");
   });
 })();
 
