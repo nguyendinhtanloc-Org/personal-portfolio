@@ -85,15 +85,16 @@
       } else if (action === "toggle-lang") {
         var langBtn = document.querySelector(".lang-toggle");
         if (langBtn) langBtn.click();
-      } else if (action === "download-resume") {
-        var link = document.createElement("a");
-        link.href = "assets/docs/NguyenDinhTanLoc_Resume.pdf";
-        link.download = "NguyenDinhTanLoc_Resume.pdf";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+      } else if (action === "preview-resume" || action === "download-resume") {
+        if (window.PF_OPEN_RESUME && typeof window.PF_OPEN_RESUME === "function") {
+          window.PF_OPEN_RESUME();
+        }
+      } else if (action === "copy-pitch") {
+        if (window.PF_COPY_PITCH && typeof window.PF_COPY_PITCH === "function") {
+          window.PF_COPY_PITCH();
+        }
       } else if (action === "view-cert") {
-        var certBtn = document.querySelector(".btn-cert-link");
+        var certBtn = document.querySelector(".btn-cert-link[data-cert]");
         if (certBtn) certBtn.click();
       }
     }
@@ -178,8 +179,7 @@
     if (triggerBtn) triggerBtn.addEventListener("click", openPalette);
     if (backdrop) backdrop.addEventListener("click", closePalette);
 
-    // Global keyboard shortcuts (T/L intentionally omitted: they collide with
-    // typing in the palette's search box)
+    // Global keyboard shortcuts (Cmd+K, Escape, and single-key T/L/R/C when not typing)
     document.addEventListener("keydown", function (e) {
       var isOpen = palette.classList.contains("is-active");
 
@@ -188,8 +188,37 @@
         e.preventDefault();
         if (isOpen) closePalette();
         else openPalette();
-      } else if (e.key === "Escape" && isOpen) {
+        return;
+      }
+
+      if (e.key === "Escape" && isOpen) {
         closePalette();
+        return;
+      }
+
+      // Single-key shortcuts only when no modal is open and user is not in an input/textarea
+      if (isOpen || e.metaKey || e.ctrlKey || e.altKey) return;
+      var tag = e.target && e.target.tagName ? e.target.tagName.toLowerCase() : "";
+      if (tag === "input" || tag === "textarea" || tag === "select" || (e.target && e.target.isContentEditable)) {
+        return;
+      }
+      if (document.querySelector(".cert-modal.is-active")) return;
+
+      var k = e.key.toLowerCase();
+      if (k === "t") {
+        e.preventDefault();
+        var themeBtn = document.querySelector(".theme-toggle");
+        if (themeBtn) themeBtn.click();
+      } else if (k === "l") {
+        e.preventDefault();
+        var langBtn = document.querySelector(".lang-toggle");
+        if (langBtn) langBtn.click();
+      } else if (k === "r") {
+        e.preventDefault();
+        if (window.PF_OPEN_RESUME) window.PF_OPEN_RESUME();
+      } else if (k === "c") {
+        e.preventDefault();
+        if (window.PF_COPY_PITCH) window.PF_COPY_PITCH();
       }
     });
 

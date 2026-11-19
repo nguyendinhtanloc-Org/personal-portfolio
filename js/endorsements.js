@@ -16,25 +16,29 @@
 
   var ENDORSEMENTS = [
     {
-      initials: "GV",
+      initials: "LT",
       context: {
         en: "Research · HCMUTE",
         vi: "Nghiên cứu · HCMUTE"
       },
       quote: {
-        en: "“Tân Lộc approaches research methodically—always validating data quality and pipeline reproducibility before drawing conclusions.”",
-        vi: "“Tân Lộc tiếp cận nghiên cứu rất bài bản — luôn kiểm chứng chất lượng dữ liệu và khả năng tái lập của pipeline trước khi đưa ra kết luận.”"
+        en: "“Tan Loc is a diligent student who actively engages in the scientific research program. Despite a few limitations that come with inexperience, Tan Loc still completed the tasks assigned by the professor.”",
+        vi: "“Lộc là sinh viên chịu khó khi tham gia nghiên cứu khoa học. Dù còn một số hạn chế xuất phát từ sự thiếu kinh nghiệm, bạn vẫn đảm bảo hoàn thành nhiệm vụ giảng viên giao.”"
       },
       name: {
-        en: "[Advisor Name]",
-        vi: "[Tên Giảng viên hướng dẫn]"
+        en: "ThS. Lê Minh Tân",
+        vi: "ThS. Lê Minh Tân"
       },
       role: {
-        en: "Research Advisor · HCMUTE",
+        en: "NCKH Supervisor · HCMUTE",
         vi: "Giảng viên hướng dẫn NCKH · HCMUTE"
       }
-    },
-    {
+    }
+    /* Two more endorsements are drafted but still use placeholder author
+       names — kept out of the live array per the evidence-first rule
+       (PRODUCT.md). Restore both (and drop this comment) once you have
+       real names + quotes from the AWS FCAJ and QT-Data VN teams:
+    ,{
       initials: "AW",
       context: {
         en: "Internship · AWS FCAJ",
@@ -72,6 +76,7 @@
         vi: "Data Lead · QT-Data VN"
       }
     }
+    */
   ];
 
   var grid = document.getElementById("endorsement-grid");
@@ -146,18 +151,25 @@
     }
   }
 
-  function render(lang) {
+  function render(lang, animateFromIndex) {
     var activeLang = lang || getLang();
     var visibleCount = isExpanded
       ? ENDORSEMENTS.length
       : Math.min(INITIAL_VISIBLE, ENDORSEMENTS.length);
 
-    // Use 2-column layout for 2 or 4 visible cards so there is no orphan card
+    // Use 2-column layout for 2 or 4 visible cards so there is no orphan card;
+    // a lone card spans full width (capped) so it reads as a featured quote.
+    grid.classList.toggle("is-1col", visibleCount === 1);
     grid.classList.toggle("is-2col", visibleCount === 2 || visibleCount === 4);
 
     var frag = document.createDocumentFragment();
     for (var i = 0; i < visibleCount; i++) {
-      frag.appendChild(buildCard(ENDORSEMENTS[i], activeLang));
+      var card = buildCard(ENDORSEMENTS[i], activeLang);
+      if (typeof animateFromIndex === "number" && i >= animateFromIndex) {
+        card.classList.add("is-entering");
+        card.style.animationDelay = (i - animateFromIndex) * 0.05 + "s";
+      }
+      frag.appendChild(card);
     }
     grid.innerHTML = "";
     grid.appendChild(frag);
@@ -167,7 +179,7 @@
   if (toggleBtn) {
     toggleBtn.addEventListener("click", function () {
       isExpanded = !isExpanded;
-      render(getLang());
+      render(getLang(), isExpanded ? INITIAL_VISIBLE : undefined);
     });
   }
 

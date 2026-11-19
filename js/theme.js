@@ -45,6 +45,13 @@
       try {
         localStorage.setItem(THEME_KEY, newTheme);
       } catch (e) {}
+      if (window.PF_TOAST && typeof window.PF_TOAST.show === "function") {
+        var isVi = document.documentElement.getAttribute("lang") === "vi";
+        var msg = newTheme === "dark"
+          ? (isVi ? "Đã bật giao diện Tối" : "Dark theme enabled")
+          : (isVi ? "Đã bật giao diện Sáng" : "Light theme enabled");
+        window.PF_TOAST.show(msg);
+      }
     });
   }
 
