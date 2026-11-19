@@ -44,6 +44,9 @@
   .hero-cta,
   .nav-toggle,
   .cert-modal,
+  .floating-top-btn,
+  .pf-toast,
+  .btn-case-study,
   .contact-form-card {
     display: none !important;
   }
