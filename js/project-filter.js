@@ -59,6 +59,24 @@
         }
       });
     });
+
+    try {
+      var qFilter = new URLSearchParams(window.location.search).get("filter");
+      if (qFilter) {
+        var targetBtn = document.querySelector(
+          '.project-filter-btn[data-filter="' + qFilter.toLowerCase() + '"]'
+        );
+        if (targetBtn) {
+          targetBtn.click();
+          var projSec = document.getElementById("projects");
+          if (projSec) {
+            setTimeout(function () {
+              projSec.scrollIntoView({ behavior: "smooth" });
+            }, 80);
+          }
+        }
+      }
+    } catch (e) {}
   }
 
   if (document.readyState === "loading") {
