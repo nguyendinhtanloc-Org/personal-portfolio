@@ -3,14 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>404 — Tan Loc</title>
+  <title>404 — Nguyễn Đình Tấn Lộc</title>
   <meta name="description" content="This page isn't in the warehouse.">
   <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#faf8f5">
   <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=10">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("pf-theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        if (t === "dark") document.documentElement.setAttribute("data-theme", "dark");
+      } catch (e) { }
+    })();
+  </script>
 </head>
 <body>
   <div id="top" tabindex="-1"></div>
@@ -35,9 +44,9 @@
           This page <em>wasn't found</em>.
         </h1>
         <div class="evidence" aria-label="Run log — no matching page">
-          <span class="ev-label">run log</span>
-          <p class="ev-line"><span class="ev-prompt">$</span> select slug from pages where slug = <span class="ev-mute">'…'</span>;</p>
-          <p class="ev-line"><span class="ev-mute">0 rows returned · not in the warehouse</span></p>
+          <span class="ev-label">run log · duckdb</span>
+          <p class="ev-line"><span class="ev-prompt">$</span> select slug from pages where slug = <span class="ev-mute" id="nf-slug">'/…'</span>;</p>
+          <p class="ev-line"><span class="ev-mute">0 rows returned · route not in the lakehouse</span></p>
         </div>
         <div class="notfound-cta">
           <a class="btn-primary" href="index.html">Back to the index</a>
@@ -48,12 +57,20 @@
 
   <footer class="footer">
     <div class="container footer-inner">
-      <p>© <span class="js-year">2026</span> Nguyễn Đình Tan Loc</p>
-      <a class="footer-top" href="#top">Back to top ↑</a>
+      <p>© <span class="js-year">2026</span> Nguyễn Đình Tấn Lộc</p>
+      <p class="footer-meta">Set in Inter &amp; IBM Plex Mono — no framework, no build step.</p>
     </div>
   </footer>
 
-  <script src="js/theme.js" defer></script>
-  <script src="js/navigation.js" defer></script>
+  <script>
+    (function () {
+      var slugEl = document.getElementById("nf-slug");
+      if (slugEl && window.location && window.location.pathname) {
+        slugEl.textContent = "'" + window.location.pathname + "'";
+      }
+    })();
+  </script>
+  <script src="js/theme.js?v=10" defer></script>
+  <script src="js/navigation.js?v=10" defer></script>
 </body>
 </html>
