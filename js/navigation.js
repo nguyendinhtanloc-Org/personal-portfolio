@@ -72,6 +72,14 @@
   var links = Array.prototype.slice.call(
     document.querySelectorAll("a[href^='#'][data-spy]")
   );
+  var railLinks = Array.prototype.slice.call(
+    document.querySelectorAll(".section-rail-link[data-rail-target]")
+  );
+  var railTargets = railLinks
+    .map(function (link) {
+      return document.getElementById(link.getAttribute("data-rail-target"));
+    })
+    .filter(Boolean);
   var targets = links
     .map(function (link) {
       var id = link.getAttribute("href").slice(1);
@@ -91,6 +99,19 @@
         (current.id === "home" && window.scrollY < 400 && link.getAttribute("href") === "#home");
       link.classList.toggle("is-active", isActive);
     });
+
+    if (railTargets.length) {
+      var currentRail = railTargets[0];
+      for (var j = 0; j < railTargets.length; j++) {
+        if (railTargets[j].offsetTop <= pos) currentRail = railTargets[j];
+      }
+      railLinks.forEach(function (rLink) {
+        rLink.classList.toggle(
+          "is-active",
+          rLink.getAttribute("data-rail-target") === currentRail.id
+        );
+      });
+    }
   }
 
   if (links.length && targets.length) {
@@ -240,5 +261,29 @@
     var nextLang = e.detail && e.detail.lang ? e.detail.lang : document.documentElement.getAttribute("lang");
     showToast(nextLang === "vi" ? "Đã chuyển sang Tiếng Việt" : "Switched to English");
   });
+
+  /* ---------- Warm Champagne Cursor Glow on Cards (Desktop Fine Pointer) ---------- */
+  if (
+    !prefersReducedMotion &&
+    window.matchMedia("(hover: hover) and (pointer: fine)").matches
+  ) {
+    var activeGlowCard = null;
+    document.addEventListener(
+      "mousemove",
+      function (e) {
+        var card = e.target.closest(".bento-card, .endorsement-card, .hero-visual");
+        if (activeGlowCard && activeGlowCard !== card) {
+          activeGlowCard.style.removeProperty("--mx");
+          activeGlowCard.style.removeProperty("--my");
+        }
+        activeGlowCard = card;
+        if (!card) return;
+        var rect = card.getBoundingClientRect();
+        card.style.setProperty("--mx", e.clientX - rect.left + "px");
+        card.style.setProperty("--my", e.clientY - rect.top + "px");
+      },
+      { passive: true }
+    );
+  }
 })();
 
