@@ -93,15 +93,43 @@
         if (window.PF_COPY_PITCH && typeof window.PF_COPY_PITCH === "function") {
           window.PF_COPY_PITCH();
         }
+      } else if (action === "download-vcard") {
+        if (window.PF_DOWNLOAD_VCARD && typeof window.PF_DOWNLOAD_VCARD === "function") {
+          window.PF_DOWNLOAD_VCARD();
+        }
       } else if (action === "view-cert") {
         var certBtn = document.querySelector(".btn-cert-link[data-cert]");
         if (certBtn) certBtn.click();
+      } else if (action === "print-profile") {
+        setTimeout(function () {
+          window.print();
+        }, 120);
       }
     }
+
+    var SHELL_COMMANDS = {
+      help: "Commands: >whoami · >stack · >projects · >paper · >contact",
+      whoami: "Nguyễn Đình Tấn Lộc · B.Eng. Data Engineering @ HCMUTE (2027) · Intern @ AWS FCAJ & QT-Data VN",
+      stack: "DE: Python, SQL, Bash, Spark, Kafka, Airflow, dbt, Polars, DuckDB | CV: PyTorch, YOLOv8, OpenCV",
+      projects: "1) PropMatch Engine (MinIO+Polars+DuckDB Lakehouse) | 2) BDD100K Stratified Active Learning (+2.08% mAP50)",
+      paper: "JTE Journal (2026): Vietnamese Folk-Tale Comics Generation · DOI: 10.54644/jte.2026.2148",
+      contact: "Email: ndtl05062005@gmail.com | Tel: +84 966 150 875 | GitHub: @nguyendinhtanloc"
+    };
 
     function filterItems(query) {
       var q = query.trim().toLowerCase();
       var groupLabels = palette.querySelectorAll(".cmd-group-label");
+
+      if (q.indexOf(">") === 0) {
+        items.forEach(function (item) { item.classList.add("is-hidden"); });
+        groupLabels.forEach(function (g) { g.style.display = "none"; });
+        var cmdKey = q.slice(1).trim() || "help";
+        var out = SHELL_COMMANDS[cmdKey] || ("Unknown command: >" + cmdKey + " (try >help, >whoami, >stack, >projects, >paper, >contact)");
+        emptyEl.hidden = false;
+        emptyEl.textContent = "$ " + cmdKey + " → " + out;
+        if (list) list.appendChild(emptyEl);
+        return;
+      }
 
       items.forEach(function (item) {
         var text = (item.textContent || "").toLowerCase();
@@ -204,6 +232,12 @@
       }
       if (document.querySelector(".cert-modal.is-active")) return;
 
+      if (e.key === "?") {
+        e.preventDefault();
+        if (window.PF_OPEN_CASE) window.PF_OPEN_CASE("shortcuts");
+        return;
+      }
+
       var k = e.key.toLowerCase();
       if (k === "t") {
         e.preventDefault();
@@ -219,6 +253,12 @@
       } else if (k === "c") {
         e.preventDefault();
         if (window.PF_COPY_PITCH) window.PF_COPY_PITCH();
+      } else if (k === "v") {
+        e.preventDefault();
+        if (window.PF_DOWNLOAD_VCARD) window.PF_DOWNLOAD_VCARD();
+      } else if (k === "p") {
+        e.preventDefault();
+        window.print();
       }
     });
 
