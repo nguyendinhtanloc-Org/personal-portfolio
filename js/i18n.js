@@ -25,7 +25,7 @@ window.PF_I18N = (function () {
 
     /* hero */
     "hero.issue": "Hồ sơ Kỹ thuật Dữ liệu · 2026",
-    "hero.title": "Xây dựng hệ thống dữ liệu tin cậy tạo tác động thực tiễn.",
+    "hero.title": "Xây dựng <span class=\"hero-accent\">hệ thống dữ liệu tin cậy</span> tạo tác động thực tiễn.",
     "hero.lede":
       "Tôi là Tấn Lộc, sinh viên ngành Kỹ thuật Dữ liệu tại HCMUTE (dự kiến tốt nghiệp 2027). " +
       "Định hướng chuyên sâu vào Data Engineering (DE), Data Analytics (DA) và Computer Vision (CV); " +
@@ -38,6 +38,7 @@ window.PF_I18N = (function () {
     "hero.note.label": "Nguyên tắc thiết kế",
     "hero.note.text":
       "Mỗi tầng một nguồn sự thật — nếu một con số lệch, ta tìm được chỗ lệch.",
+    "hero.pulse.btn": "Bắn xung",
 
     /* about */
     "about.badge": "Giới thiệu · Bản thân",
@@ -131,6 +132,7 @@ window.PF_I18N = (function () {
     "skills.cat.da": "Cơ sở dữ liệu & Phân tích",
     "skills.cat.cv": "Thị giác Máy tính & AI",
     "skills.cat.infra": "Công cụ & Môi trường",
+    "skills.proof.default": "Bấm hoặc rê chuột vào bất kỳ công cụ nào ở trên để xem ngữ cảnh tôi sử dụng thực tế.",
 
     /* experience */
     "exp.badge": "Kinh nghiệm · Lộ trình",
@@ -222,7 +224,18 @@ window.PF_I18N = (function () {
     "cmd.item.lang": "Đổi ngôn ngữ (EN / VI)",
     "cmd.item.resume": "Xem trước / Tải Résumé PDF",
     "cmd.item.pitch": "Sao chép tóm tắt hồ sơ 30s (Recruiter)",
-    "cmd.item.cert": "Xem chứng chỉ Big Data SIC"
+    "cmd.item.vcard": "Lưu danh bạ điện thoại (.vcf)",
+    "cmd.item.cert": "Xem chứng chỉ Big Data SIC",
+    "cmd.item.print": "In hồ sơ A4 (Print Profile)",
+
+    /* vcard, intent chips, share & shortcuts */
+    "c.vcard.k": "Danh bạ",
+    "c.vcard.v": "Lưu danh bạ (.vcf) ↓",
+    "form.chip.intern": "+ Thực tập DE/DA/CV",
+    "form.chip.project": "+ Trao đổi dự án",
+    "form.chip.info": "+ Xin thêm thông tin",
+    "cs.share": "Sao chép link trực tiếp ⎘",
+    "footer.shortcuts": "Phím tắt"
   };
 
   // key -> [{el, original, asHtml, isPlaceholder}] (some keys are used on several elements)
@@ -354,7 +367,14 @@ window.PF_I18N = (function () {
 
   function init() {
     collect();
-    apply(current());
+    var initialLang = current();
+    try {
+      var qLang = new URLSearchParams(window.location.search).get("lang");
+      if (qLang === "vi" || qLang === "en") {
+        initialLang = qLang;
+      }
+    } catch (e) {}
+    apply(initialLang);
     var btn = document.querySelector(".lang-toggle");
     if (btn) {
         btn.addEventListener("click", function (e) {
