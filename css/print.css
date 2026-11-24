@@ -45,9 +45,23 @@
   .nav-toggle,
   .cert-modal,
   .floating-top-btn,
+  .section-rail,
+  .terminal-modes,
+  .hero-pulse-btn,
+  .skill-proof-bar,
   .pf-toast,
   .btn-case-study,
-  .contact-form-card {
+  .contact-form-card,
+  .form-intent-chips,
+  .footer-kbd-hint {
+    display: none !important;
+  }
+
+  .section {
+    border-top: 1px solid #cccccc;
+  }
+
+  .section::before {
     display: none !important;
   }
 
