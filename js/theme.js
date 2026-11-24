@@ -38,13 +38,46 @@
   applyTheme(getPreferredTheme());
 
   if (themeBtn) {
-    themeBtn.addEventListener("click", function () {
+    themeBtn.addEventListener("click", function (e) {
       var isDark = document.documentElement.getAttribute("data-theme") === "dark";
       var newTheme = isDark ? "light" : "dark";
-      applyTheme(newTheme);
-      try {
-        localStorage.setItem(THEME_KEY, newTheme);
-      } catch (e) {}
+      var prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      function commitTheme() {
+        applyTheme(newTheme);
+        try {
+          localStorage.setItem(THEME_KEY, newTheme);
+        } catch (err) {}
+      }
+
+      if (document.startViewTransition && !prefersReduced) {
+        var rect = themeBtn.getBoundingClientRect();
+        var x = e && e.clientX ? e.clientX : rect.left + rect.width / 2;
+        var y = e && e.clientY ? e.clientY : rect.top + rect.height / 2;
+        var endRadius = Math.hypot(
+          Math.max(x, window.innerWidth - x),
+          Math.max(y, window.innerHeight - y)
+        );
+        var transition = document.startViewTransition(commitTheme);
+        transition.ready.then(function () {
+          document.documentElement.animate(
+            {
+              clipPath: [
+                "circle(0px at " + x + "px " + y + "px)",
+                "circle(" + endRadius + "px at " + x + "px " + y + "px)"
+              ]
+            },
+            {
+              duration: 420,
+              easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+              pseudoElement: "::view-transition-new(root)"
+            }
+          );
+        }).catch(function () {});
+      } else {
+        commitTheme();
+      }
+
       if (window.PF_TOAST && typeof window.PF_TOAST.show === "function") {
         var isVi = document.documentElement.getAttribute("lang") === "vi";
         var msg = newTheme === "dark"
