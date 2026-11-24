@@ -58,6 +58,13 @@ button {
   color: #ffffff;
 }
 
+/* ---------- View Transitions API (Circular Theme Switch) ---------- */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
 /* ---------- Smooth i18n Crossfade Transition ---------- */
 main,
 #nav-menu,
@@ -123,8 +130,37 @@ main {
 
 /* ---------- Shared Section Layout ---------- */
 .section {
-  border-top: 1px solid var(--hairline);
+  position: relative;
   padding-block: clamp(3.5rem, 7vw, 5.5rem);
+}
+
+.section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--hairline) 12%,
+    rgba(180, 131, 62, 0.42) 50%,
+    var(--hairline) 88%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+[data-theme="dark"] .section::before {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--hairline) 12%,
+    rgba(212, 163, 89, 0.38) 50%,
+    var(--hairline) 88%,
+    transparent 100%
+  );
 }
 
 .section-head {
@@ -314,8 +350,10 @@ code {
   color: var(--term-ink);
   font-family: var(--font-mono);
   padding: 0.85rem 1rem;
-  border-radius: 4px;
+  border-radius: 5px;
   border: 1px solid var(--hairline);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 6px 20px rgba(0, 0, 0, 0.12);
   overflow-x: auto;
 }
 
@@ -332,6 +370,28 @@ code {
   font-size: 0.74rem;
   line-height: 1.7;
   white-space: nowrap;
+}
+
+.evidence > .ev-line:first-of-type::after {
+  content: "▊";
+  display: inline-block;
+  margin-left: 0.35rem;
+  font-size: 0.65rem;
+  color: var(--accent);
+  vertical-align: baseline;
+  animation: term-blink 1.15s steps(2, start) infinite;
+}
+
+@keyframes term-blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .evidence > .ev-line:first-of-type::after {
+    animation: none;
+  }
 }
 
 .ev-prompt {
