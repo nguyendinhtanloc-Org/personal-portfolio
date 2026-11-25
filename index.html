@@ -59,18 +59,42 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=10">
+  <link rel="stylesheet" href="styles.css?v=13">
   <script>
     (function () {
       try {
         var t = localStorage.getItem("pf-theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
         if (t === "dark") document.documentElement.setAttribute("data-theme", "dark");
+        if (sessionStorage.getItem("pf-booted") === "1" || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          document.documentElement.setAttribute("data-boot", "done");
+        }
       } catch (e) { }
     })();
   </script>
 </head>
 
 <body>
+  <!-- ============ SYSTEM TELEMETRY BOOT CURTAIN (0.85s once per session) ============ -->
+  <div id="boot-curtain" class="boot-curtain" aria-hidden="true">
+    <div class="boot-hud">
+      <div class="boot-head">
+        <span class="boot-monogram">T.L.</span>
+        <span class="boot-tag">DATA ENGINEERING SYSTEM · v2026.11</span>
+      </div>
+      <div class="boot-metric-row">
+        <span class="boot-label" id="boot-log">[01/03] MOUNTING LAKEHOUSE &amp; ACTIVE LEARNING ENGINE...</span>
+        <span class="boot-pct" id="boot-pct">00%</span>
+      </div>
+      <div class="boot-bar-track">
+        <div class="boot-bar-fill" id="boot-bar-fill"></div>
+      </div>
+      <div class="boot-meta">
+        <span>MINIO · POLARS · DUCKDB SPATIAL</span>
+        <span>35/35 TESTS VERIFIED</span>
+      </div>
+    </div>
+  </div>
+
   <div id="top" tabindex="-1"></div>
   <div class="progress-bar" id="progress-bar" aria-hidden="true"></div>
   <a class="skip" href="#home">Skip to content</a>
@@ -119,6 +143,7 @@
   <main id="home">
     <!-- ============ HERO ============ -->
     <section class="hero" aria-labelledby="hero-title">
+      <canvas id="hero-canvas" class="hero-canvas" aria-hidden="true"></canvas>
       <div class="container hero-grid">
         <div class="hero-text">
           <p class="hero-issue" data-i18n="hero.issue">Data Engineering Portfolio · 2026</p>
@@ -136,8 +161,23 @@
         </div>
 
         <!-- Editorial visual: restrained data-lab motif (pure CSS/SVG, no fake photos) -->
-        <figure class="hero-visual" aria-label="Abstract pipeline motif: source, stream, and warehouse">
-          <svg class="hero-motif" viewBox="0 0 320 300">
+        <figure class="hero-visual" id="hero-visual" aria-label="Abstract pipeline motif: source, stream, and warehouse">
+          <div class="hero-visual-bar">
+            <span class="hero-visual-tag">DAG · MEDALLION TOPOLOGY</span>
+            <button type="button" class="hero-3d-btn" id="btn-hero-3d" aria-pressed="false" title="Toggle 3D Isometric Exploded View">
+              <span class="cube-icon" aria-hidden="true">◇</span>
+              <span data-i18n="hero.3d.btn">3D Isometric</span>
+            </button>
+          </div>
+          <div class="hero-motif-stage" id="hero-motif-stage">
+            <div class="iso-rig" id="iso-rig">
+              <div class="iso-plane iso-plane-floor" aria-hidden="true">
+                <span class="iso-corner-tag">S3://MINIO · STORAGE LAYER (Z: -32px)</span>
+              </div>
+              <div class="iso-plane iso-plane-mid" aria-hidden="true">
+                <span class="iso-corner-tag">POLARS + DUCKDB · COMPUTE MESH (Z: -14px)</span>
+              </div>
+              <svg class="hero-motif" viewBox="0 0 320 300">
             <defs>
               <marker id="hero-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6"
                 orient="auto-start-reverse">
@@ -191,6 +231,12 @@
               </g>
             </g>
           </svg>
+              <div class="iso-float-hud" aria-hidden="true">
+                <span class="iso-badge iso-badge-top">DAG · 0% SILENT LOSS</span>
+                <span class="iso-badge iso-badge-bot">DRAG / MOVE TO ORBIT 3D</span>
+              </div>
+            </div>
+          </div>
 
           <!-- interactive layer inspector note -->
           <div class="hero-note" role="region" aria-label="Pipeline layer inspector">
@@ -622,6 +668,67 @@
           <span data-i18n="projects.more.b">— including coursework and tooling projects.</span>
         </p>
 
+        <!-- Interactive Before ⇄ After Data Transformation Split Slider -->
+        <div class="transform-lab" id="transform-lab" aria-labelledby="transform-lab-title">
+          <div class="transform-lab-head">
+            <div>
+              <span class="adr-badge" data-i18n="tlab.badge">Interactive Proof · Before ⇄ After</span>
+              <h3 id="transform-lab-title" class="adr-title" data-i18n="tlab.title">Drag to inspect how raw chaos becomes verified output</h3>
+            </div>
+            <div class="transform-lab-tabs" role="tablist" aria-label="Select transformation case">
+              <button type="button" class="tlab-tab is-active" role="tab" aria-selected="true" data-tlab-case="de" data-i18n="tlab.tab.de">01 · PropMatch Entity Resolution</button>
+              <button type="button" class="tlab-tab" role="tab" aria-selected="false" data-tlab-case="cv" data-i18n="tlab.tab.cv">02 · BDD100K 3D IPF Stratification</button>
+            </div>
+          </div>
+
+          <div class="tlab-stage" id="tlab-stage" style="--split: 50%;">
+            <!-- AFTER LAYER (Right / Base) -->
+            <div class="tlab-pane tlab-pane-after">
+              <div class="tlab-pane-header">
+                <span class="tlab-pill tlab-pill-after" id="tlab-after-pill" data-i18n="tlab.de.after.pill">AFTER · GOLD CANONICAL ENTITY (DUCKDB + NETWORKX)</span>
+                <span class="tlab-metric" id="tlab-after-metric">0% False Merge · OGC GeoParquet</span>
+              </div>
+              <pre class="tlab-code" id="tlab-after-code"><code>{
+  "canonical_id": "prop_vn_79_thuduc_00421",
+  "cluster_size": 3,
+  "confidence_score": 0.942,
+  "price_vnd_per_month": 12000000,
+  "geom_wkt": "POINT(106.7718 10.8506)",
+  "price_risk_zscore": -0.42,
+  "anomaly_flag": "NORMAL_VERIFIED",
+  "lineage_sha256": "e3b0c442...98fc1c14"
+}</code></pre>
+            </div>
+
+            <!-- BEFORE LAYER (Left / Clipped overlay) -->
+            <div class="tlab-pane tlab-pane-before">
+              <div class="tlab-pane-header">
+                <span class="tlab-pill tlab-pill-before" id="tlab-before-pill" data-i18n="tlab.de.before.pill">BEFORE · RAW MULTI-SOURCE LISTINGS (DUPLICATES &amp; DRIFT)</span>
+                <span class="tlab-metric" id="tlab-before-metric">3 Unlinked Records · Schema Drift</span>
+              </div>
+              <pre class="tlab-code" id="tlab-before-code"><code>[
+  { "src": "site_a", "price": "12 triệu/tháng", "lat": 10.8505, "lng": 106.7717 },
+  { "src": "site_b", "price": "12,000,000 đ",  "lat": "10.8507N", "ward": "Linh Trung" },
+  { "src": "site_c", "price": null,            "coord": "corrupt_payload -> routed_to_DLQ" }
+]
+/* Problems: unnormalized currency strings, duplicate physical property,
+   missing price field, and inconsistent coordinate formats. */</code></pre>
+            </div>
+
+            <!-- Divider Handle -->
+            <div class="tlab-divider" aria-hidden="true">
+              <span class="tlab-handle">⇄</span>
+            </div>
+
+            <input type="range" id="tlab-range" class="tlab-range" min="5" max="95" value="50" aria-label="Comparison slider between Before and After data transformation">
+          </div>
+
+          <div class="tlab-footer">
+            <span class="tlab-hint" data-i18n="tlab.hint">← Drag slider left/right to compare Raw Input vs. Verified Output →</span>
+            <span class="tlab-pct-readout" id="tlab-pct-readout">50% RAW / 50% GOLD</span>
+          </div>
+        </div>
+
         <!-- Engineering Notes & Architecture Decision Records (ADRs) -->
         <div class="adr-block" aria-labelledby="adr-heading">
           <div class="adr-head">
@@ -703,6 +810,29 @@
         <div class="skill-proof-bar" id="skill-proof-bar" role="status" aria-live="polite">
           <span class="skill-proof-tag" id="skill-proof-tag">Stack Proof</span>
           <span class="skill-proof-text" id="skill-proof-text" data-i18n="skills.proof.default">Click or hover any tool above to inspect where I use it in projects, internships &amp; research.</span>
+        </div>
+
+        <!-- Engineering Activity & Verification Matrix (Heatmap) -->
+        <div class="eng-heatmap-card" id="eng-heatmap-card" aria-labelledby="eng-heatmap-title">
+          <div class="eng-heatmap-head">
+            <div>
+              <span class="eng-heatmap-tag" data-i18n="hmap.badge">Engineering Telemetry · Verification Matrix</span>
+              <h3 id="eng-heatmap-title" class="eng-heatmap-title" data-i18n="hmap.title">Experiment runs, automated tests &amp; pipeline milestones</h3>
+            </div>
+            <div class="eng-heatmap-legend" aria-hidden="true">
+              <span data-i18n="hmap.less">Base</span>
+              <span class="hmap-cell-demo lv-1"></span>
+              <span class="hmap-cell-demo lv-2"></span>
+              <span class="hmap-cell-demo lv-3"></span>
+              <span class="hmap-cell-demo lv-4"></span>
+              <span data-i18n="hmap.more">Peak</span>
+            </div>
+          </div>
+          <div class="eng-heatmap-grid" id="eng-heatmap-grid" role="grid" aria-label="Engineering experiment heatmap"></div>
+          <div class="eng-heatmap-footer" id="eng-heatmap-readout" aria-live="polite">
+            <span class="hmap-readout-pill">35/35 PYTEST · 18 YOLOV8 RUNS · DOI: 10.54644/JTE.2026.2148</span>
+            <span class="hmap-readout-text" id="hmap-readout-text" data-i18n="hmap.default">Hover or tap any telemetry cell above to inspect verified engineering runs across DE, DA &amp; CV.</span>
+          </div>
         </div>
       </div>
     </section>
@@ -1097,6 +1227,11 @@
           <span class="cmd-item-text" data-i18n="cmd.item.vcard">Save Contact Card (.vcf)</span>
           <kbd class="cmd-shortcut">V</kbd>
         </div>
+        <div class="cmd-item" role="option" tabindex="-1" data-action="replay-boot">
+          <svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+          <span class="cmd-item-text" data-i18n="cmd.item.boot">Replay System Boot Sequence</span>
+          <span class="cmd-item-meta">BOOT</span>
+        </div>
       </div>
       <div class="cmd-footer">
         <span><kbd>↑</kbd> <kbd>↓</kbd> navigate</span>
@@ -1108,16 +1243,17 @@
     </div>
   </div>
 
-  <script src="js/i18n.js?v=10" defer></script>
-  <script src="js/endorsements.js?v=10" defer></script>
-  <script src="js/theme.js?v=10" defer></script>
-  <script src="js/navigation.js?v=10" defer></script>
-  <script src="js/modal.js?v=10" defer></script>
-  <script src="js/contact-form.js?v=10" defer></script>
-  <script src="js/project-filter.js?v=10" defer></script>
-  <script src="js/terminal-runner.js?v=10" defer></script>
-  <script src="js/clock.js?v=10" defer></script>
-  <script src="js/command-palette.js?v=10" defer></script>
+  <script src="js/i18n.js?v=13" defer></script>
+  <script src="js/endorsements.js?v=13" defer></script>
+  <script src="js/theme.js?v=13" defer></script>
+  <script src="js/navigation.js?v=13" defer></script>
+  <script src="js/modal.js?v=13" defer></script>
+  <script src="js/contact-form.js?v=13" defer></script>
+  <script src="js/project-filter.js?v=13" defer></script>
+  <script src="js/terminal-runner.js?v=13" defer></script>
+  <script src="js/clock.js?v=13" defer></script>
+  <script src="js/command-palette.js?v=13" defer></script>
+  <script src="js/visual-engine.js?v=13" defer></script>
 </body>
 
 </html>

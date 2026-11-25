@@ -97,6 +97,10 @@
         if (window.PF_DOWNLOAD_VCARD && typeof window.PF_DOWNLOAD_VCARD === "function") {
           window.PF_DOWNLOAD_VCARD();
         }
+      } else if (action === "replay-boot") {
+        if (window.PF_REPLAY_BOOT && typeof window.PF_REPLAY_BOOT === "function") {
+          window.PF_REPLAY_BOOT();
+        }
       } else if (action === "view-cert") {
         var certBtn = document.querySelector(".btn-cert-link[data-cert]");
         if (certBtn) certBtn.click();
@@ -108,12 +112,13 @@
     }
 
     var SHELL_COMMANDS = {
-      help: "Commands: >whoami · >stack · >projects · >paper · >contact",
+      help: "Commands: >whoami · >stack · >projects · >paper · >contact · >boot",
       whoami: "Nguyễn Đình Tấn Lộc · B.Eng. Data Engineering @ HCMUTE (2027) · Intern @ AWS FCAJ & QT-Data VN",
       stack: "DE: Python, SQL, Bash, Spark, Kafka, Airflow, dbt, Polars, DuckDB | CV: PyTorch, YOLOv8, OpenCV",
       projects: "1) PropMatch Engine (MinIO+Polars+DuckDB Lakehouse) | 2) BDD100K Stratified Active Learning (+2.08% mAP50)",
       paper: "JTE Journal (2026): Vietnamese Folk-Tale Comics Generation · DOI: 10.54644/jte.2026.2148",
-      contact: "Email: ndtl05062005@gmail.com | Tel: +84 966 150 875 | GitHub: @nguyendinhtanloc"
+      contact: "Email: ndtl05062005@gmail.com | Tel: +84 966 150 875 | GitHub: @nguyendinhtanloc",
+      boot: "Select 'Replay System Boot Sequence' in ⌘K to trigger the 0.85s telemetry cold-start curtain."
     };
 
     function filterItems(query) {

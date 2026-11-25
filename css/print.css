@@ -53,7 +53,16 @@
   .btn-case-study,
   .contact-form-card,
   .form-intent-chips,
-  .footer-kbd-hint {
+  .footer-kbd-hint,
+  .boot-curtain,
+  .hero-canvas,
+  .hero-visual-bar,
+  .iso-plane,
+  .iso-float-hud,
+  .card-glare,
+  .transform-lab,
+  .eng-heatmap-card,
+  .flow-inspector {
     display: none !important;
   }
 

@@ -10,8 +10,8 @@
    - css/print.css       : Executive summary print & PDF export stylesheet
    ============================================================ */
 
-@import url("css/variables.css?v=10");
-@import url("css/base.css?v=10");
-@import url("css/components.css?v=10");
-@import url("css/sections.css?v=10");
-@import url("css/print.css?v=10");
+@import url("css/variables.css?v=13");
+@import url("css/base.css?v=13");
+@import url("css/components.css?v=13");
+@import url("css/sections.css?v=13");
+@import url("css/print.css?v=13");

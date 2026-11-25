@@ -750,6 +750,9 @@
 
   function triggerHeroPulse() {
     clearPulseTimers();
+    if (window.PF_HERO_SHOCKWAVE && typeof window.PF_HERO_SHOCKWAVE === "function") {
+      window.PF_HERO_SHOCKWAVE();
+    }
     pulseCounter++;
     var formattedCount = pulseCounter < 10 ? "0" + pulseCounter : String(pulseCounter);
     if (pulseCountEl) {
