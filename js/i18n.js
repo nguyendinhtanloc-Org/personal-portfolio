@@ -39,6 +39,7 @@ window.PF_I18N = (function () {
     "hero.note.text":
       "Mỗi tầng một nguồn sự thật — nếu một con số lệch, ta tìm được chỗ lệch.",
     "hero.pulse.btn": "Bắn xung",
+    "hero.3d.btn": "Góc nhìn 3D",
 
     /* about */
     "about.badge": "Giới thiệu · Bản thân",
@@ -235,7 +236,22 @@ window.PF_I18N = (function () {
     "form.chip.project": "+ Trao đổi dự án",
     "form.chip.info": "+ Xin thêm thông tin",
     "cs.share": "Sao chép link trực tiếp ⎘",
-    "footer.shortcuts": "Phím tắt"
+    "footer.shortcuts": "Phím tắt",
+    "cmd.item.boot": "Chạy lại màn khởi động hệ thống (Boot)",
+
+    /* transformation lab (before/after slider) & engineering heatmap */
+    "tlab.badge": "Minh chứng Tương tác · Before ⇄ After",
+    "tlab.title": "Kéo thanh trượt để xem dữ liệu thô biến đổi thành đầu ra chuẩn",
+    "tlab.tab.de": "01 · Hợp nhất Thực thể PropMatch",
+    "tlab.tab.cv": "02 · Phân tầng 3D IPF BDD100K",
+    "tlab.de.after.pill": "SAU · THỰC THỂ GOLD CANONICAL (DUCKDB + NETWORKX)",
+    "tlab.de.before.pill": "TRƯỚC · TIN ĐĂNG THÔ ĐA NGUỒN (TRÙNG LẶP & LỆCH CHUẨN)",
+    "tlab.hint": "← Kéo thanh trượt trái/phải để đối chiếu Dữ liệu Thô và Đầu ra Kiểm định →",
+    "hmap.badge": "Telemetry Kỹ thuật · Ma trận Thực nghiệm",
+    "hmap.title": "Lịch sử chạy thực nghiệm, kiểm thử tự động & cột mốc pipeline",
+    "hmap.less": "Nền",
+    "hmap.more": "Đỉnh",
+    "hmap.default": "Rê chuột hoặc chạm vào ô bất kỳ ở trên để xem chi tiết các đợt thực nghiệm DE, DA & CV."
   };
 
   // key -> [{el, original, asHtml, isPlaceholder}] (some keys are used on several elements)
