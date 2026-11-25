@@ -1548,3 +1548,119 @@
     display: none;
   }
 }
+
+/* ---------- System Telemetry Boot Curtain (0.85s Cold-Start) ---------- */
+[data-boot="done"] .boot-curtain {
+  display: none !important;
+}
+
+.boot-curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background-color: #121110;
+  background-image: radial-gradient(
+    640px circle at 50% 44%,
+    rgba(212, 163, 89, 0.14),
+    transparent 70%
+  );
+  color: #f4f1ea;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  transition: transform 0.62s cubic-bezier(0.76, 0, 0.24, 1),
+    opacity 0.52s ease;
+}
+
+.boot-curtain.is-lifting {
+  transform: translateY(-102%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.boot-hud {
+  width: 100%;
+  max-width: 28rem;
+  font-family: var(--font-mono);
+  background: rgba(24, 22, 20, 0.92);
+  border: 1px solid rgba(212, 163, 89, 0.32);
+  border-radius: 8px;
+  padding: 1.35rem 1.5rem;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.boot-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.boot-monogram {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: #d4a359;
+}
+
+.boot-tag {
+  font-size: 0.63rem;
+  letter-spacing: 0.08em;
+  color: rgba(244, 241, 234, 0.62);
+}
+
+.boot-metric-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 1.05rem;
+}
+
+.boot-label {
+  font-size: 0.67rem;
+  color: rgba(244, 241, 234, 0.88);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.boot-pct {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #d4a359;
+  font-feature-settings: "tnum";
+  flex-shrink: 0;
+}
+
+.boot-bar-track {
+  height: 3px;
+  background: rgba(255, 255, 255, 0.09);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 0.55rem;
+}
+
+.boot-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #b4833e, #e8c27a);
+  border-radius: 999px;
+  box-shadow: 0 0 10px rgba(212, 163, 89, 0.65);
+}
+
+.boot-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  font-size: 0.6rem;
+  letter-spacing: 0.05em;
+  color: rgba(244, 241, 234, 0.46);
+}
