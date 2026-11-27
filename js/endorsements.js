@@ -33,11 +33,28 @@
         en: "NCKH Supervisor · HCMUTE",
         vi: "Giảng viên hướng dẫn NCKH · HCMUTE"
       }
+    },
+    {
+      initials: "NY",
+      context: {
+        en: "Internship · QT-Data VN (9.0/10)",
+        vi: "Thực tập · QT-Data VN (9.0/10)"
+      },
+      quote: {
+        en: "“Serious work ethic, high sense of responsibility, and quick to grasp new operational workflows. Tan Loc proactively communicates with supervisors, resolves problems effectively, and consistently delivers assigned tasks with excellence.”",
+        vi: "“Tác phong làm việc nghiêm túc, tinh thần trách nhiệm cao và tiếp thu nhanh các quy trình nghiệp vụ mới. Lộc luôn chủ động trao đổi với người hướng dẫn, giải quyết vấn đề hiệu quả và hoàn thành xuất sắc mọi nhiệm vụ được giao.”"
+      },
+      name: {
+        en: "Huỳnh Hữu Ngọc Ý",
+        vi: "Huỳnh Hữu Ngọc Ý"
+      },
+      role: {
+        en: "IT Director · QT-Data VN",
+        vi: "Giám đốc CNTT · QT-Data VN"
+      }
     }
-    /* Two more endorsements are drafted but still use placeholder author
-       names — kept out of the live array per the evidence-first rule
-       (PRODUCT.md). Restore both (and drop this comment) once you have
-       real names + quotes from the AWS FCAJ and QT-Data VN teams:
+    /* One more endorsement slot is drafted for AWS FCAJ once you have
+       the mentor's formal quote:
     ,{
       initials: "AW",
       context: {
@@ -55,25 +72,6 @@
       role: {
         en: "Cloud & Data Mentor · AWS FCAJ",
         vi: "Mentor Cloud & Dữ liệu · AWS FCAJ"
-      }
-    },
-    {
-      initials: "QT",
-      context: {
-        en: "Internship · QT-Data VN",
-        vi: "Thực tập · QT-Data VN"
-      },
-      quote: {
-        en: "“Reliable with day-to-day data operations—attentive to schema consistency, edge cases, and timely delivery.”",
-        vi: "“Đáng tin cậy trong vận hành dữ liệu hằng ngày — luôn chú ý tính nhất quán của schema, các trường hợp biên và tiến độ bàn giao.”"
-      },
-      name: {
-        en: "[Supervisor Name]",
-        vi: "[Tên Lead QT-Data VN]"
-      },
-      role: {
-        en: "Data Lead · QT-Data VN",
-        vi: "Data Lead · QT-Data VN"
       }
     }
     */
