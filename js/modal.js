@@ -244,7 +244,7 @@
       en: {
         title: "Application of Comics Generation Techniques in Visualizing Vietnamese Folk Tales",
         summary:
-          "Co-authored peer-reviewed paper published in the Journal of Technical Education Science (JTE, HCMUTE) on August 25, 2026 (DOI: 10.54644/jte.2026.2148) with Advisor ThS. Lê Minh Tân.",
+          "Co-authored peer-reviewed paper published in the Journal of Technical Education Science (JTE, HCMUTE) on August 25, 2026 (DOI: 10.54644/jte.2026.2148) with Advisor M.Sc. Le Minh Tan.",
         highlightsTitle: "Research Contributions",
         highlights: [
           "Structured Narrative-to-Panel Pipeline: Decomposes traditional Vietnamese folk-tale scripts into scene descriptions, character prompts, and panel layouts.",

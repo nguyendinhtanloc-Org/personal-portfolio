@@ -26,7 +26,7 @@
         vi: "“Lộc là sinh viên chịu khó khi tham gia nghiên cứu khoa học. Dù còn một số hạn chế xuất phát từ sự thiếu kinh nghiệm, bạn vẫn đảm bảo hoàn thành nhiệm vụ giảng viên giao.”"
       },
       name: {
-        en: "ThS. Lê Minh Tân",
+        en: "M.Sc. Le Minh Tan",
         vi: "ThS. Lê Minh Tân"
       },
       role: {
@@ -45,7 +45,7 @@
         vi: "“Tác phong làm việc nghiêm túc, tinh thần trách nhiệm cao và tiếp thu nhanh các quy trình nghiệp vụ mới. Lộc luôn chủ động trao đổi với người hướng dẫn, giải quyết vấn đề hiệu quả và hoàn thành xuất sắc mọi nhiệm vụ được giao.”"
       },
       name: {
-        en: "Huỳnh Hữu Ngọc Ý",
+        en: "Huynh Huu Ngoc Y",
         vi: "Huỳnh Hữu Ngọc Ý"
       },
       role: {
